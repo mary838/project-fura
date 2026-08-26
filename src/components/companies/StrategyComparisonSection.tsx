@@ -1,14 +1,16 @@
 import { Badge } from "@/components/ui/Badge";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FH_COMPARISON, FH_STRATEGIES } from "@/lib/fura-habitech-content";
 
 export function StrategyComparisonSection() {
   return (
     <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-20">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8">
-        <div className="flex w-full flex-col justify-center gap-2.5">
-          <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-            Strategy Comparison
-          </h2>
+        <SectionHeading
+          gap="2xs"
+          className="justify-center"
+          title="Strategy Comparison"
+        >
           <div className="flex w-full flex-col gap-4 text-base text-[#717680]">
             <p>Choose the strategy that best fits your investment goals.</p>
             <p>
@@ -16,7 +18,7 @@ export function StrategyComparisonSection() {
               period and risk exposure.
             </p>
           </div>
-        </div>
+        </SectionHeading>
 
         <div className="flex w-full flex-col items-start gap-8">
           <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:py-6">

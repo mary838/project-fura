@@ -1,19 +1,17 @@
 import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatCard } from "@/components/ui/StatCard";
 import { STATISTICS_PRIMARY, STATISTICS_SECONDARY } from "@/lib/about-content";
 
 export function KeyStatisticsSection() {
   return (
-    <Section className="bg-surface-muted">
-      <div className="flex w-full flex-col items-start gap-6 text-center">
-        <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-          Key Statistics
-        </h2>
-        <p className="w-full text-base text-subtitle lg:text-xl">
-          A snapshot of our experience, scale, and global reach across real
-          asset investment and development.
-        </p>
-      </div>
+    <Section reveal className="bg-surface-muted">
+      <SectionHeading
+        gap="lg"
+        align="center"
+        title="Key Statistics"
+        description="A snapshot of our experience, scale, and global reach across real asset investment and development."
+      />
 
       <div className="flex w-full flex-col items-start gap-6">
         <div className="flex w-full flex-col justify-center gap-4 lg:flex-row lg:items-start">

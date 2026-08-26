@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 import { NAV_LINKS, type NavLink } from "@/lib/nav-links";
@@ -12,6 +13,23 @@ export type { NavLink };
 
 /** Distance scrolled before the bar switches to its solid state. */
 const SOLID_AFTER_PX = 24;
+
+/**
+ * A link is current when the route matches it, or sits beneath it — so
+ * `/properties/winghouse` still lights up "REAL ESTATE PROPERTIES". Home is
+ * matched exactly, since every path starts with "/".
+ */
+function isCurrent(pathname: string, href?: string) {
+  if (!href) return false;
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/** Styling for a nav link, in its current-page and resting states. */
+const LINK_STATE = {
+  current: "font-semibold text-brand-accent",
+  resting: "font-medium text-title",
+} as const;
 
 type NavigationBarProps = {
   links?: NavLink[];
@@ -34,6 +52,7 @@ export function NavigationBar({
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const alwaysSolid = variant === "solid";
+  const pathname = usePathname();
 
   useEffect(() => {
     if (alwaysSolid) return;
@@ -107,8 +126,14 @@ export function NavigationBar({
                   ),
             )}
           >
-            {links.map((link) =>
-              link.items ? (
+            {links.map((link) => {
+              // A menu counts as current when the open page is one of its items.
+              const current =
+                isCurrent(pathname, link.href) ||
+                (link.items?.some((item) => isCurrent(pathname, item.href)) ??
+                  false);
+
+              return link.items ? (
                 <li
                   key={link.label}
                   className="relative"
@@ -125,7 +150,8 @@ export function NavigationBar({
                       )
                     }
                     className={cn(
-                      "flex cursor-pointer items-center gap-1 text-sm font-medium whitespace-nowrap text-title transition-opacity hover:opacity-70",
+                      "flex cursor-pointer items-center gap-1 text-sm whitespace-nowrap transition-opacity hover:opacity-70",
+                      current ? LINK_STATE.current : LINK_STATE.resting,
                       alwaysSolid ? "" : "rounded-lg px-4 py-3",
                     )}
                   >
@@ -147,17 +173,26 @@ export function NavigationBar({
                     // while travelling from the trigger down to the panel.
                     <div className={cn("absolute top-full left-0", alwaysSolid && "pt-3")}>
                       <ul className="flex min-w-[229px] flex-col gap-5 rounded-lg bg-white/74 p-4 shadow-lg backdrop-blur-[12px]">
-                        {link.items.map((item) => (
-                          <li key={item.href}>
-                            <Link
-                              href={item.href}
-                              onClick={() => setOpenMenu(null)}
-                              className="block text-sm font-medium whitespace-nowrap text-title transition-opacity hover:opacity-70"
-                            >
-                              {item.label}
-                            </Link>
-                          </li>
-                        ))}
+                        {link.items.map((item) => {
+                          const itemCurrent = isCurrent(pathname, item.href);
+                          return (
+                            <li key={item.href}>
+                              <Link
+                                href={item.href}
+                                aria-current={itemCurrent ? "page" : undefined}
+                                onClick={() => setOpenMenu(null)}
+                                className={cn(
+                                  "block text-sm whitespace-nowrap transition-opacity hover:opacity-70",
+                                  itemCurrent
+                                    ? LINK_STATE.current
+                                    : LINK_STATE.resting,
+                                )}
+                              >
+                                {item.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   ) : null}
@@ -166,16 +201,18 @@ export function NavigationBar({
                 <li key={link.label}>
                   <Link
                     href={link.href ?? "/"}
+                    aria-current={current ? "page" : undefined}
                     className={cn(
-                      "flex items-center gap-1 text-sm font-medium whitespace-nowrap text-title transition-opacity hover:opacity-70",
+                      "flex items-center gap-1 text-sm whitespace-nowrap transition-opacity hover:opacity-70",
+                      current ? LINK_STATE.current : LINK_STATE.resting,
                       alwaysSolid ? "" : "rounded-lg px-4 py-3",
                     )}
                   >
                     {link.label}
                   </Link>
                 </li>
-              ),
-            )}
+              );
+            })}
           </ul>
         </nav>
 
@@ -203,36 +240,63 @@ export function NavigationBar({
         )}
       >
         <ul className="flex flex-col px-4 py-4">
-          {links.map((link) => (
-            <li key={link.label}>
-              {link.items ? (
-                <div className="py-3">
-                  <p className="text-sm font-medium text-title">{link.label}</p>
-                  <ul className="mt-2 flex flex-col border-l border-border-secondary pl-3">
-                    {link.items.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          onClick={() => setOpen(false)}
-                          className="block py-2 text-sm text-subtitle"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : (
-                <Link
-                  href={link.href ?? "/"}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-sm font-medium text-title"
-                >
-                  {link.label}
-                </Link>
-              )}
-            </li>
-          ))}
+          {links.map((link) => {
+            const current =
+              isCurrent(pathname, link.href) ||
+              (link.items?.some((item) => isCurrent(pathname, item.href)) ??
+                false);
+
+            return (
+              <li key={link.label}>
+                {link.items ? (
+                  <div className="py-3">
+                    <p
+                      className={cn(
+                        "text-sm",
+                        current ? LINK_STATE.current : LINK_STATE.resting,
+                      )}
+                    >
+                      {link.label}
+                    </p>
+                    <ul className="mt-2 flex flex-col border-l border-border-secondary pl-3">
+                      {link.items.map((item) => {
+                        const itemCurrent = isCurrent(pathname, item.href);
+                        return (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              aria-current={itemCurrent ? "page" : undefined}
+                              onClick={() => setOpen(false)}
+                              className={cn(
+                                "block py-2 text-sm",
+                                itemCurrent
+                                  ? LINK_STATE.current
+                                  : "text-subtitle",
+                              )}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ) : (
+                  <Link
+                    href={link.href ?? "/"}
+                    aria-current={current ? "page" : undefined}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "block py-3 text-sm",
+                      current ? LINK_STATE.current : LINK_STATE.resting,
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
         <div className="px-4 pb-6">
           <Button href="/invest" size="sm" className="w-full">

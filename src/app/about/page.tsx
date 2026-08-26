@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/Footer";
-import { NavigationBar } from "@/components/layout/NavigationBar";
+import { PageShell } from "@/components/layout/PageShell";
 import { AboutIntroSection } from "@/components/about/AboutIntroSection";
 import { KeyStatisticsSection } from "@/components/about/KeyStatisticsSection";
 import { NewsSection } from "@/components/about/NewsSection";
@@ -14,18 +13,14 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  // Opens on a white section, so the default solid bar is right here.
   return (
-    <>
-      {/* This page opens on a white section, so the bar never goes translucent. */}
-      <NavigationBar variant="solid" />
-      <main className="flex w-full flex-1 flex-col pt-20">
-        <AboutIntroSection />
-        <OrganigramSection />
-        <VisionSection />
-        <KeyStatisticsSection />
-        <NewsSection />
-        <Footer />
-      </main>
-    </>
+    <PageShell>
+      <AboutIntroSection />
+      <OrganigramSection />
+      <VisionSection />
+      <KeyStatisticsSection />
+      <NewsSection />
+    </PageShell>
   );
 }

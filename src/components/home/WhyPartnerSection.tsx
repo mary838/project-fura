@@ -1,37 +1,25 @@
-import Image from "next/image";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { MediaFrame } from "@/components/ui/MediaFrame";
 import { Reveal } from "@/components/ui/Reveal";
-import { SplitLines } from "@/components/ui/SplitLines";
 import { Section } from "@/components/ui/Section";
+import { SplitHeading } from "@/components/ui/SplitHeading";
 import { VALUE_CARDS } from "@/lib/home-content";
 
 export function WhyPartnerSection() {
   return (
     <Section gap="xl-tight" className="bg-surface-muted">
-      <div className="flex w-full flex-col gap-3 lg:flex-row lg:items-center lg:gap-[46px]">
-        <div className="flex flex-col gap-3 lg:flex-1 lg:gap-4">
-          <Eyebrow>WHY FURA HABITECH</Eyebrow>
-          <SplitLines
-            as="h2"
-            text="Why Partner With Fura"
-            className="text-display-xs font-medium text-title lg:text-display-md"
-          />
-        </div>
-        <SplitLines
-          text={"FURA is not just an investor \u2014\nwe are a long-term platform builder"}
-          className="text-base text-subtitle lg:flex-1 lg:text-xl"
-          startDelay={200}
-        />
-      </div>
+      <SplitHeading
+        eyebrow="WHY FURA HABITECH"
+        title="Why Partner With Fura"
+        description={"FURA is not just an investor —\nwe are a long-term platform builder"}
+      />
 
       <div className="flex w-full flex-col gap-6 lg:grid lg:h-[353px] lg:grid-cols-2 lg:gap-[42px]">
-        <Reveal from="right" className="relative h-[221px] w-full overflow-hidden rounded-2xl lg:order-2 lg:h-auto">
-          <Image
+        <Reveal from="right" className="lg:order-2">
+          <MediaFrame
             src="/fura/images/why-partner.png"
             alt="Fura Habitech development site"
-            fill
             sizes="(min-width: 1024px) 579px, 100vw"
-            className="object-cover"
+            className="h-[221px] lg:h-full"
           />
         </Reveal>
 

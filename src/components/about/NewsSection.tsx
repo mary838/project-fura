@@ -1,19 +1,17 @@
 import { NewsCard } from "@/components/ui/NewsCard";
 import { Section } from "@/components/ui/Section";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { NEWS_ITEMS } from "@/lib/about-content";
 
 export function NewsSection() {
   return (
-    <Section gap="xl" className="bg-surface">
-      <div className="flex w-full flex-col items-start gap-3">
-        <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-          News &amp; Events
-        </h2>
-        <p className="w-full text-base text-subtitle lg:text-lg">
-          Stay informed on our latest projects, partnerships, market insights,
-          and company updates.
-        </p>
-      </div>
+    <Section gap="xl" reveal className="bg-surface">
+      <SectionHeading
+        gap="sm"
+        title="News & Events"
+        description="Stay informed on our latest projects, partnerships, market insights, and company updates."
+        descriptionSize="lg"
+      />
 
       {/*
         Mobile scrolls the cards horizontally, with the next one peeking past

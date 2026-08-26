@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/Footer";
-import { NavigationBar } from "@/components/layout/NavigationBar";
+import { PageShell } from "@/components/layout/PageShell";
 import { PropertyDetailSection } from "@/components/properties/PropertyDetailSection";
 
 export const metadata: Metadata = {
@@ -11,12 +10,8 @@ export const metadata: Metadata = {
 
 export default function WinghousePage() {
   return (
-    <>
-      <NavigationBar variant="solid" />
-      <main className="flex w-full flex-1 flex-col pt-20">
-        <PropertyDetailSection />
-        <Footer />
-      </main>
-    </>
+    <PageShell>
+      <PropertyDetailSection />
+    </PageShell>
   );
 }

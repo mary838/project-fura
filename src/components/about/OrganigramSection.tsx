@@ -1,4 +1,6 @@
 import { OrganigramCard } from "@/components/ui/OrganigramCard";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   ORGANIGRAM_PARENT,
   ORGANIGRAM_SUBSIDIARIES,
@@ -16,16 +18,14 @@ export function OrganigramSection() {
   return (
     <section className="w-full bg-surface-muted px-4 py-8 lg:px-[100px] lg:py-24">
       <div className="flex w-full flex-col gap-12">
-        <div className="flex w-full flex-col items-center gap-4 text-center">
-          <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-            Company organigram
-          </h2>
-          <p className="w-full text-base text-subtitle">
-            Corporate structure and global subsidiaries hierarchy
-          </p>
-        </div>
+        <SectionHeading
+          align="center"
+          title="Company organigram"
+          description="Corporate structure and global subsidiaries hierarchy"
+          descriptionSize="base"
+        />
 
-        <div className="flex w-full flex-col items-center gap-3 lg:gap-0 lg:py-8">
+        <Reveal className="flex w-full flex-col items-center gap-3 lg:gap-0 lg:py-8">
           <OrganigramCard {...ORGANIGRAM_PARENT} emphasis />
 
           <div className={`hidden h-10 w-0.5 lg:block ${CONNECTOR}`} />
@@ -50,7 +50,7 @@ export function OrganigramSection() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

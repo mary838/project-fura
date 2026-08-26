@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { FilterPill } from "@/components/ui/FilterPill";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CODA_ROLES, FH_FLOW_STEPS } from "@/lib/fura-habitech-content";
 
 const TAB_CLASSES = ["Class A", "Class B", "Class C"];
@@ -8,10 +10,11 @@ export function CapitalFlowSection() {
   return (
     <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-20">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8">
-        <div className="flex w-full flex-col justify-center gap-2.5">
-          <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-            How Capital May Flow to Mt Gravatt
-          </h2>
+        <SectionHeading
+          gap="2xs"
+          className="justify-center"
+          title="How Capital May Flow to Mt Gravatt"
+        >
           <p className="w-full text-base text-subtitle">
             Investors select Class A, B, or C; they do not nominate an
             individual project.
@@ -19,21 +22,19 @@ export function CapitalFlowSection() {
           <p className="w-full text-base text-subtitle">
             Mt Gravatt is shown as one Class B deployment example.
           </p>
-        </div>
+        </SectionHeading>
 
         <div className="flex w-full flex-col items-start gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
           <div className="flex w-full items-start gap-3 lg:w-auto">
             {TAB_CLASSES.map((tab) => (
-              <span
+              <FilterPill
                 key={tab}
-                className={`flex h-11 w-[132px] items-center justify-center rounded-lg px-9 py-3 text-sm font-medium ${
-                  tab === ACTIVE_TAB
-                    ? "bg-utility-gray-900 text-title-inverse"
-                    : "border border-border-primary bg-surface text-title"
-                }`}
+                active={tab === ACTIVE_TAB}
+                border="primary"
+                className="w-[132px] px-9"
               >
                 {tab}
-              </span>
+              </FilterPill>
             ))}
           </div>
           <p className="flex items-center px-4 py-2 text-sm text-subtitle">

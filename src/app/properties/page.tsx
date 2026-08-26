@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/Footer";
-import { NavigationBar } from "@/components/layout/NavigationBar";
+import { PageShell } from "@/components/layout/PageShell";
 import { ContactValuesSection } from "@/components/properties/ContactValuesSection";
 import { PropertiesListSection } from "@/components/properties/PropertiesListSection";
 
@@ -12,13 +11,9 @@ export const metadata: Metadata = {
 
 export default function PropertiesPage() {
   return (
-    <>
-      <NavigationBar variant="solid" />
-      <main className="flex w-full flex-1 flex-col pt-20">
-        <PropertiesListSection />
-        <ContactValuesSection />
-        <Footer />
-      </main>
-    </>
+    <PageShell>
+      <PropertiesListSection />
+      <ContactValuesSection />
+    </PageShell>
   );
 }

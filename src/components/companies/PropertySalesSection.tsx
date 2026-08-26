@@ -1,23 +1,22 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { StatTile } from "@/components/ui/StatTile";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { StatTileRow } from "@/components/ui/StatTileRow";
 import { PROPERTY_SHOWCASE, PROPERTY_STATS } from "@/lib/companies-content";
 
 export function PropertySalesSection() {
   return (
     <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-24">
+      {/* This frame is not capped at 1200px — the stat row below runs wider. */}
       <div className="mx-auto flex w-full flex-col items-center gap-8 lg:gap-16">
-        <div className="flex w-full flex-col items-start gap-3">
-          <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-            Connecting People with Better Places
-          </h2>
-          <p className="w-full text-xl text-subtitle">
-            From project launch to final sale, we combine market knowledge,
-            customer engagement, and strategic sales support to create a
-            seamless property journey.
-          </p>
+        <SectionHeading
+          gap="sm"
+          title="Connecting People with Better Places"
+          description="From project launch to final sale, we combine market knowledge, customer engagement, and strategic sales support to create a seamless property journey."
+          descriptionSize="xl-flat"
+        >
           <Button href="/invest">Partner With Us</Button>
-        </div>
+        </SectionHeading>
 
         <div className="flex w-full max-w-[1200px] flex-col items-center gap-4 lg:flex-row">
           {PROPERTY_SHOWCASE.map((item) => (
@@ -39,15 +38,11 @@ export function PropertySalesSection() {
           ))}
         </div>
 
-        <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 lg:mt-0 lg:w-[1240px] lg:flex-row">
-          {PROPERTY_STATS.map((stat) => (
-            <StatTile
-              key={stat.label}
-              {...stat}
-              className="lg:w-[318px] lg:flex-none"
-            />
-          ))}
-        </div>
+        <StatTileRow
+          stats={PROPERTY_STATS}
+          layout="fixed"
+          className="mt-8 lg:mt-0"
+        />
       </div>
     </section>
   );

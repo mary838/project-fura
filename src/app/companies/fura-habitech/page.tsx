@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/Footer";
-import { NavigationBar } from "@/components/layout/NavigationBar";
+import { PageShell } from "@/components/layout/PageShell";
 import { CapitalFlowSection } from "@/components/companies/CapitalFlowSection";
 import { CompanyHero } from "@/components/companies/CompanyHero";
 import { FuraIntroSection } from "@/components/companies/FuraIntroSection";
@@ -15,22 +14,18 @@ export const metadata: Metadata = {
 
 export default function FuraHabitechPage() {
   return (
-    <>
-      <NavigationBar variant="solid" />
-      <main className="flex w-full flex-1 flex-col pt-20">
-        <CompanyHero
-          image="/fura/companies/fura-habitech/hero.png"
-          title="FURA Habitech Pty Ltd"
-          subtitle="Global Real Asset Investment Platform – for Housing Solutions in Australia"
-          ctaLabel="Partner With Us"
-          ctaHref="/invest"
-        />
-        <FuraIntroSection />
-        <StrategyComparisonSection />
-        <CapitalFlowSection />
-        <FuraStatsSection />
-        <Footer />
-      </main>
-    </>
+    <PageShell>
+      <CompanyHero
+        image="/fura/companies/fura-habitech/hero.png"
+        title="FURA Habitech Pty Ltd"
+        subtitle="Global Real Asset Investment Platform – for Housing Solutions in Australia"
+        ctaLabel="Partner With Us"
+        ctaHref="/invest"
+      />
+      <FuraIntroSection />
+      <StrategyComparisonSection />
+      <CapitalFlowSection />
+      <FuraStatsSection />
+    </PageShell>
   );
 }

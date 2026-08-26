@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import Link from "next/link";
 import { SUSTAINABILITY_CERTS } from "@/lib/companies-content";
 
@@ -7,15 +8,14 @@ export function EnvironmentalSection() {
     <section className="flex w-full items-center justify-center bg-surface-muted px-4 py-10 lg:px-[100px] lg:py-26">
       <div className="flex w-full max-w-[1200px] flex-col items-center gap-10 lg:flex-row lg:gap-20">
         <div className="flex w-full flex-col items-start gap-7 lg:min-w-0 lg:flex-1">
-          <div className="flex flex-col items-start gap-3">
-            {/* Display md/Regular here — lighter than the other section titles. */}
-            <h2 className="text-display-xs font-normal text-title lg:text-display-md">
-              Environmental Engineering
-            </h2>
-            <p className="text-base text-subtitle">
-              From Bioclimatic Design to Green Certifications
-            </p>
-          </div>
+          {/* Display md/Regular here — lighter than the other section titles. */}
+          <SectionHeading
+            gap="sm"
+            titleWeight="normal"
+            title="Environmental Engineering"
+            description="From Bioclimatic Design to Green Certifications"
+            descriptionSize="base"
+          />
 
           <p className="w-full text-sm text-subtitle opacity-85">
             Sustainability is embedded in every decision we make - from

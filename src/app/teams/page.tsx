@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/Footer";
-import { NavigationBar } from "@/components/layout/NavigationBar";
+import { PageShell } from "@/components/layout/PageShell";
 import { LeadershipSection } from "@/components/team/LeadershipSection";
 import { TeamHeroSection } from "@/components/team/TeamHeroSection";
 
@@ -11,15 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function TeamsPage() {
+  // Opens on a white section, so the default solid bar is right here.
   return (
-    <>
-      {/* Opens on a white section, so the bar never goes translucent. */}
-      <NavigationBar variant="solid" />
-      <main className="flex w-full flex-1 flex-col pt-20">
-        <TeamHeroSection />
-        <LeadershipSection />
-        <Footer />
-      </main>
-    </>
+    <PageShell>
+      <TeamHeroSection />
+      <LeadershipSection />
+    </PageShell>
   );
 }

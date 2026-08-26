@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { MediaFrame } from "@/components/ui/MediaFrame";
+import { Reveal } from "@/components/ui/Reveal";
+import { SplitLines } from "@/components/ui/SplitLines";
 import Link from "next/link";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import {
@@ -26,12 +29,14 @@ export function PropertyDetailSection() {
         </nav>
 
         <div className="flex w-full flex-col gap-16 lg:flex-row lg:items-start">
-          <div className="flex flex-col items-start gap-8 lg:w-[420px] lg:shrink-0">
+          <Reveal from="left" className="flex flex-col items-start gap-8 lg:w-[420px] lg:shrink-0">
             <div className="flex w-full flex-col items-start gap-4">
               <StatusBadge status="On going" />
-              <h1 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-                Winghouse
-              </h1>
+              <SplitLines
+                as="h1"
+                text="Winghouse"
+                className="w-full text-display-xs font-medium text-title lg:text-display-md"
+              />
               <p className="flex items-center gap-2 text-sm text-subtitle">
                 <Image
                   src="/fura/icons/map-pin-sm.svg"
@@ -44,12 +49,11 @@ export function PropertyDetailSection() {
               </p>
             </div>
 
-            <p className="w-full text-base text-subtitle">
-              Habitech Property supports the Fura ecosystem through property
-              sales, market positioning, and buyer engagement, helping projects
-              reach the right customers across Australia and international
-              markets.
-            </p>
+            <SplitLines
+              text="Habitech Property supports the Fura ecosystem through property sales, market positioning, and buyer engagement, helping projects reach the right customers across Australia and international markets."
+              className="w-full text-base text-subtitle"
+              startDelay={120}
+            />
 
             <div className="flex w-full flex-col items-start overflow-hidden rounded-xl border border-border-secondary">
               {WINGHOUSE_SPECS.map((spec, index) => (
@@ -95,20 +99,17 @@ export function PropertyDetailSection() {
               />
               Download Project Brochure
             </button>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col items-start gap-8 lg:min-w-0 lg:flex-1 lg:gap-12">
+          <Reveal from="right" className="flex flex-col items-start gap-8 lg:min-w-0 lg:flex-1 lg:gap-12">
             <div className="flex w-full flex-col items-start gap-4">
-              <div className="relative h-[420px] w-full overflow-hidden rounded-2xl">
-                <Image
-                  src="/fura/properties/winghouse/main.png"
-                  alt="Winghouse"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 716px, 100vw"
-                  className="object-cover"
-                />
-              </div>
+              <MediaFrame
+                src="/fura/properties/winghouse/main.png"
+                alt="Winghouse"
+                sizes="(min-width: 1024px) 716px, 100vw"
+                priority
+                className="h-[420px]"
+              />
 
               {/* Preview strip is wider than the column, so it scrolls. */}
               <div className="w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -156,15 +157,16 @@ export function PropertyDetailSection() {
             </div>
 
             <div className="flex w-full flex-col items-start gap-4">
-              <h2 className="text-display-xs font-medium whitespace-nowrap text-title">
-                Project Overview
-              </h2>
-              <p className="w-full text-base text-[#667085]">
-                Fura Living delivers thoughtfully designed, energy-efficient
-                homes in a connected community setting. The project supports
-                sustainable living with quality finishes and well-planned
-                amenity.
-              </p>
+              <SplitLines
+                as="h2"
+                text="Project Overview"
+                className="text-display-xs font-medium whitespace-nowrap text-title"
+              />
+              <SplitLines
+                text="Fura Living delivers thoughtfully designed, energy-efficient homes in a connected community setting. The project supports sustainable living with quality finishes and well-planned amenity."
+                className="w-full text-base text-[#667085]"
+                startDelay={200}
+              />
             </div>
 
             <div className="flex w-full flex-col items-stretch gap-4 lg:flex-row lg:items-start">
@@ -191,7 +193,7 @@ export function PropertyDetailSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

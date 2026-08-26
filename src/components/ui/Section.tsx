@@ -6,6 +6,8 @@ type SectionProps = {
   /** Vertical rhythm between the section's direct children. */
   gap?: "none" | "md" | "lg" | "xl" | "xl-tight";
   className?: string;
+  /** Extra classes on the inner 1200px container, e.g. alignment. */
+  containerClassName?: string;
   id?: string;
   /** Fade the container up as it scrolls into view. */
   reveal?: boolean;
@@ -19,6 +21,7 @@ export function Section({
   children,
   gap = "lg",
   className,
+  containerClassName,
   id,
   reveal = false,
 }: SectionProps) {
@@ -35,6 +38,7 @@ export function Section({
           gap === "md" && "gap-6 lg:gap-12",
           gap === "xl" && "gap-16",
           gap === "xl-tight" && "gap-6 lg:gap-16",
+          containerClassName,
         )}
       >
         {children}

@@ -1,5 +1,8 @@
 import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 import Link from "next/link";
+import { FilterPill } from "@/components/ui/FilterPill";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import {
   KINGAROY_SECOND_META,
@@ -11,30 +14,25 @@ export function PropertiesListSection() {
   return (
     <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-24">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8 lg:gap-16">
-        <h1 className="w-full text-display-xs font-medium text-title lg:text-display-md">
-          Completed &amp; Ongoing Projects
-        </h1>
+        <SectionHeading as="h1" title="Completed & Ongoing Projects" />
 
         <div className="flex w-full flex-col items-start gap-8">
           {/* The filter row is wider than the phone viewport, so it scrolls. */}
           <div className="-mx-4 w-[calc(100%+2rem)] overflow-x-auto px-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:mx-0 lg:w-full lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
             <div className="flex w-max items-start gap-3">
               {PROPERTY_FILTERS.map((filter, index) => (
-                <span
+                <FilterPill
                   key={filter}
-                  className={`flex h-11 shrink-0 items-center justify-center rounded-lg px-6 py-3 text-sm font-medium lg:px-9 ${
-                    index === 0
-                      ? "bg-utility-gray-900 text-title-inverse"
-                      : "border border-border-secondary bg-surface text-title"
-                  }`}
+                  active={index === 0}
+                  className="shrink-0 px-6 lg:px-9"
                 >
                   {filter}
-                </span>
+                </FilterPill>
               ))}
             </div>
           </div>
 
-          <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
+          <Reveal className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
             {PROPERTIES.map((property, index) => {
               const cardClass =
                 "relative flex flex-col items-start gap-4 overflow-hidden rounded-2xl bg-surface-muted";
@@ -108,7 +106,7 @@ export function PropertiesListSection() {
                 </div>
               );
             })}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import type { ServiceStep } from "@/lib/companies-content";
 
@@ -20,7 +21,10 @@ export function ServiceStepRow({
         reversed ? "lg:flex-row-reverse" : "lg:flex-row",
       )}
     >
-      <div className="flex flex-col items-start gap-6 lg:min-w-0 lg:flex-1">
+      <Reveal
+        from={reversed ? "right" : "left"}
+        className="flex flex-col items-start gap-6 lg:min-w-0 lg:flex-1"
+      >
         <p className="text-display-sm font-medium text-title lg:text-display-lg">
           {number}
         </p>
@@ -30,9 +34,12 @@ export function ServiceStepRow({
         <p className="w-full text-base text-subtitle lg:text-xl">
           {description}
         </p>
-      </div>
+      </Reveal>
 
-      <div className="lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:justify-center">
+      <Reveal
+        from={reversed ? "left" : "right"}
+        className="lg:flex lg:min-w-0 lg:flex-1 lg:flex-col lg:justify-center"
+      >
         <div className="relative h-[423px] w-full overflow-hidden rounded-2xl">
           <Image
             src={image}
@@ -42,7 +49,7 @@ export function ServiceStepRow({
             className="object-cover"
           />
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 }
