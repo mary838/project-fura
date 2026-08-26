@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon Container">
+<rect width="64" height="64" rx="32" fill="#F5F5F5"/>
+<g id="Icon">
+<path d="M14.5 32C14.5 41.665 22.335 49.5 32 49.5C34.8995 49.5 37.25 47.1495 37.25 44.25V43.375C37.25 42.5623 37.25 42.1559 37.2949 41.8147C37.6051 39.4589 39.4589 37.6051 41.8147 37.2949C42.1559 37.25 42.5623 37.25 43.375 37.25H44.25C47.1495 37.25 49.5 34.8995 49.5 32C49.5 22.335 41.665 14.5 32 14.5C22.335 14.5 14.5 22.335 14.5 32Z" stroke="#44464A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.25 33.75C24.2165 33.75 25 32.9665 25 32C25 31.0335 24.2165 30.25 23.25 30.25C22.2835 30.25 21.5 31.0335 21.5 32C21.5 32.9665 22.2835 33.75 23.25 33.75Z" stroke="#44464A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39 26.75C39.9665 26.75 40.75 25.9665 40.75 25C40.75 24.0335 39.9665 23.25 39 23.25C38.0335 23.25 37.25 24.0335 37.25 25C37.25 25.9665 38.0335 26.75 39 26.75Z" stroke="#44464A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.5 25C29.4665 25 30.25 24.2165 30.25 23.25C30.25 22.2835 29.4665 21.5 28.5 21.5C27.5335 21.5 26.75 22.2835 26.75 23.25C26.75 24.2165 27.5335 25 28.5 25Z" stroke="#44464A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

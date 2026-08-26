@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon Container">
+<rect width="64" height="64" rx="32" fill="#F5F5F5"/>
+<path id="Icon" d="M32 14.5C36.3772 19.2921 38.8648 25.5111 39 32C38.8648 38.4889 36.3772 44.7079 32 49.5M32 14.5C27.6228 19.2921 25.1352 25.5111 25 32C25.1352 38.4889 27.6228 44.7079 32 49.5M32 14.5C22.335 14.5 14.5 22.335 14.5 32C14.5 41.665 22.335 49.5 32 49.5M32 14.5C41.665 14.5 49.5 22.335 49.5 32C49.5 41.665 41.665 49.5 32 49.5M15.375 26.75H48.625M15.375 37.25H48.625" stroke="#44464A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

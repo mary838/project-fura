@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Fura Habitech design tokens (mirrors the Figma variable collection)
+   --------------------------------------------------------------------------- */
+@theme inline {
+  /* Text */
+  --color-title: #181d27;
+  --color-title-inverse: #ffffff;
+  --color-subtitle: #414651;
+  --color-subtitle-inverse: #d5d7da;
+  --color-placeholder: #a4a7ae;
+
+  /* Brand */
+  --color-brand-primary: #44464a;
+  --color-brand-secondary: #eddfcb;
+  --color-brand-accent: #c2855e;
+  --color-role: #dc6803;
+  --color-tag: #b24d00;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f5f5f5;
+  --color-surface-tile: #f0f4f8;
+  --color-utility-gray-800: #252b37;
+  --color-utility-gray-900: #181d27;
+
+  /* Borders */
+  --color-border-primary: #d5d7da;
+  --color-border-secondary: #e9eaeb;
+
+  /* Radii */
+  --radius-md: 8px;
+  --radius-2xl: 16px;
+  --radius-3xl: 32px;
+
+  /* Type scale */
+  --text-xs: 12px;
+  --text-xs--line-height: 18px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 28px;
+  --text-xl: 20px;
+  --text-xl--line-height: 30px;
+  --text-display-xs: 24px;
+  --text-display-xs--line-height: 32px;
+  --text-display-sm: 30px;
+  --text-display-sm--line-height: 38px;
+  --text-display-md: 36px;
+  --text-display-md--line-height: 44px;
+  --text-display-md--letter-spacing: -0.72px;
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 60px;
+  --text-display-lg--letter-spacing: -0.96px;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keep anchor targets clear of the fixed nav bar. */
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-title);
+  font-family: var(--font-sans);
+}
+
+/* Continuous right-to-left ribbon. The track holds two identical groups, so
+   shifting it by exactly half its width loops without a visible seam. */
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   --------------------------------------------------------------------------- */
+
+/*
+ * Scroll reveal. `data-reveal` is only present once the component has mounted,
+ * so server-rendered markup stays visible and hydration has nothing to disagree
+ * about.
+ */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal="up"] {
+  transform: translateY(16px);
+}
+
+/* Paired layouts: copy flies in from the left, imagery from the right. */
+[data-reveal="left"] {
+  transform: translateX(-48px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(48px);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero copy lifts in once on first paint; delays are set per element. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 700ms ease-out both;
+}
+
+/* Line-by-line text: each line rises from behind its own clipped edge. */
+.split-line {
+  transform: translateY(110%);
+  opacity: 0;
+  transition:
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-split-lines].is-visible .split-line {
+  transform: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].is-visible,
+  .split-line,
+  [data-split-lines].is-visible .split-line {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-rise {
+    animation: none;
+  }
+}
