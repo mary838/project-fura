@@ -1,5 +1,6 @@
 import { MediaFrame } from "@/components/ui/MediaFrame";
 import { Reveal } from "@/components/ui/Reveal";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Section } from "@/components/ui/Section";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { VALUE_CARDS } from "@/lib/home-content";
@@ -23,10 +24,7 @@ export function WhyPartnerSection() {
           />
         </Reveal>
 
-        <Reveal
-          from="left"
-          className="flex flex-col gap-3 lg:order-1 lg:grid lg:grid-cols-2 lg:grid-rows-2"
-        >
+        <RevealGroup className="flex flex-col gap-3 lg:order-1 lg:grid lg:grid-cols-2 lg:grid-rows-2">
           {VALUE_CARDS.map((card) => (
             <article
               key={card.title}
@@ -40,7 +38,7 @@ export function WhyPartnerSection() {
               </div>
             </article>
           ))}
-        </Reveal>
+        </RevealGroup>
       </div>
     </Section>
   );

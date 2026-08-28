@@ -1,3 +1,4 @@
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Section } from "@/components/ui/Section";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { TeamMemberCard } from "@/components/ui/TeamMemberCard";
@@ -12,11 +13,11 @@ export function LeadershipSection() {
         className="w-full text-center text-display-xs font-medium text-title lg:text-display-md"
       />
 
-      <div className="flex w-full flex-col items-center gap-3 lg:gap-4">
+      <RevealGroup className="flex w-full flex-col items-center gap-3 lg:gap-4">
         {LEADERSHIP.map((member) => (
           <TeamMemberCard key={member.name} {...member} />
         ))}
-      </div>
+      </RevealGroup>
     </Section>
   );
 }

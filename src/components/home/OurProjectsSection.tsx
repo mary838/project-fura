@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { Section } from "@/components/ui/Section";
@@ -27,11 +28,11 @@ export function OurProjectsSection() {
         </Reveal>
       </div>
 
-      <Reveal className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
+      <RevealGroup className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.title} {...project} />
         ))}
-      </Reveal>
+      </RevealGroup>
 
       <div className="flex w-full items-start justify-center">
         <Button href="/properties" variant="outline">

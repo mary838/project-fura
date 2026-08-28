@@ -259,13 +259,77 @@ export const BUILDING_SYSTEMS: BuildingSystem[] = [
   },
 ];
 
-export const SUSTAINABILITY_CERTS: string[] = [
-  "/fura/companies/development/certs/cert-1.png",
-  "/fura/companies/development/certs/cert-2.png",
-  "/fura/companies/development/certs/cert-3.png",
-  "/fura/companies/development/certs/cert-4.png",
-  "/fura/companies/development/certs/cert-5.png",
-  "/fura/companies/development/certs/cert-6.png",
+export type SustainabilityCert = {
+  image: string;
+  /** Certifying body, used as the stamp's alternative text. */
+  name: string;
+  /**
+   * Artwork width as a multiple of the 120px stamp. Each source file carries
+   * roughly half its width in whitespace, so the design scales it up until the
+   * mark fills the circle and lets the circle crop the rest.
+   */
+  zoom: number;
+  /**
+   * Nudges the artwork within the stamp, in px, where the design re-centres
+   * the crop — a few marks sit off-centre in their source file, and centring
+   * them instead pulls neighbouring artwork into the circle.
+   */
+  offsetX?: number;
+  offsetY?: number;
+  /**
+   * Clips the artwork to a window of this size, centred in the stamp. The
+   * wordmark logos are masked to a band in the design, which keeps stray marks
+   * from the source file — a neighbouring logo, a registered symbol — out of
+   * the circle.
+   */
+  frame?: { width: number; height: number };
+  /** RESET sits on an off-white ground rather than pure white. */
+  ground?: string;
+};
+
+export const SUSTAINABILITY_CERTS: SustainabilityCert[] = [
+  {
+    image: "/fura/companies/development/certs/cert-1.png",
+    name: "WELL Silver 2023",
+    zoom: 1.97,
+    offsetX: 6.5,
+    offsetY: 3.3,
+  },
+  {
+    image: "/fura/companies/development/certs/cert-2.png",
+    name: "International Living Future Institute",
+    zoom: 1.79,
+    frame: { width: 94, height: 41 },
+  },
+  {
+    image: "/fura/companies/development/certs/cert-3.png",
+    name: "USGBC LEED Platinum",
+    zoom: 1.95,
+  },
+  {
+    image: "/fura/companies/development/certs/cert-4.png",
+    name: "RESET Standard",
+    zoom: 1.95,
+    offsetX: -9,
+    offsetY: 1.4,
+    ground: "#fbfbfb",
+  },
+  {
+    image: "/fura/companies/development/certs/cert-5.png",
+    name: "HQE",
+    zoom: 1.78,
+    offsetX: 1.9,
+    offsetY: -5.6,
+    frame: { width: 94, height: 52 },
+  },
+  {
+    image: "/fura/companies/development/certs/cert-6.png",
+    name: "MINERGIE",
+    zoom: 1.68,
+    offsetX: 6.7,
+    offsetY: -5.3,
+    frame: { width: 104, height: 24 },
+  },
 ];
 
 export const DEVELOPMENT_STATS: StatTile[] = [

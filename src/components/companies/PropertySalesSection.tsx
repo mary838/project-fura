@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatTileRow } from "@/components/ui/StatTileRow";
 import { PROPERTY_SHOWCASE, PROPERTY_STATS } from "@/lib/companies-content";
@@ -18,7 +19,7 @@ export function PropertySalesSection() {
           <Button href="/invest">Partner With Us</Button>
         </SectionHeading>
 
-        <div className="flex w-full max-w-[1200px] flex-col items-center gap-4 lg:flex-row">
+        <RevealGroup className="flex w-full max-w-[1200px] flex-col items-center gap-4 lg:flex-row">
           {PROPERTY_SHOWCASE.map((item) => (
             <div
               key={item.image}
@@ -36,7 +37,7 @@ export function PropertySalesSection() {
               </div>
             </div>
           ))}
-        </div>
+        </RevealGroup>
 
         <StatTileRow
           stats={PROPERTY_STATS}

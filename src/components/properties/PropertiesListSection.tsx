@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Reveal } from "@/components/ui/Reveal";
 import Link from "next/link";
 import { FilterPill } from "@/components/ui/FilterPill";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import {
@@ -32,7 +32,7 @@ export function PropertiesListSection() {
             </div>
           </div>
 
-          <Reveal className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
+          <RevealGroup className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
             {PROPERTIES.map((property, index) => {
               const cardClass =
                 "relative flex flex-col items-start gap-4 overflow-hidden rounded-2xl bg-surface-muted";
@@ -106,7 +106,7 @@ export function PropertiesListSection() {
                 </div>
               );
             })}
-          </Reveal>
+          </RevealGroup>
         </div>
       </div>
     </section>

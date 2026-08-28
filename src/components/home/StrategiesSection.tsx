@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StrategyCard } from "@/components/ui/StrategyCard";
@@ -17,11 +18,11 @@ export function StrategiesSection() {
         <Button href="/projects">Check Our Investment Projects</Button>
       </div>
 
-      <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
+      <RevealGroup className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
         {STRATEGIES.map((strategy) => (
           <StrategyCard key={strategy.badge} {...strategy} />
         ))}
-      </div>
+      </RevealGroup>
     </Section>
   );
 }
