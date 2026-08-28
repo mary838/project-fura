@@ -1,4 +1,5 @@
 import { MediaFrame } from "@/components/ui/MediaFrame";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { MANUFACTURING_SITES } from "@/lib/companies-content";
@@ -13,7 +14,7 @@ export function ManufacturingSitesSection() {
         descriptionSize="xl-flat"
       />
 
-      <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
+      <RevealGroup className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
         {MANUFACTURING_SITES.map((site, index) => (
           <MediaFrame
             key={site}
@@ -24,7 +25,7 @@ export function ManufacturingSitesSection() {
             overlay="bg-black/10"
           />
         ))}
-      </div>
+      </RevealGroup>
     </Section>
   );
 }

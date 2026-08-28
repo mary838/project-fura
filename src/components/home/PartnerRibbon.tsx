@@ -1,6 +1,6 @@
 import { Marquee } from "@/components/ui/Marquee";
-import { Reveal } from "@/components/ui/Reveal";
 import { PartnerCell } from "@/components/ui/PartnerCell";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { PARTNERS } from "@/lib/home-content";
 
 /**
@@ -15,13 +15,11 @@ export function PartnerRibbon() {
         Trusted by leading partners
       </p>
 
-      <div className="grid w-full grid-cols-2 gap-4 px-4 lg:hidden">
-        {PARTNERS.map((partner, index) => (
-          <Reveal key={partner.name} delay={index * 60} className="flex">
-            <PartnerCell {...partner} className="w-full" />
-          </Reveal>
+      <RevealGroup step={60} className="grid w-full grid-cols-2 gap-4 px-4 lg:hidden">
+        {PARTNERS.map((partner) => (
+          <PartnerCell key={partner.name} {...partner} className="w-full" />
         ))}
-      </div>
+      </RevealGroup>
 
       <div className="hidden w-full lg:block">
         <Marquee>

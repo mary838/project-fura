@@ -18,7 +18,7 @@ const DURATION = 800;
 
 /**
  * Reveals text one rendered line at a time, each rising from behind a clipped
- * edge.
+ * edge, replaying every time the block scrolls back into view.
  *
  * The split exists only while the animation runs. Before it the element holds
  * the plain string (so server and client markup match, and the text is readable
@@ -29,6 +29,9 @@ const DURATION = 800;
  * watching for the top edge to change. Character granularity matters: the
  * browser can break inside a word at a hyphen ("built-to-sell"), which
  * word-level scanning misses — and a mis-measured line overflows its clip.
+ *
+ * A run is armed again only once the block has left the viewport completely, so
+ * the text is never re-clipped while someone is reading it.
  */
 export function SplitLines({
   text,
@@ -46,6 +49,7 @@ export function SplitLines({
     if (!el) return;
 
     let cancelled = false;
+    let running = false;
     let revertTimer: ReturnType<typeof setTimeout>;
 
     const measure = () => {
@@ -82,6 +86,7 @@ export function SplitLines({
       const found = measure();
       if (!found) return;
 
+      setShown(false);
       setLines(found);
       // Let the hidden state paint first, otherwise there is no starting
       // style for the transition and the lines would simply appear.
@@ -98,11 +103,23 @@ export function SplitLines({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.disconnect();
-        // Wrapping depends on the final face, so wait for fonts before measuring.
-        if (document.fonts?.status === "loaded") run();
-        else document.fonts?.ready.then(run).catch(run);
+        if (entry.isIntersecting) {
+          if (running) return;
+          running = true;
+          // Wrapping depends on the final face, so wait for fonts before measuring.
+          if (document.fonts?.status === "loaded") run();
+          else document.fonts?.ready.then(run).catch(run);
+          return;
+        }
+
+        const rect = entry.boundingClientRect;
+        if (rect.bottom > 0 && rect.top < window.innerHeight) return;
+
+        // Fully off screen: drop back to plain text and arm the next run.
+        clearTimeout(revertTimer);
+        running = false;
+        setShown(false);
+        setLines(null);
       },
       { threshold: 0.05, rootMargin: "0px 0px -8% 0px" },
     );

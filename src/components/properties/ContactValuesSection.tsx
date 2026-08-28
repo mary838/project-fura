@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CONTACT_VALUES } from "@/lib/properties-content";
 
@@ -18,7 +19,7 @@ export function ContactValuesSection() {
           <Button href="/invest">Invest with us</Button>
         </SectionHeading>
 
-        <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-x-6">
+        <RevealGroup className="grid w-full grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-x-6">
           {CONTACT_VALUES.map((value) => (
             <div
               key={value.title}
@@ -41,7 +42,7 @@ export function ContactValuesSection() {
               </div>
             </div>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

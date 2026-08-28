@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BUILDING_SYSTEMS } from "@/lib/companies-content";
 
@@ -13,7 +14,7 @@ export function BuildingSystemsSection() {
           descriptionSize="base"
         />
 
-        <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
+        <RevealGroup className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
           {BUILDING_SYSTEMS.map((system) => (
             <article
               key={system.title}
@@ -38,7 +39,7 @@ export function BuildingSystemsSection() {
               </div>
             </article>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

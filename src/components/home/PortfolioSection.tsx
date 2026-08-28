@@ -1,5 +1,6 @@
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PortfolioCard } from "@/components/ui/PortfolioCard";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Section } from "@/components/ui/Section";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { PORTFOLIO_COMPANIES } from "@/lib/home-content";
@@ -21,11 +22,11 @@ export function PortfolioSection() {
         />
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
+      <RevealGroup className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
         {PORTFOLIO_COMPANIES.map((company) => (
           <PortfolioCard key={company.title} {...company} />
         ))}
-      </div>
+      </RevealGroup>
     </Section>
   );
 }

@@ -13,13 +13,19 @@ type RevealProps = {
 };
 
 /**
- * Fades and flies its content into place the first time it scrolls into view.
+ * Fades and flies its content into place every time it scrolls into view.
  *
  * Server-render and the first client render emit no `data-reveal`, so the
  * markup matches during hydration and the content is visible when scripting is
  * unavailable. The hidden start state is applied in an effect, and only to
  * elements that are still below the fold — anything already on screen is marked
  * shown straight away, so nothing ever flashes out and back in.
+ *
+ * The observer stays connected so the reveal repeats: the element is reset to
+ * its hidden state once it has left the viewport completely, which is why the
+ * reset is keyed off the real viewport rather than the shrunken root used for
+ * entry — resetting inside the visible area would fade the content out under
+ * the reader's eye.
  */
 export function Reveal({
   children,
@@ -34,18 +40,19 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      setState("shown");
-      return;
-    }
-
-    setState("hidden");
+    setState(
+      el.getBoundingClientRect().top < window.innerHeight ? "shown" : "hidden",
+    );
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setState("shown");
-          observer.disconnect();
+          return;
+        }
+        const rect = entry.boundingClientRect;
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) {
+          setState("hidden");
         }
       },
       { threshold: 0.05, rootMargin: "0px 0px -8% 0px" },

@@ -1,7 +1,11 @@
 import Image from "next/image";
+import { RevealGroup } from "@/components/ui/RevealGroup";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import Link from "next/link";
 import { SUSTAINABILITY_CERTS } from "@/lib/companies-content";
+
+/** Stamp diameter in the design; the artwork is sized as a multiple of it. */
+const STAMP = 120;
 
 export function EnvironmentalSection() {
   return (
@@ -43,22 +47,45 @@ export function EnvironmentalSection() {
           </Link>
         </div>
 
-        <div className="flex w-full flex-wrap items-start justify-center gap-4 lg:min-w-0 lg:flex-1">
-          {SUSTAINABILITY_CERTS.map((cert, index) => (
+        <RevealGroup step={70} className="flex w-full flex-wrap items-start justify-center gap-4 lg:min-w-0 lg:flex-1">
+          {SUSTAINABILITY_CERTS.map((cert) => (
             <div
-              key={cert}
-              className="relative flex size-[120px] shrink-0 items-center justify-center rounded-full border border-[#eaefea] bg-surface p-3"
+              key={cert.image}
+              className="relative flex size-[120px] shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#eaefea] bg-surface"
+              style={cert.ground ? { backgroundColor: cert.ground } : undefined}
             >
-              <Image
-                src={cert}
-                alt={`Certification ${index + 1}`}
-                width={96}
-                height={96}
-                className="size-24 object-contain"
-              />
+              {/*
+                The mark is scaled past the stamp and cropped by it, which is
+                how the design fills each circle — `object-contain` inside the
+                padding box would render every logo at half this size.
+              */}
+              <div
+                className="relative flex items-center justify-center overflow-hidden"
+                style={
+                  cert.frame
+                    ? { width: cert.frame.width, height: cert.frame.height }
+                    : undefined
+                }
+              >
+                <Image
+                  src={cert.image}
+                  alt={cert.name}
+                  width={Math.round(STAMP * cert.zoom)}
+                  height={Math.round(STAMP * cert.zoom)}
+                  className="max-w-none shrink-0 object-contain"
+                  style={{
+                    width: STAMP * cert.zoom,
+                    height: STAMP * cert.zoom,
+                    translate:
+                      cert.offsetX || cert.offsetY
+                        ? `${cert.offsetX ?? 0}px ${cert.offsetY ?? 0}px`
+                        : undefined,
+                  }}
+                />
+              </div>
             </div>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );
