@@ -7,10 +7,10 @@ import { STRATEGIES } from "@/lib/home-content";
 
 export function StrategiesSection() {
   return (
-    <Section gap="xl" reveal className="bg-surface">
-      <div className="flex w-full flex-col items-center gap-6 lg:gap-8">
+    <Section gap="xl" reveal className="bg-surface-muted">
+      <div className="flex w-full flex-col items-start gap-4 lg:items-center lg:gap-8">
         <SectionHeading
-          align="center"
+          align="center-lg"
           title="Three strategies capture value at different stages"
           description="Investors select a class; each class is governed by its applicable offer documents."
           descriptionSize="base"

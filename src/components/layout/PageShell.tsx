@@ -24,7 +24,7 @@ export function PageShell({
       <NavigationBar variant={nav} />
       <main
         className={cn(
-          "flex w-full flex-1 flex-col",
+          "flex w-full flex-1 flex-col overflow-x-clip",
           nav === "solid" && "pt-20",
           className,
         )}

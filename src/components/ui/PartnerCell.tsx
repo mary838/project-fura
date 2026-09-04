@@ -12,7 +12,7 @@ export function PartnerCell({
   return (
     <div
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-2xl bg-surface-muted p-8",
+        "flex shrink-0 items-center justify-center rounded-2xl bg-surface-muted p-8 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg",
         className,
       )}
     >
@@ -26,7 +26,7 @@ export function PartnerCell({
             className={`object-contain ${logoClassName ?? ""}`}
           />
         </div>
-        <p className="w-full text-center text-xs font-medium text-brand-accent">
+        <p className="w-full text-center text-xs font-medium text-subtitle">
           {name}
         </p>
       </div>

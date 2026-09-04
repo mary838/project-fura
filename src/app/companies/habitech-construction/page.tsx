@@ -3,6 +3,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { CompanyHero } from "@/components/companies/CompanyHero";
 import { ConstructionIntroSection } from "@/components/companies/ConstructionIntroSection";
 import { ConstructionProjectsSection } from "@/components/companies/ConstructionProjectsSection";
+import { ConstructionStatsSection } from "@/components/companies/ConstructionStatsSection";
 import { RegistrationsSection } from "@/components/companies/RegistrationsSection";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function HabitechConstructionPage() {
       <ConstructionIntroSection />
       <ConstructionProjectsSection />
       <RegistrationsSection />
+      <ConstructionStatsSection />
     </PageShell>
   );
 }

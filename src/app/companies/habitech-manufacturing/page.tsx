@@ -4,6 +4,7 @@ import { CompanyHero } from "@/components/companies/CompanyHero";
 import { CompanyIntroSection } from "@/components/companies/CompanyIntroSection";
 import { DeliveryEfficiencySection } from "@/components/companies/DeliveryEfficiencySection";
 import { ManufacturingSitesSection } from "@/components/companies/ManufacturingSitesSection";
+import { ManufacturingStatsSection } from "@/components/companies/ManufacturingStatsSection";
 import { OneStopServiceSection } from "@/components/companies/OneStopServiceSection";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function HabitechManufacturingPage() {
       <OneStopServiceSection />
       <ManufacturingSitesSection />
       <DeliveryEfficiencySection />
+      <ManufacturingStatsSection />
     </PageShell>
   );
 }

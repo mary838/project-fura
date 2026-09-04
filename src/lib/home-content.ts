@@ -11,7 +11,7 @@ export type Strategy = {
 export const STRATEGIES: Strategy[] = [
   {
     badge: "Class A",
-    icon: "/fura/icons/map-pin.svg",
+    icon: "/fura/icons/feat-marker.svg",
     title: "Landbank and DA uplift",
     description:
       "Acquire strategic land and seek value uplift through planning, rezoning or approvals.",
@@ -19,7 +19,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     badge: "Class B",
-    icon: "/fura/icons/house.svg",
+    icon: "/fura/icons/home-02.svg",
     title: "Build-to-Sell",
     description:
       "Deliver residential projects and realise development margin through sale.",
@@ -27,7 +27,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     badge: "Class C",
-    icon: "/fura/icons/building.svg",
+    icon: "/fura/icons/building-03.svg",
     title: "Build-to-Rent",
     description:
       "Hold completed housing for rental income and longer-term asset growth.",
@@ -85,12 +85,12 @@ export const PORTFOLIO_COMPANIES: PortfolioCompany[] = [
     href: "/companies/habitech-construction",
   },
   {
-    image: "/fura/images/portfolio-development.png",
+    image: "/fura/images/portfolio-Development.png",
     title: "Habitech Development",
     href: "/companies/habitech-development",
   },
   {
-    image: "/fura/images/portfolio-property.png",
+    image: "/fura/images/portfolio-Property.png",
     title: "Habitech Property",
     href: "/companies/habitech-property",
   },
@@ -117,7 +117,7 @@ export const GOVERNANCE_ITEMS: GovernanceItem[] = [
     num: "01",
     title: "AFS licence oversight",
     description:
-      "CODA Asset Management holds AFSL 389315 and supervises the financial-services activities within its authorisations.",
+      "Fura habitech benefit from CODA.  Asset Management holds AFSL 389315 and supervises the financial-services activities within its authorisations.",
   },
   {
     num: "02",
@@ -129,13 +129,13 @@ export const GOVERNANCE_ITEMS: GovernanceItem[] = [
     num: "03",
     title: "Security trustee",
     description:
-      "CODA holds relevant security on behalf of bondholders under the Security Trust Deed.",
+      "Fura Habitech holds relevant security on behalf of bondholders under the Security Trust Deed.",
   },
   {
     num: "04",
     title: "Asset backing",
     description:
-      "The Bond structure is backed by relevant underlying investments, subject to the governing deeds and priority arrangements.",
+      "Investment structure are backed by relevant underlying investments, subject to the governing deeds and priority arrangements.",
   },
   {
     num: "05",
@@ -146,26 +146,27 @@ export const GOVERNANCE_ITEMS: GovernanceItem[] = [
 ];
 
 export type ValueCard = {
+  icon: string;
   title: string;
   description: string;
-  /** Spans both columns in the desktop 2x2 grid. */
-  wide?: boolean;
 };
 
 export const VALUE_CARDS: ValueCard[] = [
   {
+    icon: "/fura/icons/award-03.svg",
     title: "Proven Track Record",
     description: "Commitment to innovation, Green projects and",
   },
   {
-    title: "Infrastructures.",
+    icon: "/fura/icons/building-03.svg",
+    title: "Infrastructures",
     description: "Defensive & Profitable Investment",
   },
   {
+    icon: "/fura/icons/globe-02.svg",
     title: "Opportunities",
     description:
       "Global & Connected real Asset Platform across Singapore, Cambodia, United States, Japan, China and Australia",
-    wide: true,
   },
 ];
 
@@ -183,13 +184,17 @@ export const PARTNERS: Partner[] = [
     name: "Fura Capital Pte Ltd",
     logoClassName: "scale-[1.2]",
   },
-  { logo: "/fura/partners/jane-box.png", name: "Jane-Box" },
+  { logo: "/fura/partners/jane-box.png", name: "Jane-Box Co., Ltd" },
   {
     logo: "/fura/partners/open-build.png",
     name: "Open Build Pty Ltd",
     logoClassName: "scale-[1.35]",
   },
-  { logo: "/fura/partners/aad-sourcing.png", name: "AAD Sourcing Solutions" },
+  { logo: "/fura/partners/ty-consultant.png", name: "TY Consultant Pty Ltd" },
+  {
+    logo: "/fura/partners/aad-sourcing.png",
+    name: "AAD Sourcing Solutions Pty Ltd",
+  },
   {
     logo: "/fura/partners/vertium.png",
     name: "Vertium Asset Management Pty Ltd.",

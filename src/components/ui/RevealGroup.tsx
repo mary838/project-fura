@@ -10,6 +10,8 @@ type RevealGroupProps = {
   step?: number;
   /** Offset before the first child moves, for cascading groups. */
   delay?: number;
+  /** Element to render, where the staggered children need a list parent. */
+  as?: "div" | "ul" | "ol";
 };
 
 /**
@@ -31,8 +33,9 @@ export function RevealGroup({
   className,
   step = 90,
   delay = 0,
+  as: Tag = "div",
 }: RevealGroupProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [state, setState] = useState<"idle" | "hidden" | "shown">("idle");
 
   useEffect(() => {
@@ -62,8 +65,8 @@ export function RevealGroup({
   }, []);
 
   return (
-    <div
-      ref={ref}
+    <Tag
+      ref={ref as never}
       data-reveal-group={state === "idle" ? undefined : ""}
       className={cn(className, state === "shown" && "is-visible")}
       style={
@@ -74,6 +77,6 @@ export function RevealGroup({
       }
     >
       {children}
-    </div>
+    </Tag>
   );
 }

@@ -1,8 +1,11 @@
-import { MediaFrame } from "@/components/ui/MediaFrame";
-import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 
+/**
+ * Opening band: eyebrow and title on the left, the supporting line on the
+ * right. The frame carries no imagery — the page drops straight into the
+ * leadership list on its grey background.
+ */
 export function TeamHeroSection() {
   return (
     <Section reveal className="bg-surface">
@@ -16,16 +19,6 @@ export function TeamHeroSection() {
         description="A globally connected network combining local expertise, strategic partnerships, and investment capabilities across key international markets."
         descriptionSize="sm-xl"
       />
-
-      <Reveal from="right" className="w-full">
-        <MediaFrame
-          src="/fura/images/team-hero.png"
-          alt="Fura Habitech modular home"
-          sizes="(min-width: 1024px) 1200px, 100vw"
-          priority
-          className="h-[444px] bg-surface-muted lg:aspect-[1200/444] lg:h-auto"
-        />
-      </Reveal>
     </Section>
   );
 }

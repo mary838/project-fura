@@ -1,135 +1,118 @@
 import Image from "next/image";
-import { FilterPill } from "@/components/ui/FilterPill";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { CODA_ROLES, FH_FLOW_STEPS } from "@/lib/fura-habitech-content";
+import { SplitLines } from "@/components/ui/SplitLines";
 
-const TAB_CLASSES = ["Class A", "Class B", "Class C"];
-const ACTIVE_TAB = "Class B";
+type ReviewItem = {
+  num: string;
+  title: string;
+  description: string;
+};
+
+const REVIEW_ITEMS: ReviewItem[] = [
+  {
+    num: "01",
+    title: "Full Information Memorandum",
+    description: "Offer terms, risks, fees and eligibility",
+  },
+  {
+    num: "02",
+    title: "Project feasibility and capital stack",
+    description: "Costs, debt, investor capital and sensitivity",
+  },
+  {
+    num: "03",
+    title: "Security and governance documents",
+    description:
+      "Bond deed, security trust and management arrangements",
+  },
+  {
+    num: "04",
+    title: "Wholesale investor application",
+    description: "Identification, eligibility and application process",
+  },
+];
+
+/** Each row lags the one above it, so the list cascades down. */
+const ROW_STEP = 90;
 
 export function CapitalFlowSection() {
   return (
-    <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-20">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8">
+    <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-24">
+      <Reveal className="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
         <SectionHeading
-          gap="2xs"
-          className="justify-center"
-          title="How Capital May Flow to Mt Gravatt"
-        >
-          <p className="w-full text-base text-subtitle">
-            Investors select Class A, B, or C; they do not nominate an
-            individual project.
-          </p>
-          <p className="w-full text-base text-subtitle">
-            Mt Gravatt is shown as one Class B deployment example.
-          </p>
-        </SectionHeading>
+          gap="xs"
+          title="Move from overview to investment review"
+          description="Request the complete due-diligence pack and assess the opportunity with professional advisers."
+        />
 
-        <div className="flex w-full flex-col items-start gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
-          <div className="flex w-full items-start gap-3 lg:w-auto">
-            {TAB_CLASSES.map((tab) => (
-              <FilterPill
-                key={tab}
-                active={tab === ACTIVE_TAB}
-                border="primary"
-                className="w-[132px] px-9"
+        <dl className="flex w-full flex-col border-b border-border-secondary">
+          {REVIEW_ITEMS.map((item, index) => {
+            const base = index * ROW_STEP;
+            return (
+              <div
+                key={item.num}
+                className="flex w-full flex-col gap-2 border-t border-border-secondary py-4 lg:flex-row lg:items-center lg:gap-4 lg:py-6"
               >
-                {tab}
-              </FilterPill>
-            ))}
-          </div>
-          <p className="flex items-center px-4 py-2 text-sm text-subtitle">
-            Illustrative path below:&nbsp;
-            <span className="font-medium text-title">
-              Class B / Mt Gravatt
-            </span>
-          </p>
-        </div>
-
-        {/* Horizontal chain on desktop; a vertical one on mobile. */}
-        <div className="flex w-full flex-col items-stretch justify-center gap-2 lg:flex-row lg:items-center lg:py-6">
-          {FH_FLOW_STEPS.map((step, index) => (
-            <div
-              key={step.title}
-              className="contents lg:flex lg:min-w-0 lg:flex-1 lg:items-center"
-            >
-              <div className="flex w-full flex-col items-center gap-4 rounded-[10px] border border-border-secondary bg-surface px-4 py-6 text-center lg:h-[142px] lg:min-w-0 lg:flex-1">
-                <p className="w-full text-base font-medium text-title">
-                  {step.title}
-                </p>
-                <p className="w-full text-[13px] leading-[18px] text-subtitle">
-                  {step.description}
-                </p>
-              </div>
-              {index < FH_FLOW_STEPS.length - 1 ? (
-                <span className="flex w-full shrink-0 items-center justify-center lg:h-[170px] lg:w-6">
-                  <Image
-                    src="/fura/icons/flow-arrow.svg"
-                    alt=""
-                    width={16}
-                    height={16}
-                    className="size-4 rotate-90 lg:rotate-0"
+                <SplitLines
+                  as="div"
+                  text={item.num}
+                  className="w-8 shrink-0 text-base font-medium text-title"
+                  startDelay={base}
+                />
+                <dt className="lg:w-[405px] lg:shrink-0">
+                  <SplitLines
+                    as="div"
+                    text={item.title}
+                    className="text-base font-medium text-title"
+                    startDelay={base + 60}
                   />
-                </span>
-              ) : null}
-            </div>
-          ))}
-        </div>
+                </dt>
+                <dd className="lg:min-w-0 lg:flex-1">
+                  <SplitLines
+                    as="div"
+                    text={item.description}
+                    className="text-sm text-subtitle"
+                    startDelay={base + 120}
+                  />
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
 
-        {/* CODA leads on mobile; FURA sits first on desktop. */}
-        <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
-          <div className="order-2 flex flex-col gap-3 overflow-hidden rounded-2xl bg-utility-gray-900 p-10 lg:order-1 lg:w-[420px] lg:shrink-0 lg:gap-5 lg:self-stretch">
-            <p className="text-xs text-[#b38e5b]">OFFER ARRANGEMENT</p>
-            <p className="text-display-xs font-medium text-white lg:text-display-sm">
-              FURA Australia
+        <div className="flex w-full flex-col flex-wrap items-start gap-6 rounded-lg bg-utility-gray-900 px-6 py-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col items-start justify-center gap-2">
+            <p className="text-base font-medium whitespace-nowrap text-brand-secondary">
+              NEXT STEP
             </p>
-            <p className="text-base text-white/88 lg:w-[280px]">
-              Authorised intermediary arranging the offer and applications.
+            <p className="text-xl text-title-inverse lg:w-[752px]">
+              Arrange a confidential briefing with FURA Habitech
             </p>
           </div>
-
-          <div className="order-1 flex flex-col gap-7 rounded-2xl border border-border-secondary bg-surface p-8 lg:order-2 lg:min-w-0 lg:flex-1 lg:self-stretch">
-            <div className="flex w-full items-center gap-3 border-b border-border-primary pb-4 whitespace-nowrap">
-              <p className="text-base font-medium text-title">
-                CODA ASSET MANAGEMENT
-              </p>
-              <p className="text-[13px] text-[#717680]">|</p>
-              <p className="text-sm text-[#717680]">AFSL 389315</p>
-            </div>
-
-            <div className="flex w-full flex-col items-center gap-4 lg:flex-row">
-              {CODA_ROLES.map((role, index) => (
-                <div
-                  key={role.title}
-                  className="contents lg:flex lg:min-w-0 lg:flex-1 lg:items-center"
-                >
-                  <div className="flex w-full flex-col items-center justify-center gap-4 lg:min-w-0 lg:flex-1">
-                    <span className="flex size-10 items-center justify-center">
-                      <Image
-                        src={role.icon}
-                        alt=""
-                        width={28}
-                        height={28}
-                        className="size-7"
-                      />
-                    </span>
-                    <span className="flex w-full flex-col items-center gap-1.5 text-center">
-                      <span className="w-full text-sm font-medium text-title">
-                        {role.title}
-                      </span>
-                      <span className="w-full text-xs text-subtitle">
-                        {role.caption}
-                      </span>
-                    </span>
-                  </div>
-                  {index < CODA_ROLES.length - 1 ? (
-                    <span className="hidden h-16 w-px shrink-0 bg-border-primary lg:block" />
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </div>
+          <a
+            href="#"
+            className="group flex shrink-0 items-center gap-[15px]"
+          >
+            <span className="text-xl text-brand-secondary">
+              Review before applying
+            </span>
+            <Image
+              src="/fura/icons/arrow-narrow-right.svg"
+              alt=""
+              width={24}
+              height={24}
+              className="size-6 shrink-0 transition-transform duration-150 ease-out group-hover:translate-x-1"
+            />
+          </a>
         </div>
-      </div>
+
+        <p className="w-full text-xl text-subtitle">
+          Wholesale investors only. General information, not personal
+          financial advice. Returns are targets and are not guaranteed.
+          Distribution is subject to applicable laws.
+        </p>
+      </Reveal>
     </section>
   );
 }

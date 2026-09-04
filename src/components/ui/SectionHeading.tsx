@@ -87,7 +87,13 @@ export function SectionHeading({
         className,
       )}
     >
-      <Group className={eyebrowGap && GAPS[eyebrowGap]}>
+      <Group
+        className={cn(
+          eyebrowGap && GAPS[eyebrowGap],
+          align === "center" ? "items-center" : "items-start",
+          align === "center-lg" && "lg:items-center",
+        )}
+      >
         {eyebrow ? (
           <Eyebrow className={cn(inverse && "text-brand-secondary")}>
             {eyebrow}
@@ -131,7 +137,7 @@ function EyebrowGroup({
   className?: string;
 }) {
   return (
-    <div className={cn("flex w-full flex-col items-start", className)}>
+    <div className={cn("flex w-full flex-col", className)}>
       {children}
     </div>
   );

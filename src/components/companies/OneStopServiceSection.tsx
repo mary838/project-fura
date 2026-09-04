@@ -5,14 +5,15 @@ import { MANUFACTURING_STEPS } from "@/lib/companies-content";
 
 export function OneStopServiceSection() {
   return (
-    <Section gap="xl" className="bg-surface">
+    <Section gap="xl-tight" className="bg-surface-muted">
       <SectionHeading
         align="center"
         title="One Stop Service"
         description="Complete solutions, delivered with precision"
       />
 
-      <div className="flex w-full flex-col gap-16">
+      {/* Both frames stack the six rows 24px apart. */}
+      <div className="flex w-full flex-col gap-6">
         {MANUFACTURING_STEPS.map((step, index) => (
           <ServiceStepRow
             key={step.number}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MediaFrame } from "@/components/ui/MediaFrame";
+import { PropertyPreviewStrip } from "@/components/properties/PropertyPreviewStrip";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitLines } from "@/components/ui/SplitLines";
 import Link from "next/link";
@@ -111,49 +112,7 @@ export function PropertyDetailSection() {
                 className="h-[420px]"
               />
 
-              {/* Preview strip is wider than the column, so it scrolls. */}
-              <div className="w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                <div className="flex w-max items-start gap-4">
-                  {WINGHOUSE_PREVIEWS.map((preview, index) => (
-                    <div
-                      key={`${preview}-${index}`}
-                      className="relative h-[120px] w-[228px] shrink-0 overflow-hidden rounded-lg"
-                    >
-                      <Image
-                        src={preview}
-                        alt=""
-                        fill
-                        sizes="228px"
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Carousel controls are desktop-only in the design. */}
-              <div className="hidden w-full flex-col items-center justify-center lg:flex">
-                <div className="flex items-start gap-3">
-                  <span className="flex items-center justify-center overflow-hidden rounded-full bg-surface-muted p-2">
-                    <Image
-                      src="/fura/icons/chevron-left.svg"
-                      alt="Previous"
-                      width={20}
-                      height={20}
-                      className="size-5"
-                    />
-                  </span>
-                  <span className="flex items-center justify-center overflow-hidden rounded-full bg-brand-primary p-2">
-                    <Image
-                      src="/fura/icons/chevron-right.svg"
-                      alt="Next"
-                      width={20}
-                      height={20}
-                      className="size-5"
-                    />
-                  </span>
-                </div>
-              </div>
+              <PropertyPreviewStrip previews={WINGHOUSE_PREVIEWS} />
             </div>
 
             <div className="flex w-full flex-col items-start gap-4">

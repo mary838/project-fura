@@ -2,28 +2,36 @@
 
 export type StrategyCardData = {
   badge: string;
+  icon: string;
   title: string;
   description: string;
+  driver: string;
 };
 
 export const FH_STRATEGIES: StrategyCardData[] = [
   {
     badge: "Class A",
-    title: "Landbank & DA uplift",
+    icon: "/fura/icons/feat-marker.svg",
+    title: "Landbank and DA uplift",
     description:
       "Acquire strategically positioned land and create value through Development Approval (DA) uplift.",
+    driver: "Land and approval uplift",
   },
   {
     badge: "Class B",
+    icon: "/fura/icons/home-02.svg",
     title: "Build-to-Sell",
     description:
       "Develop Build-to-Sell residential and mixed-use projects addressing housing needs through modular and efficient solutions.",
+    driver: "Development and sale margin",
   },
   {
     badge: "Class C",
+    icon: "/fura/icons/building-03.svg",
     title: "Build-to-Rent",
     description:
       "Deliver Build-to-Rent affordable housing solutions for key workers, students and healthcare staff, alongside compact secondary dwellings.",
+    driver: "Recurring rental income",
   },
 ];
 

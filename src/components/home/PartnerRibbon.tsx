@@ -1,12 +1,11 @@
 import { Marquee } from "@/components/ui/Marquee";
 import { PartnerCell } from "@/components/ui/PartnerCell";
-import { RevealGroup } from "@/components/ui/RevealGroup";
 import { PARTNERS } from "@/lib/home-content";
 
 /**
- * Mobile lays the partners out as a static 2x3 grid; from `lg` the row scrolls
- * right-to-left. Only one layout is in the DOM at a time (`display: none` keeps
- * the hidden one out of the accessibility tree), so names aren't announced twice.
+ * The partners run as one right-to-left ribbon at every width — the mobile
+ * frame clips the same single row rather than stacking a grid. Cells narrow
+ * from 226.667px to 179px below `lg`.
  */
 export function PartnerRibbon() {
   return (
@@ -15,23 +14,15 @@ export function PartnerRibbon() {
         Trusted by leading partners
       </p>
 
-      <RevealGroup step={60} className="grid w-full grid-cols-2 gap-4 px-4 lg:hidden">
+      <Marquee>
         {PARTNERS.map((partner) => (
-          <PartnerCell key={partner.name} {...partner} className="w-full" />
+          <PartnerCell
+            key={partner.name}
+            {...partner}
+            className="w-[179px] lg:w-[226.667px]"
+          />
         ))}
-      </RevealGroup>
-
-      <div className="hidden w-full lg:block">
-        <Marquee>
-          {PARTNERS.map((partner) => (
-            <PartnerCell
-              key={partner.name}
-              {...partner}
-              className="w-[226.667px]"
-            />
-          ))}
-        </Marquee>
-      </div>
+      </Marquee>
     </section>
   );
 }

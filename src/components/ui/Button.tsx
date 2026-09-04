@@ -17,12 +17,13 @@ type ButtonProps = {
   "aria-expanded"?: boolean;
   onClick?: () => void;
   type?: "button" | "submit";
+  disabled?: boolean;
 };
 
 const VARIANTS: Record<ButtonVariant, string> = {
   solid: "bg-utility-gray-900 text-title-inverse hover:bg-utility-gray-800",
   outline:
-    "border border-border-secondary text-title-inverse hover:bg-white/10",
+    "border border-border-secondary text-title-inverse hover:bg-black/40",
 };
 
 const SIZES: Record<ButtonSize, string> = {
@@ -43,12 +44,14 @@ export function Button({
   className,
   onClick,
   type = "button",
+  disabled = false,
   ...rest
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-full text-base font-semibold transition-colors",
+    "group press inline-flex shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-full text-base font-semibold transition-[background-color,border-color,color,transform] duration-200",
     VARIANTS[variant],
     SIZES[size],
+    disabled && "pointer-events-none opacity-60",
     className,
   );
 
@@ -61,7 +64,7 @@ export function Button({
           alt={icon.alt}
           width={20}
           height={20}
-          className="size-5 shrink-0"
+          className="size-5 shrink-0 transition-transform duration-150 ease-out group-hover:translate-x-1"
         />
       ) : null}
     </>
@@ -76,7 +79,13 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes} {...rest}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={classes}
+      {...rest}
+    >
       {content}
     </button>
   );

@@ -105,13 +105,25 @@ body {
   transform: translateY(16px);
 }
 
-/* Paired layouts: copy flies in from the left, imagery from the right. */
-[data-reveal="left"] {
-  transform: translateX(-48px);
+/*
+ * Paired layouts: copy flies in from the left, imagery from the right — but
+ * only once the two actually sit side by side. While they are stacked, a 48px
+ * horizontal offset would park them outside the viewport and give the page a
+ * sideways scroll, so below `lg` they rise like every other reveal.
+ */
+[data-reveal="left"],
+[data-reveal="right"] {
+  transform: translateY(16px);
 }
 
-[data-reveal="right"] {
-  transform: translateX(48px);
+@media (min-width: 1024px) {
+  [data-reveal="left"] {
+    transform: translateX(-48px);
+  }
+
+  [data-reveal="right"] {
+    transform: translateX(48px);
+  }
 }
 
 [data-reveal].is-visible {
@@ -220,4 +232,101 @@ body {
   .hero-rise {
     animation: none;
   }
+
+  /*
+   * Everything else — hovers, presses, the menu, the marquee. Motion is only
+   * ever decoration here, so removing it costs nothing but the movement.
+   * Durations go to 1ms rather than 0 so `transitionend` still fires.
+   */
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Interaction
+   --------------------------------------------------------------------------- */
+
+/*
+ * One focus ring for the whole app. `:focus-visible` keeps it off pointer
+ * clicks, and the accent holds up against both the white sections and the
+ * near-black footer. Outlines follow `border-radius`, so pills, cards and
+ * icon buttons all stay on-shape without per-component rules.
+ */
+:focus-visible {
+  outline: 2px solid var(--color-brand-accent);
+  outline-offset: 2px;
+}
+
+/*
+ * Android paints a grey block on tap that duplicates — and lags behind — the
+ * pressed states below.
+ */
+a,
+button,
+[role="button"],
+summary,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * Pressed feedback for the pill and icon buttons. A small scale reads the
+ * same across the solid, outline and icon variants, where a colour shift
+ * would need three separate rules.
+ */
+.press:active {
+  transform: scale(0.97);
+}
+
+/*
+ * Grows a small link's hit area without touching layout. Padding would work
+ * too, but it changes the box model — turning a footer link into a block
+ * re-flows the column — whereas an absolutely positioned overlay is invisible
+ * to layout entirely. The parent only needs a positioning context.
+ */
+.tap-pad {
+  position: relative;
+}
+
+.tap-pad::after {
+  content: "";
+  position: absolute;
+  /*
+   * 5px is the most the vertical rows can take: the tightest stack here is
+   * the 10px contact gap, and overlapping overlays would let a tap land on
+   * the neighbouring link.
+   */
+  inset: -5px -6px;
+}
+
+/*
+ * Menus and dropdowns mount on open, so they animate in with a keyframe
+ * rather than a transition. Movement is small enough that nothing below
+ * appears to shift.
+ */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-in {
+  animation: menu-in 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }

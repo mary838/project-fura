@@ -34,7 +34,10 @@ type SplitHeadingProps = {
   leadGap?: keyof typeof LEAD_GAPS;
   /** Gap between the two columns while they are stacked. */
   stackGap?: keyof typeof STACK_GAPS;
-  /** Shrinks the eyebrow on mobile, as the team hero does. */
+  /**
+   * Mobile eyebrow treatment used by the team hero: 12px regular, stepping
+   * back up to the shared 16px medium from `lg`.
+   */
   compactEyebrow?: boolean;
 };
 
@@ -80,10 +83,8 @@ export function SplitHeading({
       >
         {eyebrow ? (
           <Eyebrow
-            className={cn(
-              inverse && "text-brand-secondary",
-              compactEyebrow && "text-xs lg:text-base",
-            )}
+            compact={compactEyebrow}
+            className={cn(inverse && "text-brand-secondary")}
           >
             {eyebrow}
           </Eyebrow>

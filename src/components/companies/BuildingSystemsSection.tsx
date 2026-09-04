@@ -5,8 +5,8 @@ import { BUILDING_SYSTEMS } from "@/lib/companies-content";
 
 export function BuildingSystemsSection() {
   return (
-    <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-20">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8 lg:gap-10">
+    <section className="w-full bg-surface-muted px-4 py-6 lg:px-[100px] lg:py-24">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-10">
         <SectionHeading
           align="center"
           title="Construction Materials & Building Systems"
@@ -14,11 +14,11 @@ export function BuildingSystemsSection() {
           descriptionSize="base"
         />
 
-        <RevealGroup className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
+        <RevealGroup className="flex w-full flex-col items-stretch gap-4 lg:flex-row lg:items-start lg:gap-6">
           {BUILDING_SYSTEMS.map((system) => (
             <article
               key={system.title}
-              className="flex flex-col items-start gap-4 overflow-hidden rounded-2xl bg-surface-muted lg:min-w-0 lg:flex-1 lg:self-stretch"
+              className="flex flex-col items-start gap-4 overflow-hidden rounded-2xl border border-border-primary bg-surface lg:min-w-0 lg:flex-1 lg:self-stretch"
             >
               <div className="relative h-[296px] w-full shrink-0">
                 <Image
@@ -29,7 +29,7 @@ export function BuildingSystemsSection() {
                   className="object-cover"
                 />
               </div>
-              <div className="flex w-full flex-col items-start gap-1 px-6 pb-8">
+              <div className="flex w-full flex-col items-start gap-1 px-6 pb-8 lg:p-4">
                 <h3 className="w-full text-xl font-semibold text-title">
                   {system.title}
                 </h3>

@@ -1,45 +1,54 @@
-import { MediaFrame } from "@/components/ui/MediaFrame";
-import { Reveal } from "@/components/ui/Reveal";
+import Image from "next/image";
 import { RevealGroup } from "@/components/ui/RevealGroup";
 import { Section } from "@/components/ui/Section";
-import { SplitHeading } from "@/components/ui/SplitHeading";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { VALUE_CARDS } from "@/lib/home-content";
 
 export function WhyPartnerSection() {
   return (
-    <Section gap="xl-tight" className="bg-surface-muted">
-      <SplitHeading
+    <Section gap="xl-tight" reveal className="bg-surface-muted">
+      <SectionHeading
+        align="center-lg"
+        eyebrowGap="sm"
         eyebrow="WHY FURA HABITECH"
         title="Why Partner With Fura"
-        description={"FURA is not just an investor —\nwe are a long-term platform builder"}
+        description="FURA is not just an investor — we are a long-term platform builder"
+        descriptionSize="xl"
       />
 
-      <div className="flex w-full flex-col gap-6 lg:grid lg:h-[353px] lg:grid-cols-2 lg:gap-[42px]">
-        <Reveal from="right" className="lg:order-2">
-          <MediaFrame
-            src="/fura/images/why-partner.png"
-            alt="Fura Habitech development site"
-            sizes="(min-width: 1024px) 579px, 100vw"
-            className="h-[221px] lg:h-full"
-          />
-        </Reveal>
+      {/*
+        The card row breaks the 1200px container by 20px on either side in the
+        design, so it is pulled wide from `lg` up.
+      */}
+      <RevealGroup className="grid w-full grid-cols-1 gap-4 lg:-mx-5 lg:flex lg:w-[calc(100%+40px)] lg:flex-row lg:items-stretch lg:gap-6">
+        {VALUE_CARDS.map((card) => (
+          <article
+            key={card.title}
+            className="flex flex-col items-center gap-4 rounded-2xl border border-border-primary bg-surface p-[25px] lg:flex-1"
+          >
+            <div className="flex size-24 items-center justify-center rounded-full bg-surface-muted">
+              <Image
+                src={card.icon}
+                alt=""
+                width={35}
+                height={35}
+                className="size-[35px]"
+              />
+            </div>
 
-        <RevealGroup className="flex flex-col gap-3 lg:order-1 lg:grid lg:grid-cols-2 lg:grid-rows-2">
-          {VALUE_CARDS.map((card) => (
-            <article
-              key={card.title}
-              className={`flex flex-col items-start rounded-2xl bg-surface p-6 ${
-                card.wide ? "lg:col-span-2" : ""
-              }`}
-            >
-              <div className="flex w-full flex-col gap-3">
-                <h3 className="text-xl font-medium text-title">{card.title}</h3>
-                <p className="text-lg text-subtitle">{card.description}</p>
-              </div>
-            </article>
-          ))}
-        </RevealGroup>
-      </div>
+            <div className="flex flex-col items-center gap-3">
+              <h3 className="text-display-xs font-semibold text-[#0b192c]">
+                {card.title}
+              </h3>
+              <span className="h-0.5 w-[61px] rounded-full bg-[#222325]" />
+            </div>
+
+            <p className="w-full text-center text-lg text-subtitle">
+              {card.description}
+            </p>
+          </article>
+        ))}
+      </RevealGroup>
     </Section>
   );
 }

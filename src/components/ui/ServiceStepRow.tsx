@@ -17,13 +17,13 @@ export function ServiceStepRow({
   return (
     <div
       className={cn(
-        "flex w-full flex-col gap-8 lg:h-[423px] lg:items-center lg:gap-16",
+        "flex w-full flex-col gap-6 lg:h-[423px] lg:items-center lg:gap-16",
         reversed ? "lg:flex-row-reverse" : "lg:flex-row",
       )}
     >
       <Reveal
         from={reversed ? "right" : "left"}
-        className="flex flex-col items-start gap-6 lg:min-w-0 lg:flex-1"
+        className="flex flex-col items-start gap-4 lg:min-w-0 lg:flex-1 lg:gap-6"
       >
         <p className="text-display-sm font-medium text-title lg:text-display-lg">
           {number}

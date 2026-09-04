@@ -11,7 +11,7 @@ export function ProjectCard({
   sizes = "(min-width: 1024px) 384px, 100vw",
 }: Project & { sizes?: string }) {
   return (
-    <article className="group flex flex-1 flex-col gap-4 overflow-hidden rounded-2xl bg-surface-muted transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group flex flex-1 flex-col gap-4 overflow-hidden rounded-2xl border border-border-primary bg-surface transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="relative aspect-[628/353.25] w-full">
         <Image
           src={image}

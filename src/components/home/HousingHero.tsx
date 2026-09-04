@@ -9,8 +9,8 @@ export function HousingHero() {
         overlay="bg-[rgba(91,91,91,0.4)]"
       />
 
-      <div className="relative z-10 flex w-full flex-1 flex-col items-start justify-center px-4 py-8 lg:px-[100px] lg:pt-20 lg:pb-0">
-        <div className="flex w-full flex-col items-center justify-end gap-3 pb-20 lg:min-h-[570px]">
+      <div className="relative z-10 flex w-full flex-1 flex-col items-start justify-start px-4 py-8 lg:justify-center lg:px-[100px] lg:pt-20 lg:pb-0">
+        <div className="flex min-h-[570px] w-full flex-col items-center justify-end gap-3 pb-20">
           <h1
             className="hero-rise w-full text-center text-display-md font-normal text-title-inverse lg:max-w-[880px] lg:text-display-lg"
             style={{ animationDelay: "80ms" }}

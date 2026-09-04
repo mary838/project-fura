@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { ContactForm } from "@/components/layout/ContactForm";
 
 type FooterColumn = {
   title: string;
@@ -50,42 +50,29 @@ const LEGAL_LINKS = [
 ];
 
 /**
- * Newsletter sign-up band. Only some pages carry it, so the footer takes it
- * as an opt-in rather than showing it everywhere.
+ * "Contact Us" band above the dark footer. Only some pages carry it, so the
+ * footer takes it as an opt-in rather than showing it everywhere.
  */
-function NewsletterBand() {
+function ContactBand() {
   return (
-    <div className="flex w-full flex-col items-center bg-[#fafafa] py-8 lg:py-12">
+    <div className="flex w-full flex-col items-center bg-[#fafafa] pt-8 pb-6 lg:py-12">
       <div className="flex w-full max-w-[1280px] flex-col gap-8 px-4 lg:px-8">
-        <div className="flex w-full flex-wrap items-start justify-between gap-y-8">
+        <div className="flex w-full flex-wrap items-center justify-between gap-y-8">
           <div className="flex min-w-0 flex-col gap-2 lg:max-w-[768px] lg:min-w-[480px] lg:flex-1">
             <p className="text-lg font-semibold text-title lg:text-xl">
-              Join our newsletter
+              Contact Us
             </p>
+            {/* The middle clause is set in medium on the title colour. */}
             <p className="text-base text-subtitle">
-              We&rsquo;ll send you a nice letter once per week. No spam.
+              To learn more about our{" "}
+              <span className="font-medium text-title">
+                investment opportunities, projects, investment strategies, white
+                papers, upcoming events, and other opportunities
+              </span>
+              , please get in touch with our team.
             </p>
           </div>
-          <form className="flex w-full flex-col items-stretch gap-4 lg:w-[400px] lg:flex-row lg:items-start">
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              placeholder="Enter your email"
-              className="min-w-0 flex-1 rounded-md border border-border-primary bg-surface px-3.5 py-2.5 text-base text-title placeholder:text-placeholder focus:outline-2 focus:outline-offset-2 focus:outline-title"
-            />
-            <Button
-              type="submit"
-              size="sm"
-              icon={null}
-              className="w-full lg:w-auto"
-            >
-              Send us
-            </Button>
-          </form>
+          <ContactForm />
         </div>
       </div>
     </div>
@@ -93,14 +80,14 @@ function NewsletterBand() {
 }
 
 /**
- * The Figma footer component now carries the newsletter band, so it is on by
- * default; pass `newsletter={false}` for a page that should omit it.
+ * The Figma footer component carries the contact band, so it is on by default;
+ * pass `contact={false}` for a page that should omit it.
  */
-export function Footer({ newsletter = true }: { newsletter?: boolean }) {
+export function Footer({ contact = true }: { contact?: boolean }) {
   return (
-    <footer className="flex w-full flex-col bg-surface lg:gap-2.5">
-      {newsletter ? <NewsletterBand /> : null}
-      <div className="flex w-full flex-col gap-8 overflow-hidden rounded-t-[32px] bg-utility-gray-900 px-4 pt-12 pb-10 lg:gap-16 lg:px-[100px] lg:pt-20">
+    <footer className="flex w-full flex-col bg-surface-muted lg:gap-2.5">
+      {contact ? <ContactBand /> : null}
+      <div className="flex w-full flex-col gap-8 overflow-hidden rounded-t-[32px] bg-utility-gray-900 px-4 py-12 lg:gap-16 lg:px-[100px] lg:pt-20 lg:pb-10">
         <div className="flex w-full flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
           <div className="flex flex-col gap-7 lg:w-[320px] lg:shrink-0">
             <Image
@@ -112,8 +99,17 @@ export function Footer({ newsletter = true }: { newsletter?: boolean }) {
             />
             <div className="flex flex-col gap-2.5 text-sm text-subtitle-inverse">
               <p className="font-semibold">Get in Touch</p>
-              <a href="tel:+61730000000">+61 7 3000 0000</a>
-              <a href="mailto:enquiries@furahabitech.com.au">
+              {/* `tap-pad` grows the hit area without affecting the flow. */}
+              <a
+                href="tel:+61730000000"
+                className="tap-pad w-fit transition-opacity hover:opacity-70"
+              >
+                +61 7 3000 0000
+              </a>
+              <a
+                href="mailto:enquiries@furahabitech.com.au"
+                className="tap-pad w-fit transition-opacity hover:opacity-70"
+              >
                 enquiries@furahabitech.com.au
               </a>
             </div>
@@ -125,7 +121,7 @@ export function Footer({ newsletter = true }: { newsletter?: boolean }) {
                   aria-label={social.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex size-9 items-center justify-center rounded-md bg-white/30 p-2 opacity-80 transition-opacity hover:opacity-100"
+                  className="press flex size-9 items-center justify-center rounded-md bg-white/30 p-2 opacity-80 transition-[opacity,transform] duration-200 hover:opacity-100"
                 >
                   <Image
                     src={social.icon}
@@ -149,7 +145,7 @@ export function Footer({ newsletter = true }: { newsletter?: boolean }) {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-subtitle-inverse transition-opacity hover:opacity-70"
+                      className="tap-pad text-sm text-subtitle-inverse transition-opacity hover:opacity-70"
                     >
                       {link.label}
                     </Link>
@@ -178,7 +174,8 @@ export function Footer({ newsletter = true }: { newsletter?: boolean }) {
           </div>
         </div>
 
-        <hr className="w-full border-t border-white/10" />
+        {/* Full-bleed on mobile, where the frame runs the rule past the 16px gutter. */}
+        <hr className="-mx-4 w-auto border-t border-white/10 lg:mx-0 lg:w-full" />
 
         <div className="flex w-full flex-col items-center gap-3 text-center text-subtitle-inverse lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:text-left">
           <p className="text-sm opacity-60">
@@ -189,7 +186,7 @@ export function Footer({ newsletter = true }: { newsletter?: boolean }) {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-xs opacity-70 transition-opacity hover:opacity-100"
+                className="tap-pad text-xs opacity-70 transition-opacity hover:opacity-100"
               >
                 {link.label}
               </Link>

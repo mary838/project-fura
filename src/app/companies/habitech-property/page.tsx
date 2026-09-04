@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { CompanyHero } from "@/components/companies/CompanyHero";
 import { PropertyIntroSection } from "@/components/companies/PropertyIntroSection";
-import { PropertySalesSection } from "@/components/companies/PropertySalesSection";
+import { PropertyManagementSection } from "@/components/companies/PropertyManagementSection";
+import { PropertyTimelineSection } from "@/components/companies/PropertyTimelineSection";
+import { PropertyCareSection } from "@/components/companies/PropertyCareSection";
+import { PropertyEcosystemSection } from "@/components/companies/PropertyEcosystemSection";
 
 export const metadata: Metadata = {
   title: "Habitech Real Estate Property — Fura Habitech",
@@ -22,7 +25,10 @@ export default function HabitechPropertyPage() {
         ctaHref="/invest"
       />
       <PropertyIntroSection />
-      <PropertySalesSection />
+      <PropertyManagementSection />
+      <PropertyTimelineSection />
+      <PropertyCareSection />
+      <PropertyEcosystemSection />
     </PageShell>
   );
 }

@@ -7,7 +7,7 @@ type IntroSplitProps = {
   title: string;
   /** One entry per rendered paragraph. `\n` inside one forces a line break. */
   paragraphs: readonly string[];
-  image: { src: string; alt: string };
+  image: { src: string; alt: string; mobileSrc?: string };
   cta?: { label: string; href: string };
   /** Mobile gutter — a couple of frames specify 26px instead of 16px. */
   gutter?: "default" | "wide";
@@ -67,6 +67,7 @@ export function IntroSplit({
         <Reveal from="right" className="w-full lg:w-[640px]">
           <MediaFrame
             src={image.src}
+            mobileSrc={image.mobileSrc}
             alt={image.alt}
             sizes="(min-width: 1024px) 640px, 100vw"
             className="h-[423px]"

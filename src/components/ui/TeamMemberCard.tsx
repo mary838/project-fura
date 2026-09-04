@@ -1,5 +1,15 @@
 import Image from "next/image";
+import { SplitLines } from "@/components/ui/SplitLines";
 import type { TeamMember } from "@/lib/team-content";
+
+type TeamMemberCardProps = TeamMember & {
+  /**
+   * When the copy should start moving, in ms. The list staggers the cards
+   * themselves, so each card hands its own offset down here to keep the text
+   * rising just behind the card it sits in rather than during its travel.
+   */
+  revealDelay?: number;
+};
 
 /**
  * Leadership entry. Mobile stacks a full-bleed 320px portrait above the bio
@@ -9,7 +19,13 @@ import type { TeamMember } from "@/lib/team-content";
  * No `items-start` on the article: the portrait column relies on the default
  * stretch alignment to fill the card height.
  */
-export function TeamMemberCard({ photo, name, role, bio }: TeamMember) {
+export function TeamMemberCard({
+  photo,
+  name,
+  role,
+  bio,
+  revealDelay = 0,
+}: TeamMemberCardProps) {
   return (
     <article className="flex w-full max-w-[854px] flex-col gap-4 overflow-hidden rounded-2xl border border-border-secondary bg-surface sm:flex-row sm:gap-0 sm:border-0 lg:h-[280px]">
       <div className="w-full shrink-0 sm:w-[308px] sm:p-4">
@@ -26,10 +42,24 @@ export function TeamMemberCard({ photo, name, role, bio }: TeamMember) {
 
       <div className="flex min-w-0 flex-1 flex-col gap-3 p-4">
         <div className="flex w-full flex-col">
-          <h3 className="text-lg font-medium text-title">{name}</h3>
-          <p className="text-sm text-role">{role}</p>
+          <SplitLines
+            as="h3"
+            text={name}
+            className="text-lg font-medium text-title"
+            startDelay={revealDelay}
+          />
+          <SplitLines
+            text={role}
+            className="text-sm text-role"
+            startDelay={revealDelay + 80}
+          />
         </div>
-        <p className="text-sm text-subtitle">{bio}</p>
+        <SplitLines
+          text={bio}
+          className="text-sm text-subtitle"
+          startDelay={revealDelay + 160}
+          step={50}
+        />
       </div>
     </article>
   );

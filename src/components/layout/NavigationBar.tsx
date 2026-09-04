@@ -104,13 +104,15 @@ export function NavigationBar({
             width={239}
             height={39}
             priority
-            className="h-[30px] w-auto lg:h-[39px]"
+            className="h-[39px] w-auto"
           />
         </Link>
 
         <nav
           className={cn(
-            "hidden min-w-0 flex-1 items-center px-8 lg:flex",
+            // The full link row needs ~1180px before it starts colliding with
+            // the logo, so the bar keeps the compact menu until `xl`.
+            "hidden min-w-0 flex-1 items-center px-8 xl:flex",
             alwaysSolid ? "justify-end" : "justify-center",
           )}
         >
@@ -172,7 +174,7 @@ export function NavigationBar({
                     // The padded wrapper keeps the pointer inside the item
                     // while travelling from the trigger down to the panel.
                     <div className={cn("absolute top-full left-0", alwaysSolid && "pt-3")}>
-                      <ul className="flex min-w-[229px] flex-col gap-5 rounded-lg bg-white/74 p-4 shadow-lg backdrop-blur-[12px]">
+                      <ul className="menu-in flex min-w-[229px] flex-col gap-5 rounded-lg bg-white/74 p-4 shadow-lg backdrop-blur-[12px]">
                         {link.items.map((item) => {
                           const itemCurrent = isCurrent(pathname, item.href);
                           return (
@@ -216,13 +218,13 @@ export function NavigationBar({
           </ul>
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Button href="/invest" size="sm">
             Invest with us
           </Button>
         </div>
 
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <Button
             size="icon"
             icon={{ src: "/fura/icons/menu.svg", alt: "" }}
@@ -233,12 +235,26 @@ export function NavigationBar({
         </div>
       </div>
 
+      {/*
+        `grid-template-rows: 0fr -> 1fr` animates to the panel's own height
+        without anyone having to measure it, and collapses to nothing when
+        closed. `inert` keeps the collapsed links out of the tab order, which
+        `hidden` used to handle.
+      */}
       <div
         className={cn(
-          "overflow-hidden border-t border-border-secondary bg-surface lg:hidden",
-          open ? "block" : "hidden",
+          "grid overflow-hidden transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] xl:hidden",
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
+        inert={!open}
       >
+        {/*
+          The grid item itself carries no border: a border sits outside the
+          zeroed content box and would leave the bar 1px taller when closed,
+          pushing every page down by a pixel. It goes on the clipped content.
+        */}
+        <div className="min-h-0 overflow-hidden">
+          <div className="border-t border-border-secondary bg-surface">
         <ul className="flex flex-col px-4 py-4">
           {links.map((link) => {
             const current =
@@ -268,7 +284,7 @@ export function NavigationBar({
                               aria-current={itemCurrent ? "page" : undefined}
                               onClick={() => setOpen(false)}
                               className={cn(
-                                "block py-2 text-sm",
+                                "-mx-2 block rounded-md px-2 py-2.5 text-sm transition-colors active:bg-surface-muted",
                                 itemCurrent
                                   ? LINK_STATE.current
                                   : "text-subtitle",
@@ -287,7 +303,7 @@ export function NavigationBar({
                     aria-current={current ? "page" : undefined}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "block py-3 text-sm",
+                      "-mx-2 block rounded-md px-2 py-3 text-sm transition-colors active:bg-surface-muted",
                       current ? LINK_STATE.current : LINK_STATE.resting,
                     )}
                   >
@@ -302,6 +318,8 @@ export function NavigationBar({
           <Button href="/invest" size="sm" className="w-full">
             Invest with us
           </Button>
+        </div>
+          </div>
         </div>
       </div>
     </header>

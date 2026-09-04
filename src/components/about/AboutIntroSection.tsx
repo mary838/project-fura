@@ -1,22 +1,25 @@
+import { CheckList } from "@/components/ui/CheckList";
 import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SplitLines } from "@/components/ui/SplitLines";
+import { GROUP_HIGHLIGHTS } from "@/lib/about-content";
 
 export function AboutIntroSection() {
   return (
-    <Section gap="none" reveal className="bg-surface" containerClassName="gap-4">
-      <SectionHeading
+    <Section gap="none" reveal className="bg-surface" containerClassName="gap-6">
+      <SplitLines
         as="h1"
-        title="About fura group"
-        titleSize="display"
-        eyebrow="ABOUT US"
-        eyebrowGap="xs"
-        gap="md"
-        description={
-          "FURA is a Singapore-headquartered investment group focused on real estate, infrastructure, agriculture, hospitality, and industry, forming a global and connected platform with presence in Singapore, Australia, Cambodia, Japan, and the USA.\n" +
-          "Over 15 of network and expertise in asset development and cross-border capital management. FURA asset portfolio excessing USD 750 million USD covering more than 250 hectares of developed land,\n" +
-          "The hospitality fund manage assets valued at over 250 million USD."
-        }
+        text="About fura group"
+        className="w-full text-display-xs font-medium text-title lg:text-display-md"
       />
+
+      <div className="flex w-full flex-col gap-4">
+        <SplitLines
+          text="Through this structure, FURA is able to:"
+          className="w-full text-base font-medium text-subtitle lg:text-xl"
+          startDelay={200}
+        />
+        <CheckList items={GROUP_HIGHLIGHTS} reveal revealDelay={280} />
+      </div>
     </Section>
   );
 }

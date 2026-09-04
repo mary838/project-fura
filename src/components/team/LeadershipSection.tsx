@@ -14,8 +14,16 @@ export function LeadershipSection() {
       />
 
       <RevealGroup className="flex w-full flex-col items-center gap-3 lg:gap-4">
-        {LEADERSHIP.map((member) => (
-          <TeamMemberCard key={member.name} {...member} />
+        {/*
+          `RevealGroup` staggers the cards by 90ms each; every card passes that
+          same offset on to its copy so the text follows its own card in.
+        */}
+        {LEADERSHIP.map((member, index) => (
+          <TeamMemberCard
+            key={member.name}
+            {...member}
+            revealDelay={index * 90 + 320}
+          />
         ))}
       </RevealGroup>
     </Section>

@@ -9,7 +9,9 @@ type StatTileRowProps = {
    * 318px and centres the row in the wider 1240px frame the design uses for
    * the standalone stat bands.
    */
-  layout?: "fluid" | "fixed";
+  layout?: "fluid" | "fixed" | "cards" | "cards-fluid";
+  /** Tile shape — see `StatTile`. */
+  variant?: "row" | "stacked";
   className?: string;
 };
 
@@ -17,16 +19,23 @@ type StatTileRowProps = {
 export function StatTileRow({
   stats,
   layout = "fluid",
+  variant = "row",
   className,
 }: StatTileRowProps) {
   const fixed = layout === "fixed";
+  const cards = layout === "cards";
+  const cardsFluid = layout === "cards-fluid";
   return (
     <div
       className={cn(
-        "flex w-full flex-col gap-3 lg:flex-row",
-        fixed
-          ? "mx-auto items-center justify-center lg:w-[1240px]"
-          : "lg:items-start",
+        "flex w-full flex-col lg:flex-row",
+        cards || cardsFluid ? "gap-4" : "gap-3",
+        fixed && "mx-auto items-center justify-center lg:w-[1240px]",
+        // Four 298px cards plus three 16px gaps — the 1240px band in the frame.
+        // They run full width in a single column until then.
+        cards && "mx-auto lg:w-[1240px] lg:items-stretch",
+        cardsFluid && "lg:items-stretch",
+        !fixed && !cards && !cardsFluid && "lg:items-start",
         className,
       )}
     >
@@ -34,7 +43,12 @@ export function StatTileRow({
         <StatTile
           key={stat.label}
           {...stat}
-          className={fixed ? "lg:w-[318px] lg:flex-none" : undefined}
+          variant={variant}
+          className={cn(
+            fixed && "lg:w-[318px] lg:flex-none",
+            cards && "lg:w-[298px] lg:flex-none",
+            cardsFluid && "lg:min-w-0 lg:flex-1",
+          )}
         />
       ))}
     </div>

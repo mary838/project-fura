@@ -3,9 +3,10 @@ import { IntroSplit } from "@/components/ui/IntroSplit";
 export function ConstructionIntroSection() {
   return (
     <IntroSplit
-      // 26px gutter on mobile is what this frame specifies (350px content in 402).
-      gutter="wide"
-      stackGap="lg"
+      // Figma mobile frame (402px, node 24198:24796) specifies a 16px gutter
+      // and a 24px gap between the copy stack and the image.
+      gutter="default"
+      stackGap="md"
       title="Built with Precision. Delivered with Confidence"
       paragraphs={[
         "Habitech Construction works alongside Open Build Pty Ltd, an Australian construction firm with 25 years of\n" +
@@ -14,6 +15,9 @@ export function ConstructionIntroSection() {
       ]}
       image={{
         src: "/fura/companies/construction/intro.png",
+        // The mobile frame is a taller, portrait-cropped still — the desktop
+        // wide shot would lose the buildings under plain object-cover.
+        mobileSrc: "/fura/companies/construction/intro-mobile.jpg",
         alt: "Habitech Construction project",
       }}
       cta={{ label: "Partner With Us", href: "/invest" }}

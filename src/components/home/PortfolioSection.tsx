@@ -11,9 +11,11 @@ export function PortfolioSection() {
       <div className="flex w-full flex-col gap-6">
         <div className="flex w-full flex-col justify-center gap-4">
           <Eyebrow>OUR PORTFOLIO</Eyebrow>
-          <h2 className="text-display-xs font-medium text-subtitle lg:text-display-md">
-            Portfolio of <span className="text-brand-primary">Companies</span>
-          </h2>
+          <SplitLines
+            as="h2"
+            text="One group connects capital, development and delivery"
+            className="text-display-xs font-medium text-subtitle lg:text-display-md"
+          />
         </div>
         <SplitLines
           text="A specialized ecosystem spanning capital, prefabrication, construction, and educational platforms delivering innovative housing solutions across Australia."

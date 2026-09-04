@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
+import { CompanyHero } from "@/components/companies/CompanyHero";
 import { AboutIntroSection } from "@/components/about/AboutIntroSection";
 import { KeyStatisticsSection } from "@/components/about/KeyStatisticsSection";
 import { NewsSection } from "@/components/about/NewsSection";
@@ -13,9 +14,20 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  // Opens on a white section, so the default solid bar is right here.
+  // The banner sits below a solid bar, as on the company pages, but its copy
+  // is centred in the 500px band rather than bottom-aligned.
   return (
     <PageShell>
+      <CompanyHero
+        image="/fura/images/about-hero.png"
+        title="Habitech Manufacturing Pty Ltd"
+        subtitle="Integrated Prefabricated Building Solutions"
+        tagline="From precision manufacturing to efficient construction."
+        ctaLabel="Explore Our Capabilities"
+        ctaHref="/invest"
+        overlayImage="linear-gradient(257.6deg, rgba(255, 255, 255, 0.35) 22.702%, rgba(0, 0, 0, 0.35) 64.026%)"
+        align="center"
+      />
       <AboutIntroSection />
       <OrganigramSection />
       <VisionSection />

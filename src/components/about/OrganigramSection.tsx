@@ -20,7 +20,7 @@ export function OrganigramSection() {
       <div className="flex w-full flex-col gap-12">
         <SectionHeading
           align="center"
-          title="Company organigram"
+          title="A Global and Connected Real Asset Platform"
           description="Corporate structure and global subsidiaries hierarchy"
           descriptionSize="base"
         />

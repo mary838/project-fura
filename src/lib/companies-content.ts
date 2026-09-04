@@ -98,105 +98,122 @@ export const DELIVERY_POINTS: DeliveryPoint[] = [
   },
 ];
 
+/** The four stages the delivery infographic illustrates, in order. */
+export const DELIVERY_IMAGES: { src: string; alt: string }[] = [
+  {
+    src: "/fura/companies/manufacturing/delivery-1.png",
+    alt: "Modules assembled in the factory",
+  },
+  {
+    src: "/fura/companies/manufacturing/delivery-2.png",
+    alt: "Packaged modules loaded for shipping",
+  },
+  {
+    src: "/fura/companies/manufacturing/delivery-3.png",
+    alt: "A module in transport to site",
+  },
+  {
+    src: "/fura/companies/manufacturing/delivery-4.png",
+    alt: "Cranes placing modules during on-site assembly",
+  },
+];
+
 export const MANUFACTURING_STATS: StatTile[] = [
   {
     label: "Years experience",
     value: "17+",
-    icon: "/fura/icons/stat-experience.svg",
+    icon: "/fura/icons/user-03.svg",
   },
   {
     label: "Project completed",
     value: "500+",
-    icon: "/fura/icons/stat-projects.svg",
+    icon: "/fura/icons/certificate-01.svg",
   },
   {
     label: "Country served",
     value: "15+",
-    icon: "/fura/icons/stat-countries.svg",
-    iconIsContainer: true,
+    icon: "/fura/icons/globe-02.svg",
   },
   {
     label: "Professional team",
     value: "100+",
-    icon: "/fura/icons/stat-team.svg",
-    iconIsContainer: true,
+    icon: "/fura/icons/award-03.svg",
   },
 ];
 
 export type ConstructionProject = {
   image: string;
+  /** Separately-cropped still for the mobile card's shorter 370x200 frame. */
+  mobileImage: string;
   category: string;
   title: string;
-  /** Long form, shown from `lg`. */
   description: string;
-  /** Condensed one-liner the mobile card shows instead of `description`. */
-  meta: string;
 };
 
 export const CONSTRUCTION_PROJECTS: ConstructionProject[] = [
   {
     image: "/fura/companies/construction/p1-central-street.png",
+    mobileImage: "/fura/companies/construction/p1-central-street-mobile.jpg",
     category: "STUDENT ACCOMMODATION",
     title: "20 Central Street",
     description:
       "Open Build Pty Ltd contributed to the 20 central Street Student Accommodation, a AUD 109M development comprising three towers of 11, 20 and 24 storeys with 464 rooms. Located in Melbourne’s CBD, the project provides modern, high-density student living with excellent access to public transportand city amenities.",
-    meta: "AUD 108M | Melbourne CBD",
   },
   {
     image: "/fura/companies/construction/p2-cent-road.png",
+    mobileImage: "/fura/companies/construction/p2-cent-road-mobile.jpg",
     category: "HEALTHCARE",
     title: "200 Cent Road Melbourne",
     description:
       "Open Build Pty Ltd contributed to the AUD 152.4M 200 cent road Melbourne, providing an integrated oncology facility equipped with research labs, clinical imaging, trials centre and wellness spaces. Completed in 2024, it stands as a major cancer treatment and research hub in Victoria.",
-    meta: "AUD 152.4M | Oncology research hub",
   },
   {
     image: "/fura/companies/construction/p3-high-street.png",
+    mobileImage: "/fura/companies/construction/p3-high-street-mobile.jpg",
     category: "STUDENT ACCOMMODATION",
     title: "High Street",
     description:
       "Open Build Pty Ltd worked on the AUD 60M, 29-storey student accommodation tower at High Street featuring 374 beds, communal spaces, gym, and outdoor courtyards. Built on a constrained 470sqm site in Melbourne CBD, the project reached Practical Completion in August 2023.",
-    meta: "AUD 60M | Melbourne CBD",
   },
   {
     image: "/fura/companies/construction/p4-private-hospital.png",
+    mobileImage: "/fura/companies/construction/p4-private-hospital-mobile.jpg",
     category: "HEALTHCARE",
     title: "Private Hospital",
     description:
       "Open Build Pty Ltd delivered the early works for Private Hospital , including demolition of three buildings, basement retention and heritage façade protection. These works supported the AUD 183M hospital redevelopment and reached Practical Completion in late 2022.",
-    meta: "Supported AUD 180M project",
   },
   {
     image: "/fura/companies/construction/p5-gold-central.png",
+    mobileImage: "/fura/companies/construction/p5-gold-central-mobile.jpg",
     category: "STUDENT ACCOMMODATION",
     title: "Gold Central City",
     description:
       "Open Build Pty Ltd worked on the AUD 53M 17-storey student accommodation tower built through the centre of the heritage-listed Gold Central City, delivering 362 beds, a biophilic façade and 5 Star Green Star performance. Completed in 2022.",
-    meta: "AUD 53M | Melbourne CBD",
   },
   {
     image: "/fura/companies/construction/p6-office-hq.png",
+    mobileImage: "/fura/companies/construction/p6-office-hq-mobile.jpg",
     category: "COMMERCIAL",
     title: "Office Headquarters",
     description:
       "Open Build Pty Ltd contributed to the AUD 50M Office Headquarters, a nine-level commercial building with retail, 10,152sqm office NLA, two basement levels and EOT facilities. The project achieved 5 Star Green Star and NABERS ratings, completing in 2021.",
-    meta: "AUD 50M | 10,152 sqm NLA",
   },
   {
     image: "/fura/companies/construction/p7-state-school.png",
+    mobileImage: "/fura/companies/construction/p7-state-school-mobile.jpg",
     category: "EDUCATION",
     title: "State School New Learning Centre",
     description:
       "Open Build Pty Ltd delivered the State School New Learning Centre in Brisbane, completed in two stages within an operational school. Works included refurbishing A Block and constructing a new two-storey Public building with eight classrooms, breakout spaces, an undercroft and a tennis court, linked via a new walkway. Heritage features were preserved and strict access controls were implemented to ensure campus safety.",
-    meta: "Brisbane | Education Development",
   },
   {
     image: "/fura/companies/construction/p8-east-primary.png",
+    mobileImage: "/fura/companies/construction/p8-east-primary-mobile.jpg",
     category: "EDUCATION",
     title: "East Primary School",
     description:
       "Open Build Pty Ltd delivered the new East Primary School in South east for the Victorian School Building Authority. The campus includes modern single-storey learning buildings, flexible learning neighbourhoods, specialist facilities, a gymnasium, library and administration centre, complemented by landscaped outdoor areas and sports courts. Practical completion was achieved ahead of the 2026 school year, with the school opening in Term 1.",
-    meta: "Victorian School Building Authority",
   },
 ];
 
@@ -217,18 +234,17 @@ export const CONSTRUCTION_STATS: StatTile[] = [
   {
     label: "Years experience",
     value: "25+",
-    icon: "/fura/icons/stat-years.svg",
+    icon: "/fura/icons/user-03.svg",
   },
   {
     label: "Project delivery",
     value: "AUD 550M+",
-    icon: "/fura/icons/stat-delivery.svg",
-    iconIsContainer: true,
+    icon: "/fura/icons/package.svg",
   },
   {
     label: "Certifications",
     value: "National",
-    icon: "/fura/icons/stat-certifications.svg",
+    icon: "/fura/icons/award-03.svg",
   },
 ];
 
@@ -259,76 +275,48 @@ export const BUILDING_SYSTEMS: BuildingSystem[] = [
   },
 ];
 
-export type SustainabilityCert = {
-  image: string;
-  /** Certifying body, used as the stamp's alternative text. */
-  name: string;
-  /**
-   * Artwork width as a multiple of the 120px stamp. Each source file carries
-   * roughly half its width in whitespace, so the design scales it up until the
-   * mark fills the circle and lets the circle crop the rest.
-   */
-  zoom: number;
-  /**
-   * Nudges the artwork within the stamp, in px, where the design re-centres
-   * the crop — a few marks sit off-centre in their source file, and centring
-   * them instead pulls neighbouring artwork into the circle.
-   */
-  offsetX?: number;
-  offsetY?: number;
-  /**
-   * Clips the artwork to a window of this size, centred in the stamp. The
-   * wordmark logos are masked to a band in the design, which keeps stray marks
-   * from the source file — a neighbouring logo, a registered symbol — out of
-   * the circle.
-   */
-  frame?: { width: number; height: number };
-  /** RESET sits on an off-white ground rather than pure white. */
-  ground?: string;
+export type SustainabilityPillar = {
+  icon: string;
+  title: string;
+  description: string;
 };
 
-export const SUSTAINABILITY_CERTS: SustainabilityCert[] = [
+export const SUSTAINABILITY_PILLARS: SustainabilityPillar[] = [
   {
-    image: "/fura/companies/development/certs/cert-1.png",
-    name: "WELL Silver 2023",
-    zoom: 1.97,
-    offsetX: 6.5,
-    offsetY: 3.3,
+    icon: "/fura/icons/leaf.svg",
+    title: "Sustainable by Design",
+    description:
+      "We consider sustainability from the earliest stages of planning — balancing architectural quality, functionality, energy performance and long-term environmental impact.",
   },
   {
-    image: "/fura/companies/development/certs/cert-2.png",
-    name: "International Living Future Institute",
-    zoom: 1.79,
-    frame: { width: 94, height: 41 },
+    icon: "/fura/icons/home-leaf.svg",
+    title: "Energy-Efficient Living",
+    description:
+      "Smart design strategies, natural light, ventilation, insulation and efficient systems help reduce energy use and create healthier, more comfortable homes.",
   },
   {
-    image: "/fura/companies/development/certs/cert-3.png",
-    name: "USGBC LEED Platinum",
-    zoom: 1.95,
+    icon: "/fura/icons/home-leaf-2.svg",
+    title: "Responsible Materials",
+    description:
+      "We prioritise durable, low-impact and responsibly sourced materials where appropriate—reducing environmental impact while maintaining quality and performance.",
   },
   {
-    image: "/fura/companies/development/certs/cert-4.png",
-    name: "RESET Standard",
-    zoom: 1.95,
-    offsetX: -9,
-    offsetY: 1.4,
-    ground: "#fbfbfb",
+    icon: "/fura/icons/sun-home.svg",
+    title: "Climate-Smart Design",
+    description:
+      "We prioritise durable, low-impact and responsibly sourced materials where appropriate—reducing environmental impact while maintaining quality and performance.",
   },
   {
-    image: "/fura/companies/development/certs/cert-5.png",
-    name: "HQE",
-    zoom: 1.78,
-    offsetX: 1.9,
-    offsetY: -5.6,
-    frame: { width: 94, height: 52 },
+    icon: "/fura/icons/build-tools.svg",
+    title: "Smarter Construction",
+    description:
+      "Through integrated design, manufacturing and construction processes, we explore efficient building methods that can reduce material waste and improve consistency.",
   },
   {
-    image: "/fura/companies/development/certs/cert-6.png",
-    name: "MINERGIE",
-    zoom: 1.68,
-    offsetX: 6.7,
-    offsetY: -5.3,
-    frame: { width: 104, height: 24 },
+    icon: "/fura/icons/clock-refresh.svg",
+    title: "Designed for the Long Term",
+    description:
+      "Sustainability is also about longevity. We design adaptable, resilient places that can continue to serve residents and communities well into the future.",
   },
 ];
 
@@ -369,6 +357,138 @@ export const PROPERTY_STATS: StatTile[] = [
     icon: "/fura/icons/stat-prop-network.svg",
     iconIsContainer: true,
   },
+];
+
+export type IconCard = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export const PROPERTY_MANAGEMENT_ITEMS: IconCard[] = [
+  {
+    icon: "/fura/icons/eye.svg",
+    title: "Property Inspections",
+    description:
+      "Executing structured routine check-ups on systems and common areas to mitigate risks and address structural degradation early.",
+  },
+  {
+    icon: "/fura/icons/users-02.svg",
+    title: "Resident & Tenant Support",
+    description:
+      "Providing smooth onboarding, prompt issue resolution, and streamlined communications to preserve premium tenant satisfaction.",
+  },
+  {
+    icon: "/fura/icons/home-02.svg",
+    title: "Property Operations",
+    description:
+      "Managing daily administrative structures, utility contracts, and building operational efficiency with professional administrative focus.",
+  },
+  {
+    icon: "/fura/icons/tool-02.svg",
+    title: "Maintenance Coordination",
+    description:
+      "Coordinating standard upkeep and prompt corrective tasks with highly experienced engineering partners to keep facilities in shape.",
+  },
+  {
+    icon: "/fura/icons/file-06.svg",
+    title: "Compliance & Documentation",
+    description:
+      "Securing alignment with updated municipal codes, tenant laws, security regulations, and property insurance policies.",
+  },
+  {
+    icon: "/fura/icons/bar-chart-02.svg",
+    title: "Reporting & Oversight",
+    description:
+      "Delivering real-time financial tracking, expense breakdowns, and comprehensive health dashboards of all asset categories.",
+  },
+];
+
+export type TimelineStep = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+export const PROPERTY_TIMELINE: TimelineStep[] = [
+  {
+    number: "01",
+    title: "Property Setup",
+    description:
+      "Initial inspection, comprehensive key inventory, system verification, and operational documentation.",
+  },
+  {
+    number: "02",
+    title: "Tenancy Management",
+    description:
+      "Regular garden upkeep, waste handling coordination, systematic HVAC checks, and cleaning oversight.",
+  },
+  {
+    number: "03",
+    title: "Maintenance & Repairs",
+    description:
+      "24/7 on-call technical team deployment for quick mechanical, plumbing, and structural restoration.",
+  },
+  {
+    number: "04",
+    title: "Long-Term Asset Management",
+    description:
+      "Capital reserves reporting, annual health evaluations, and long-range yield improvement mapping.",
+  },
+];
+
+export const PROPERTY_CARE_POINTS: { title: string; description: string }[] = [
+  {
+    title: "We manage every aspect of property care",
+    description:
+      "From key setup and systems validation on first handover to dynamic everyday maintenance calls and community rules preservation.",
+  },
+  {
+    title: "Responsive Tenant Communication",
+    description:
+      "Your renters connect to structured, reliable communication lines ensuring rapid fixes and seamless ongoing lease retention.",
+  },
+  {
+    title: "Long-Term Strategy",
+    description:
+      "Systematic building inspection loops and yield maps ensure physical infrastructure and capital values appreciate consistently over the decade.",
+  },
+  {
+    title: "Transparent Reporting",
+    description:
+      "Get total visibility on budgets, expenses, check-up logs, and compliance statuses with straightforward reporting dashboards.",
+  },
+];
+
+export const PROPERTY_ECOSYSTEM_ITEMS: IconCard[] = [
+  {
+    icon: "/fura/icons/layers-three-01.svg",
+    title: "Prime Development",
+    description:
+      "Premium residential and mixed-use space construction, shaping community structures across dynamic metropolitan zones.",
+  },
+  {
+    icon: "/fura/icons/shuffle-01.svg",
+    title: "Habitech Construction",
+    description:
+      "Quality architecture implementation and strict engineering excellence focusing on material integrity and ecological alignment.",
+  },
+  {
+    icon: "/fura/icons/home-02.svg",
+    title: "Habitech Property",
+    description:
+      "Corporate commercial brokerage and dynamic transaction advisory, mapping high-yield lease acquisitions for private portfolios.",
+  },
+];
+
+export const FURA_HABITECH_PHILOSOPHY: string[] = [
+  "Real asset backed",
+  "Land secured",
+  "Multiple exit options",
+  "Diversified projects",
+  "Institutional governance (AFSL)",
+  "Strategic partnerships",
+  "Conservative underwriting",
 ];
 
 export const FURA_HABITECH_STATS: StatTile[] = [

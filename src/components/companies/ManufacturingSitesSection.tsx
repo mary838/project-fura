@@ -6,7 +6,7 @@ import { MANUFACTURING_SITES } from "@/lib/companies-content";
 
 export function ManufacturingSitesSection() {
   return (
-    <Section gap="xl" className="bg-surface-muted">
+    <Section gap="xl-tight" className="bg-surface-muted">
       <SectionHeading
         align="center"
         title="Our Manufacturing Sites"

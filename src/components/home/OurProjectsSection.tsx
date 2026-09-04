@@ -9,35 +9,34 @@ import { PROJECTS } from "@/lib/home-content";
 
 export function OurProjectsSection() {
   return (
-    <Section gap="xl-tight" className="bg-black">
-      <div className="flex w-full flex-col lg:flex-row lg:items-end lg:justify-between">
+    <Section gap="xl" className="bg-surface">
+      {/* Title stack caps at 640px; the description runs the full width flush beneath it. */}
+      <div className="flex w-full flex-col items-start">
         <Reveal from="left" className="flex flex-col gap-4 lg:w-[640px]">
-          <Eyebrow className="text-brand-secondary">OUR WORK</Eyebrow>
+          <Eyebrow>OUR WORK</Eyebrow>
           <SplitLines
             as="h2"
             text="Our Projects"
-            className="text-display-xs font-medium text-title-inverse lg:text-display-md"
+            className="text-display-xs font-medium text-title lg:text-display-md"
           />
         </Reveal>
-        <Reveal from="right" className="lg:min-w-0 lg:flex-1">
-          <p className="text-base text-subtitle-inverse lg:text-xl">
-          Discover how Fura Habitech transforms Australian real assets. From
-          high-yield landbanking initiatives to community-first residential
+        <Reveal from="left" className="w-full">
+          <p className="text-base text-subtitle lg:text-xl">
+            Discover how Fura Habitech transforms Australian real assets. From
+            high-yield landbanking initiatives to community-first residential
             developments.
           </p>
         </Reveal>
       </div>
 
-      <RevealGroup className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">
+      <RevealGroup className="flex w-full flex-col items-stretch gap-4 lg:flex-row lg:items-start lg:gap-6">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.title} {...project} />
         ))}
       </RevealGroup>
 
       <div className="flex w-full items-start justify-center">
-        <Button href="/properties" variant="outline">
-          Check our Real Estate Properties
-        </Button>
+        <Button href="/properties">Check our Real Estate Properties</Button>
       </div>
     </Section>
   );

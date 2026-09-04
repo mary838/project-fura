@@ -36,7 +36,7 @@ export function Section({
           "mx-auto flex w-full max-w-[1200px] flex-col",
           gap === "lg" && "gap-8 lg:gap-16",
           gap === "md" && "gap-6 lg:gap-12",
-          gap === "xl" && "gap-16",
+          gap === "xl" && "gap-8 lg:gap-16",
           gap === "xl-tight" && "gap-6 lg:gap-16",
           containerClassName,
         )}
