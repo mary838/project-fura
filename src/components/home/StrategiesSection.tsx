@@ -15,7 +15,7 @@ export function StrategiesSection() {
           description="Investors select a class; each class is governed by its applicable offer documents."
           descriptionSize="base"
         />
-        <Button href="/projects">Check Our Investment Projects</Button>
+        <Button href="/properties">Check Our Investment Projects</Button>
       </div>
 
       <RevealGroup className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start">

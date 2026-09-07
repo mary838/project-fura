@@ -12,7 +12,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     title: "Company",
     links: [
       { label: "About Fura Group", href: "/about" },
-      { label: "Leadership Team", href: "/leadership" },
+      { label: "Leadership Team", href: "/teams" },
       { label: "Investor Relations", href: "/investor-relations" },
     ],
   },
