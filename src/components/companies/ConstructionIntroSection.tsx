@@ -9,8 +9,8 @@ export function ConstructionIntroSection() {
       stackGap="md"
       title="Built with Precision. Delivered with Confidence"
       paragraphs={[
-        "Habitech Construction works alongside Open Build Pty Ltd, an Australian construction firm with 25 years of\n" +
-          "experience and a proven track record of AUD550million in delivered projects. This partnership ensures precision, reliability, and compliance with national\n" +
+        "Habitech Construction works alongside Open Build Pty Ltd, an Australian construction firm with 25 years of " +
+          "experience and a proven track record of AUD550million in delivered projects. This partnership ensures precision, reliability, and compliance with national " +
           "certifications.",
       ]}
       image={{

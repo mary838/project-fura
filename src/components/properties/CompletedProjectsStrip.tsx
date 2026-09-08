@@ -36,33 +36,33 @@ export function CompletedProjectsStrip({
         role="group"
         aria-label="Completed projects"
         tabIndex={0}
-        className="flex w-full items-start justify-center gap-6 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="-mt-2 flex w-full items-start justify-center gap-6 overflow-x-auto pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {properties.map((property) => (
           <button
             key={property.title}
             type="button"
             onClick={() => setSelected(property)}
-            className="flex w-[320px] shrink-0 flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 text-left transition-transform duration-200 hover:-translate-y-1"
+            className="group flex h-[640px] w-[384px] shrink-0 flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 text-left transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="relative h-[200px] w-full shrink-0 overflow-hidden rounded-xl">
+            <div className="relative h-[280px] w-full shrink-0 overflow-hidden rounded-xl">
               <Image
                 src={property.image}
                 alt={property.title}
                 fill
-                sizes="320px"
-                className="object-cover"
+                sizes="384px"
+                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               />
               <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
                 {property.status}
               </span>
             </div>
 
-            <div className="flex w-full flex-col gap-2 rounded-xl bg-surface-muted p-4">
-              <h3 className="w-full text-lg font-semibold text-title">
+            <div className="flex w-full flex-1 flex-col gap-2 rounded-xl bg-surface-muted p-4">
+              <h3 className="w-full text-display-xs font-semibold text-title">
                 {property.title}
               </h3>
-              <p className="line-clamp-3 w-full text-sm text-subtitle">
+              <p className="line-clamp-[9] w-full text-lg text-subtitle">
                 {property.description}
               </p>
             </div>

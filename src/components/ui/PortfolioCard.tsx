@@ -5,16 +5,15 @@ import type { PortfolioCompany } from "@/lib/home-content";
 /**
  * Full-bleed company tile with a gradient scrim and a "View Company Details" link.
  *
- * Hovering lifts the card by scale rather than by a drop shadow: the shadow is
- * cast *inside* the frame, pooling over the lower half of the photo, so the
- * depth reads on the image itself and the tile keeps its flat edge against the
- * grid. `z-10` puts the growing card over its neighbours instead of under them.
+ * Hovering lifts the card (translate + drop shadow) and zooms the photo
+ * slightly. `z-10` puts the lifted card over its neighbours instead of under
+ * them.
  */
 export function PortfolioCard({ image, title, href }: PortfolioCompany) {
   return (
     <Link
       href={href}
-      className="group relative flex h-[480px] flex-1 flex-col items-start justify-end overflow-hidden rounded-2xl p-8 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:scale-[1.02]"
+      className="group relative flex h-[480px] flex-1 flex-col items-start justify-end overflow-hidden rounded-2xl p-8 shadow-none transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl"
     >
       <Image
         src={image}
@@ -38,6 +37,9 @@ export function PortfolioCard({ image, title, href }: PortfolioCompany) {
         instead of flattening the photo under an even wash.
       */}
       <div className="absolute inset-0 opacity-0 shadow-[inset_0_-140px_110px_-70px_rgba(9,12,20,0.9)] transition-opacity duration-500 group-hover:opacity-100" />
+
+      {/* Quick black flash on press/tap, layered on top of the hover scrim. */}
+      <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-150 group-active:opacity-100" />
 
       <div className="relative flex w-full flex-col gap-2.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
         <h3 className="text-display-sm font-semibold text-title-inverse">

@@ -14,9 +14,16 @@ import {
 } from "@/lib/properties-content";
 import type { PropertyListing } from "@/lib/properties-content";
 
-function ListingCard({ property }: { property: PropertyListing }) {
+function ListingCard({
+  property,
+  index = 0,
+}: {
+  property: PropertyListing;
+  index?: number;
+}) {
   const cardClass =
-    "flex w-full flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3";
+    "group relative flex w-full flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 shadow-sm card-fade-in transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:scale-[1.02] hover:shadow-lg";
+  const cardStyle = { "--card-delay": `${(index % 6) * 80}ms` } as React.CSSProperties;
 
   const body = (
     <>
@@ -26,11 +33,12 @@ function ListingCard({ property }: { property: PropertyListing }) {
           alt={property.title}
           fill
           sizes="(min-width: 1024px) 384px, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         />
         <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
           {property.status === "On going" ? "On going" : "Completed"}
         </span>
+        <div className="pointer-events-none absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-active:bg-black/40" />
       </div>
 
       <div className="flex w-full flex-col gap-4 rounded-xl bg-surface-muted p-4">
@@ -95,11 +103,13 @@ function ListingCard({ property }: { property: PropertyListing }) {
   );
 
   return property.href ? (
-    <Link href={property.href} className={cardClass}>
+    <Link href={property.href} className={cardClass} style={cardStyle}>
       {body}
     </Link>
   ) : (
-    <div className={cardClass}>{body}</div>
+    <div className={cardClass} style={cardStyle}>
+      {body}
+    </div>
   );
 }
 
@@ -166,9 +176,16 @@ export function PropertiesListSection() {
             </div>
 
             {filteredListings.length > 0 ? (
-              <RevealGroup className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <RevealGroup
+                key={activeTab}
+                className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              >
                 {filteredListings.map((property, index) => (
-                  <ListingCard key={`${property.title}-${index}`} property={property} />
+                  <ListingCard
+                    key={`${property.title}-${index}`}
+                    property={property}
+                    index={index}
+                  />
                 ))}
               </RevealGroup>
             ) : null}

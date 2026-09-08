@@ -38,8 +38,11 @@ export function Marquee({
 
   return (
     <div
+      // `py-4`/`-my-4` cancel out on layout but give a hovered cell's lifted
+      // box-shadow room to render before `overflow-hidden` (needed for the
+      // horizontal loop) clips it off.
       className={cn(
-        "w-full overflow-hidden motion-reduce:overflow-x-auto",
+        "-my-4 w-full overflow-hidden py-4 motion-reduce:overflow-x-auto",
         className,
       )}
       onPointerEnter={hold}

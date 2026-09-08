@@ -18,15 +18,15 @@ export function BuildingSystemsSection() {
           {BUILDING_SYSTEMS.map((system) => (
             <article
               key={system.title}
-              className="flex flex-col items-start gap-4 overflow-hidden rounded-2xl border border-border-primary bg-surface lg:min-w-0 lg:flex-1 lg:self-stretch"
+              className="group flex flex-col items-start gap-4 overflow-hidden rounded-2xl border border-border-primary bg-surface transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg lg:min-w-0 lg:flex-1 lg:self-stretch"
             >
-              <div className="relative h-[296px] w-full shrink-0">
+              <div className="relative h-[296px] w-full shrink-0 overflow-hidden">
                 <Image
                   src={system.image}
                   alt={system.title}
                   fill
                   sizes="(min-width: 1024px) 384px, 100vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-200 ease-out group-hover:scale-105"
                 />
               </div>
               <div className="flex w-full flex-col items-start gap-1 px-6 pb-8 lg:p-4">

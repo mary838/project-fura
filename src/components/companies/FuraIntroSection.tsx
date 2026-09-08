@@ -57,7 +57,7 @@ export function FuraIntroSection() {
           {PORTFOLIO_FEATURES.map((feature) => (
             <article
               key={feature.title}
-              className="flex flex-1 items-start gap-3 rounded-xl border-[1.5px] border-border-primary bg-surface p-6 lg:gap-6 lg:p-8"
+              className="flex flex-1 items-start gap-3 rounded-xl border-[1.5px] border-border-primary bg-surface p-6 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg lg:gap-6 lg:p-8"
             >
               <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-surface-tile">
                 <Image

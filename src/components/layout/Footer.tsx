@@ -55,7 +55,10 @@ const LEGAL_LINKS = [
  */
 function ContactBand() {
   return (
-    <div className="flex w-full flex-col items-center bg-[#fafafa] pt-8 pb-6 lg:py-12">
+    <div
+      id="contact-form"
+      className="flex w-full flex-col items-center bg-[#fafafa] pt-8 pb-6 lg:py-12"
+    >
       <div className="flex w-full max-w-[1280px] flex-col gap-8 px-4 lg:px-8">
         <div className="flex w-full flex-wrap items-center justify-between gap-y-8">
           <div className="flex min-w-0 flex-col gap-2 lg:max-w-[768px] lg:min-w-[480px] lg:flex-1">
@@ -121,7 +124,7 @@ export function Footer({ contact = true }: { contact?: boolean }) {
                   aria-label={social.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="press flex size-9 items-center justify-center rounded-md bg-white/30 p-2 opacity-80 transition-[opacity,transform] duration-200 hover:opacity-100"
+                  className="press flex size-9 items-center justify-center rounded-md bg-white/30 p-1.5 opacity-80 transition-[opacity,transform] duration-200 hover:opacity-100"
                 >
                   <Image
                     src={social.icon}

@@ -13,9 +13,9 @@ export function PropertyManagementSection() {
           {PROPERTY_MANAGEMENT_ITEMS.map((item) => (
             <article
               key={item.title}
-              className="flex h-56 w-full flex-col items-start gap-5 rounded-xl border border-border-primary bg-surface p-8"
+              className="group flex h-56 w-full flex-col items-start gap-5 rounded-xl border border-border-primary bg-surface p-8 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]"
             >
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-[20px] bg-surface-muted">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-[20px] bg-surface-muted transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-brand-secondary">
                 <Image src={item.icon} alt="" width={24} height={24} className="size-6" />
               </div>
 

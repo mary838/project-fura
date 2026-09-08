@@ -39,13 +39,13 @@ export function IntroSplit({
     >
       <div
         className={cn(
-          "mx-auto flex w-full max-w-[1200px] flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-0",
+          "mx-auto flex w-full max-w-[1240px] flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-16",
           stackGap === "md" ? "gap-6" : "gap-8",
         )}
       >
         <Reveal
           from="left"
-          className="flex flex-col items-start gap-6 lg:w-[520px]"
+          className="flex flex-col items-start gap-6 lg:min-w-0 lg:flex-1"
         >
           <h2 className="w-full text-display-xs font-medium text-title lg:text-display-md">
             {title}
@@ -64,7 +64,7 @@ export function IntroSplit({
           {cta ? <Button href={cta.href}>{cta.label}</Button> : null}
         </Reveal>
 
-        <Reveal from="right" className="w-full lg:w-[640px]">
+        <Reveal from="right" className="w-full lg:w-[640px] lg:shrink-0">
           <MediaFrame
             src={image.src}
             mobileSrc={image.mobileSrc}

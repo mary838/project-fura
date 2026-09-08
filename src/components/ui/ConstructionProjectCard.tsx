@@ -11,11 +11,11 @@ export function ConstructionProjectCard({
 }: ConstructionProject) {
   return (
     <article className="flex w-full flex-col items-start gap-6 overflow-hidden rounded-2xl border border-border-secondary bg-surface">
-      <div className="relative h-[200px] w-full shrink-0 lg:h-[420px]">
+      <div className="relative aspect-[1705/923] w-full shrink-0 lg:aspect-[1200/420]">
         {/*
-          The desktop still is cropped to a 2.86:1 frame — object-cover would
-          slice off the outer thirds of the mobile card's 1.85:1 photo, so
-          mobile gets its own crop of the same shot instead of stretching it.
+          The container's aspect ratio matches each photo's native crop
+          exactly (mobile 1.85:1, desktop 2.86:1), so object-cover scales the
+          image without ever slicing off part of it, at any viewport width.
         */}
         <Image
           src={mobileImage}

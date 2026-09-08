@@ -32,11 +32,16 @@ export function OrganigramSection() {
 
           {/*
             Horizontal branch spans centre-of-first to centre-of-last column.
-            With six equal columns that is 100% - (100%/6) = 83.333%.
-            It only makes sense once the columns sit side by side.
+            With six equal columns that's 5/6 of the row width — but the row
+            also has 5 gaps of 16px (`lg:gap-4`) between the columns, which
+            widen each column and push the outer centres further apart than a
+            plain 83.333% accounts for. The general distance between the
+            centre of column 0 and column n-1, given n equal columns and gap
+            g, is (n-1)/n * (width + g) — for n=6, g=16px that's
+            83.333% of the row plus 13.333px.
           */}
           <div className="hidden w-full justify-center lg:flex">
-            <div className={`h-0.5 w-[83.333%] ${CONNECTOR}`} />
+            <div className={`h-0.5 w-[calc(83.3333%+13.3333px)] ${CONNECTOR}`} />
           </div>
 
           <div className="flex w-full flex-col justify-center gap-3 lg:flex-row lg:gap-4">

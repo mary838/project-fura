@@ -38,13 +38,16 @@ export function Carousel({ children, className, label }: CarouselProps) {
         aria-label={label}
         tabIndex={0}
         className={cn(
-          "-mx-4 flex w-[calc(100%+2rem)] snap-x snap-mandatory items-stretch gap-6 overflow-x-auto px-4 pb-1",
+          "-mx-4 -my-4 flex w-[calc(100%+2rem)] snap-x snap-mandatory items-stretch gap-6 overflow-x-auto px-4 py-4",
           "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           // The track takes focus for keyboard scrolling, so it needs a ring.
           "focus-visible:outline-offset-[-2px]",
           // Trailing padding is the page gutter, so the last card lands back on
-          // the container's edge once the row is scrolled to the end.
-          "lg:mx-0 lg:w-[calc(50%+50vw)] lg:pb-0 lg:pl-0 lg:pr-[100px]",
+          // the container's edge once the row is scrolled to the end. Vertical
+          // padding (cancelled by the matching negative margin, so it doesn't
+          // add layout height) gives a hovered card's lifted box-shadow room to
+          // render before `overflow-x-auto` — which clips both axes — cuts it off.
+          "lg:mx-0 lg:pl-0 lg:pr-[100px] lg:w-[calc(50%+50vw)]",
           className,
         )}
       >

@@ -24,7 +24,7 @@ export function StrategyComparisonSection() {
             {FH_STRATEGIES.map((item) => (
               <div
                 key={item.badge}
-                className="flex flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 lg:min-w-0 lg:flex-1 lg:self-stretch"
+                className="flex flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg lg:min-w-0 lg:flex-1 lg:self-stretch"
               >
                 <div className="flex w-full items-start justify-between">
                   <div className="flex size-16 items-center justify-center rounded-full bg-surface-tile">

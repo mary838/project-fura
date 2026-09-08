@@ -9,7 +9,7 @@ import type { Strategy } from "@/lib/home-content";
  */
 export function StrategyCard({ badge, icon, title, description, driver }: Strategy) {
   return (
-    <article className="flex flex-1 flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 shadow-[0_-7px_0_0_#222325]">
+    <article className="flex flex-1 flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 shadow-[0_-7px_0_0_#222325] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_-7px_0_0_#222325,0_12px_24px_-8px_rgba(9,12,20,0.25)]">
       <div className="flex w-full items-start justify-between">
         <div className="flex size-16 items-center justify-center rounded-full bg-surface-tile">
           <Image src={icon} alt="" width={24} height={24} className="size-6" />
