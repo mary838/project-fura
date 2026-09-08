@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type ButtonVariant = "solid" | "outline";
+type ButtonVariant = "solid" | "outline" | "outline-light";
 type ButtonSize = "md" | "sm" | "icon";
 
 type ButtonProps = {
@@ -24,6 +24,14 @@ const VARIANTS: Record<ButtonVariant, string> = {
   solid: "bg-utility-gray-900 text-title-inverse hover:bg-utility-gray-800",
   outline:
     "border border-border-secondary text-title-inverse hover:bg-black/40",
+  /*
+   * `outline` is light-on-dark, for the buttons that sit over a hero photo.
+   * This is the same shape on a light section — a separate variant rather than
+   * a `className` override because `cn` only joins, so the colours passed in
+   * would be settled by stylesheet order instead of by the caller.
+   */
+  "outline-light":
+    "border border-border-primary bg-surface text-title hover:bg-surface-muted",
 };
 
 const SIZES: Record<ButtonSize, string> = {

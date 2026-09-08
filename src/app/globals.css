@@ -18,6 +18,11 @@
   --color-role: #dc6803;
   --color-tag: #b24d00;
 
+  /* Success — the delivered/completed state, paired like the amber badge. */
+  --color-success: #067647;
+  --color-success-surface: #ecfdf3;
+  --color-success-border: #abefc6;
+
   /* Surfaces */
   --color-surface: #ffffff;
   --color-surface-muted: #f5f5f5;

@@ -53,11 +53,11 @@ export const PROPERTY_LISTINGS: PropertyListing[] = [
   {
     image: "/fura/properties/listings/timor-avenue-1.png",
     status: "On going",
-    title: "Timor Avenue",
+    title: "Timor avenue",
     price: "900k AUD",
     specs: [
-      { icon: "/fura/icons/building-03.svg", label: "2013 sqm" },
-      { icon: "/fura/icons/layers-three-02.svg", label: "10 Units" },
+      { icon: "/fura/icons/building-03.svg", label: "property 2013 sqm" },
+      { icon: "/fura/icons/layers-three-02.svg", label: "10 units" },
       { icon: "/fura/icons/layers-three-02.svg", label: "3 Floors" },
     ],
     href: "/properties/timor-avenue",
@@ -65,10 +65,10 @@ export const PROPERTY_LISTINGS: PropertyListing[] = [
   {
     image: "/fura/properties/listings/timor-avenue-2.png",
     status: "On going",
-    title: "Timor Avenue",
+    title: "Timor avenue",
     price: "900k AUD",
     specs: [
-      { icon: "/fura/icons/building-03.svg", label: "936 sqm" },
+      { icon: "/fura/icons/building-03.svg", label: "property 936 sqm" },
       { icon: "/fura/icons/layers-three-02.svg", label: "3 Floors" },
       { icon: "/fura/icons/maximize-01.svg", label: "200 sqm" },
     ],
@@ -77,11 +77,11 @@ export const PROPERTY_LISTINGS: PropertyListing[] = [
   {
     image: "/fura/properties/listings/timor-avenue-3.png",
     status: "On going",
-    title: "Timor Avenue",
+    title: "Timor avenue",
     price: "A$950,000 – A$1,150,000",
     specs: [
-      { icon: "/fura/icons/building-03.svg", label: "794 sqm" },
-      { icon: "/fura/icons/layers-three-02.svg", label: "10 × 3-Bedroom Units" },
+      { icon: "/fura/icons/building-03.svg", label: "property 794 sqm" },
+      { icon: "/fura/icons/layers-three-02.svg", label: "10 × 3-bedroom units" },
       { icon: "/fura/icons/maximize-01.svg", label: "200 sqm" },
     ],
     href: "/properties/timor-avenue-3",
@@ -95,7 +95,7 @@ export const PROPERTY_LISTINGS: PropertyListing[] = [
       { icon: "/fura/icons/building-03.svg", label: "1 Bedroom" },
       { icon: "/fura/icons/spacing-width-01.svg", label: "S" },
       { icon: "/fura/icons/calendar.svg", label: "5 months" },
-      { icon: "/fura/icons/maximize-01.svg", label: "41 m²" },
+      { icon: "/fura/icons/maximize-01.svg", label: "794 m²" },
     ],
     href: "/properties/winghouse-s",
   },
@@ -129,7 +129,7 @@ export const PROPERTY_LISTINGS: PropertyListing[] = [
     image: "/fura/properties/listings/fura-living-kelvyngroove.png",
     status: "On going",
     title: "Fura Living, Kelvyngroove Village",
-    price: "50m AUD",
+    price: "50 m AUD",
     specs: [
       { icon: "/fura/icons/building-03.svg", label: "35 Units" },
       { icon: "/fura/icons/currency-dollar-circle.svg", label: "A$38.7M GDV" },
@@ -142,13 +142,13 @@ export const PROPERTY_LISTINGS: PropertyListing[] = [
     image: "/fura/properties/listings/the-lakes.png",
     status: "On going",
     title: "The Lakes",
-    price: "AUD 200M",
+    price: "AUD 200 M",
     specs: [
       { icon: "/fura/icons/building-03.svg", label: "11 Units" },
-      { icon: "/fura/icons/spacing-width-01.svg", label: "21.9 Ha" },
-      { icon: "/fura/icons/calendar.svg", label: "2026–2027" },
+      { icon: "/fura/icons/spacing-width-01.svg", label: "21,9Ha" },
+      { icon: "/fura/icons/calendar.svg", label: "2026-2027" },
     ],
-    location: "Logan City, Carbrook",
+    location: "LoganCity Carbrook",
     href: "/properties/the-lakes",
   },
 ];
@@ -182,6 +182,41 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     title: "High Street",
     description:
       "Open Build Pty Ltd worked on the AUD 60M, 29-storey student accommodation tower at High Street featuring 374 beds, communal spaces, gym, and outdoor courtyards. Built on a constrained 470sqm site in Melbourne CBD, the project reached Practical Completion in August 2023.",
+  },
+  {
+    image: "/fura/companies/construction/p4-private-hospital.png",
+    status: "Completed",
+    title: "Private Hospital",
+    description:
+      "Open Build Pty Ltd delivered the early works for Private Hospital, including demolition of three buildings, basement retention and heritage façade protection. These works supported the AUD 183M hospital redevelopment and reached Practical Completion in late 2022.",
+  },
+  {
+    image: "/fura/companies/construction/p5-gold-central.png",
+    status: "Completed",
+    title: "Gold Central City",
+    description:
+      "Open Build Pty Ltd worked on the AUD 53M 17-storey student accommodation tower built through the centre of the heritage-listed Gold Central City, delivering 362 beds, a biophilic façade and 5 Star Green Star performance. Completed in 2022.",
+  },
+  {
+    image: "/fura/companies/construction/p6-office-hq.png",
+    status: "Completed",
+    title: "Office Headquarters",
+    description:
+      "Open Build Pty Ltd contributed to the AUD 50M Office Headquarters, a nine-level commercial building with retail, 10,152sqm office NLA, two basement levels and EOT facilities. The project achieved 5 Star Green Star and NABERS ratings, completing in 2021.",
+  },
+  {
+    image: "/fura/companies/construction/p7-state-school.png",
+    status: "Completed",
+    title: "State School New Learning Centre",
+    description:
+      "Open Build Pty Ltd delivered the State School New Learning Centre in Brisbane, completed in two stages within an operational school. Works included refurbishing A Block and constructing a new two-storey Public building with eight classrooms, breakout spaces, an undercroft and a tennis court, linked via a new walkway. Heritage features were preserved and strict access controls were implemented to ensure campus safety.",
+  },
+  {
+    image: "/fura/companies/construction/p8-east-primary.png",
+    status: "Completed",
+    title: "East Primary School",
+    description:
+      "Open Build Pty Ltd delivered the new East Primary School in South east for the Victorian School Building Authority. The campus includes modern single-storey learning buildings, flexible learning neighbourhoods, specialist facilities, a gymnasium, library and administration centre, complemented by landscaped outdoor areas and sports courts. Practical completion was achieved ahead of the 2026 school year, with the school opening in Term 1.",
   },
 ];
 

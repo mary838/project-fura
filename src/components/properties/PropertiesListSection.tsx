@@ -7,6 +7,7 @@ import { CompanyHero } from "@/components/companies/CompanyHero";
 import { CompletedProjectsStrip } from "@/components/properties/CompletedProjectsStrip";
 import { FilterPill } from "@/components/ui/FilterPill";
 import { RevealGroup } from "@/components/ui/RevealGroup";
+import { cn } from "@/lib/cn";
 import {
   FEATURED_PROPERTIES,
   PROPERTY_LISTINGS,
@@ -35,13 +36,26 @@ function ListingCard({
           sizes="(min-width: 1024px) 384px, 100vw"
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         />
-        <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
-          {property.status === "On going" ? "On going" : "Completed"}
+        {/* Delivered projects read as a success state; in-progress stays neutral. */}
+        <span
+          className={cn(
+            "absolute top-4 right-4 rounded-md px-3 py-1.5 text-sm font-medium",
+            property.status === "Completed"
+              ? "border border-success-border bg-success-surface text-success"
+              : "bg-surface text-title",
+          )}
+        >
+          {property.status}
         </span>
         <div className="pointer-events-none absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-active:bg-black/40" />
       </div>
 
-      <div className="flex w-full flex-col gap-4 rounded-xl bg-surface-muted p-4">
+      {/*
+        The panel grows into whatever height the card has left, so a listing
+        with no price or location still fills the tile the way a complete one
+        does instead of leaving bare card below it.
+      */}
+      <div className="flex w-full flex-1 flex-col gap-4 rounded-xl bg-surface-muted p-4">
         <div className="flex w-full flex-col gap-2">
           <div className="flex w-full items-start gap-2">
             <h3 className="min-w-0 flex-1 truncate text-display-xs font-semibold text-title">
@@ -55,9 +69,17 @@ function ListingCard({
               className="mt-0.5 size-6 shrink-0"
             />
           </div>
-          {property.price ? (
-            <p className="w-full text-lg text-subtitle">{property.price}</p>
-          ) : null}
+          {/*
+            A listing with no price still reserves the line, so the rule and
+            the specs below it sit at the same height across the row rather
+            than riding up under the title.
+          */}
+          <p
+            className="w-full text-lg text-subtitle"
+            aria-hidden={property.price ? undefined : true}
+          >
+            {property.price ?? "\u00a0"}
+          </p>
         </div>
 
         <hr className="w-full border-t border-border-primary" />

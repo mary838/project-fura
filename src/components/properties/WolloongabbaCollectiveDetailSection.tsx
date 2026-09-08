@@ -30,7 +30,7 @@ export function WolloongabbaCollectiveDetailSection() {
             The Wolloongabba Collective
           </span>
         </nav>
-
+    
         <div className="order-1 w-full lg:order-2">
           <WolloongabbaGallery
             images={WOLLOONGABBA_COLLECTIVE_GALLERY}

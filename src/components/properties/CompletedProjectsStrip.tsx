@@ -1,16 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CarouselArrows, useCarouselControls } from "@/components/ui/carousel-controls";
 import type { FeaturedProperty } from "@/lib/properties-content";
 
 /**
- * Horizontal scroll row for completed projects. Per design feedback (see the
- * "common/Remark" annotation on this frame in Figma): these don't get a
- * click-through detail page — that information already lives on the
- * relevant company page — so the card itself only surfaces key facts.
- * Clicking a card instead opens a lightbox with the full description.
+ * Horizontal scroll row for completed projects. Per design feedback these are
+ * read-only: there is no click-through detail page — that information already
+ * lives on the relevant company page — so each card states its case in full
+ * and the arrows are the only control.
  */
 export function CompletedProjectsStrip({
   properties,
@@ -18,32 +16,26 @@ export function CompletedProjectsStrip({
   properties: FeaturedProperty[];
 }) {
   const { trackRef, active, step } = useCarouselControls();
-  const [selected, setSelected] = useState<FeaturedProperty | null>(null);
-
-  useEffect(() => {
-    if (!selected) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [selected]);
 
   return (
     <div className="flex w-full flex-col items-center gap-6">
+      {/*
+        Start-aligned, never centred: `justify-center` on a track that overflows
+        pushes the leading cards to a negative offset, and nothing can scroll
+        back past zero to reach them. Three 384px cards and two 24px gaps fill
+        the 1200px container exactly, so the arrows page one card at a time.
+      */}
       <div
         ref={trackRef}
         role="group"
         aria-label="Completed projects"
         tabIndex={0}
-        className="-mt-2 flex w-full items-start justify-center gap-6 overflow-x-auto pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="-mt-2 flex w-full items-stretch justify-start gap-6 overflow-x-auto pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {properties.map((property) => (
-          <button
+          <article
             key={property.title}
-            type="button"
-            onClick={() => setSelected(property)}
-            className="group flex h-[640px] w-[384px] shrink-0 flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 text-left transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg"
+            className="group flex min-h-[640px] w-[384px] shrink-0 flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="relative h-[280px] w-full shrink-0 overflow-hidden rounded-xl">
               <Image
@@ -53,7 +45,7 @@ export function CompletedProjectsStrip({
                 sizes="384px"
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               />
-              <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
+              <span className="absolute top-4 right-4 rounded-md border border-success-border bg-success-surface px-3 py-1.5 text-sm font-medium text-success">
                 {property.status}
               </span>
             </div>
@@ -62,67 +54,20 @@ export function CompletedProjectsStrip({
               <h3 className="w-full text-display-xs font-semibold text-title">
                 {property.title}
               </h3>
-              <p className="line-clamp-[9] w-full text-lg text-subtitle">
+              {/*
+                No clamp: with no lightbox behind the card, anything trimmed
+                here would be unreadable. The row stretches every card to the
+                tallest instead, so the longest write-up still fits.
+              */}
+              <p className="w-full text-lg text-subtitle">
                 {property.description}
               </p>
             </div>
-          </button>
+          </article>
         ))}
       </div>
 
       <CarouselArrows active={active} step={step} />
-
-      {selected ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={selected.title}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
-          onClick={() => setSelected(null)}
-        >
-          <div
-            className="flex max-h-[90vh] w-full max-w-[480px] flex-col overflow-hidden rounded-2xl bg-surface"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="relative aspect-[360/260] w-full shrink-0">
-              <Image
-                src={selected.image}
-                alt={selected.title}
-                fill
-                sizes="480px"
-                className="object-cover"
-              />
-              <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
-                {selected.status}
-              </span>
-              <button
-                type="button"
-                onClick={() => setSelected(null)}
-                aria-label="Close"
-                className="press absolute top-4 left-4 flex size-9 items-center justify-center rounded-full bg-surface/90 text-title transition-opacity duration-200 hover:opacity-80"
-              >
-                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className="size-5">
-                  <path
-                    d="M5 5L15 15M15 5L5 15"
-                    stroke="currentColor"
-                    strokeWidth="1.66667"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div className="flex w-full flex-col gap-3 overflow-y-auto p-6">
-              <h3 className="w-full text-display-xs font-semibold text-title">
-                {selected.title}
-              </h3>
-              <p className="w-full text-base text-subtitle">
-                {selected.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }
