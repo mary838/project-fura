@@ -185,7 +185,7 @@ export const PARTNERS: Partner[] = [
     logoClassName: "scale-[1.2]",
   },
   { logo: "/fura/partners/jane-box.png", name: "Jane-Box Co., Ltd" },
-  { logo: "/fura/partners/open-build.png", name: "" },
+  { logo: "/fura/partners/open-build.png", name: "Open Build Pty Ltd" },
   { logo: "/fura/partners/ty-consultant.png", name: "TY Consultant Pty Ltd" },
   {
     logo: "/fura/partners/aad-sourcing.png",
