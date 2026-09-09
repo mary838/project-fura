@@ -107,14 +107,14 @@ export function WinghouseGallery({
           <button
             type="button"
             onClick={() => setOpenIndex(4)}
-            className="relative hidden flex-col items-center justify-center gap-2.5 overflow-hidden rounded-lg p-3 lg:flex lg:h-full lg:w-full"
+            className="relative hidden items-center justify-center overflow-hidden rounded-lg lg:flex lg:h-full lg:w-full"
           >
             <Image src={image5} alt="" fill sizes="253px" quality={95} className="object-cover" />
             <span className="absolute inset-0 bg-black/40" />
             <span className="relative text-display-sm font-bold text-title-inverse">
               {moreCount}
             </span>
-            <span className="relative ml-auto rounded-md bg-brand-secondary px-3 py-1.5 text-base font-semibold text-title">
+            <span className="absolute right-3 bottom-3 rounded-md bg-brand-secondary px-3 py-1.5 text-base font-semibold text-title">
               {moreLabel}
             </span>
           </button>

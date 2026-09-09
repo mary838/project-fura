@@ -10,7 +10,7 @@ import type { NewsItem } from "@/lib/about-content";
 export function NewsCard({ image, titleLead, title, date }: NewsItem) {
   return (
     <article
-      className="group flex h-[470px] w-[320px] shrink-0 snap-start flex-col items-start overflow-hidden rounded-2xl border border-border-primary bg-surface card-hover hover:-translate-y-1 hover:shadow-lg lg:w-[384px] active:-translate-y-1 active:shadow-lg touch:shadow-lg"
+      className="group flex h-[470px] w-[320px] shrink-0 snap-center flex-col items-start overflow-hidden rounded-2xl border border-border-primary bg-surface card-hover hover:-translate-y-1 hover:shadow-lg lg:w-[384px] lg:snap-start active:-translate-y-1 active:shadow-lg touch:shadow-lg"
     >
       <div className="relative aspect-[384/256] w-full shrink-0">
         <Image
