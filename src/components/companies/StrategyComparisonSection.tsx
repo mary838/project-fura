@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
+import { ScrollHint } from "@/components/ui/ScrollHint";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FH_COMPARISON, FH_STRATEGIES } from "@/lib/fura-habitech-content";
 
@@ -24,10 +25,10 @@ export function StrategyComparisonSection() {
             {FH_STRATEGIES.map((item) => (
               <div
                 key={item.badge}
-                className="flex flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg lg:min-w-0 lg:flex-1 lg:self-stretch"
+                className="group flex flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 card-hover hover:-translate-y-1 hover:shadow-lg lg:min-w-0 lg:flex-1 lg:self-stretch active:-translate-y-1 active:shadow-lg touch:shadow-lg"
               >
                 <div className="flex w-full items-start justify-between">
-                  <div className="flex size-16 items-center justify-center rounded-full bg-surface-tile">
+                  <div className="flex size-16 items-center justify-center rounded-full bg-surface-tile transition-colors duration-300 group-hover:bg-brand-secondary group-active:bg-brand-secondary">
                     <Image
                       src={item.icon}
                       alt=""
@@ -36,7 +37,9 @@ export function StrategyComparisonSection() {
                       className="size-6"
                     />
                   </div>
-                  <Badge className="rounded-lg">{item.badge}</Badge>
+                  <Badge className="rounded-lg transition-colors duration-300 group-hover:bg-brand-accent group-active:bg-brand-accent">
+                    {item.badge}
+                  </Badge>
                 </div>
 
                 <div className="flex w-full flex-col gap-4">
@@ -63,10 +66,12 @@ export function StrategyComparisonSection() {
           </div>
 
           {/*
-            The table keeps its 1200px desktop width on mobile in the design,
-            so it scrolls horizontally rather than reflowing.
+            The table keeps its 1200px desktop width on mobile in the design, so
+            it scrolls horizontally rather than reflowing — `ScrollHint` supplies
+            the arrows and progress that say so, and stays out of the way at the
+            widths where the whole table already fits.
           */}
-          <div className="w-full overflow-x-auto">
+          <ScrollHint label="Strategy comparison">
             <div className="min-w-[1200px] overflow-hidden rounded-lg border border-border-primary text-sm">
               <div className="flex w-full items-start gap-4 bg-utility-gray-900 px-6 py-4 font-medium text-white">
                 <p className="w-[200px] shrink-0">STRATEGY</p>
@@ -104,7 +109,7 @@ export function StrategyComparisonSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollHint>
         </div>
       </div>
     </section>

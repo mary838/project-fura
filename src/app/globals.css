@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/*
+ * Touch devices never fire `:hover` — Tailwind v4 gates the `hover:` variant
+ * behind `(hover: hover)` — so a card's raised look would simply never appear
+ * on a phone. `touch:` carries that same depth at rest instead of waiting for
+ * an interaction that cannot happen.
+ */
+@custom-variant touch (@media (hover: none));
+
 /* ---------------------------------------------------------------------------
    Fura Habitech design tokens (mirrors the Figma variable collection)
    --------------------------------------------------------------------------- */
@@ -17,11 +25,6 @@
   --color-brand-accent: #c2855e;
   --color-role: #dc6803;
   --color-tag: #b24d00;
-
-  /* Success — the delivered/completed state, paired like the amber badge. */
-  --color-success: #067647;
-  --color-success-surface: #ecfdf3;
-  --color-success-border: #abefc6;
 
   /* Surfaces */
   --color-surface: #ffffff;
@@ -138,21 +141,68 @@ body {
 
 /*
  * Staggered reveal for a list of cards. The group element keeps the layout
- * classes, so the offset is applied to its direct children — and through the
- * `translate` property, which composes with the cards' `hover:-translate-y-1`
- * transform instead of fighting it.
+ * classes, so the offset is applied to its direct children — and through
+ * `transform`, matching `[data-reveal]` above, which leaves the `translate`
+ * property free for the cards' own `hover:-translate-y-1`.
+ *
+ * The two have to stay on separate properties. Tailwind v4 lifts through
+ * `translate`, so while the reveal held that property the resting `none` here
+ * outranked the hover utility — unlayered rules beat layered ones — and no
+ * card inside a group could lift at all.
  */
 [data-reveal-group] > * {
   opacity: 0;
-  translate: 0 24px;
+  transform: translateY(24px);
   transition:
     opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-    translate 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-reveal-group].is-visible > * {
   opacity: 1;
-  translate: none;
+  transform: none;
+}
+
+/*
+ * On touch the cards scale in as well as rise. A phone never fires hover, and
+ * the pressed state only shows while a finger is held, so this is the moment
+ * the movement can actually be seen — every card grows into place as it
+ * arrives instead of simply appearing.
+ *
+ * It rides on `transform`, which the reveal already owns, so the `scale`
+ * property stays free for the cards' own `active:scale-*` press.
+ */
+@media (hover: none) {
+  [data-reveal-group] > * {
+    transform: translateY(24px) scale(0.96);
+  }
+
+  [data-reveal-group].is-visible > * {
+    transform: none;
+  }
+}
+
+/*
+ * Shared hover transition for every card.
+ *
+ * Tailwind v4 lifts and zooms through the `translate` and `scale` properties,
+ * not `transform`, so a `transition-[transform,box-shadow]` utility animates
+ * neither: the card snaps to its raised position while only the shadow eases.
+ * Naming the properties that actually change fixes that everywhere at once,
+ * and keeps the timing of every card in step.
+ *
+ * The selector is doubled to outrank `[data-reveal-group] > *`, which hands
+ * its own transition to each card it staggers in and would otherwise leave the
+ * hover unanimated. `opacity` stays on the list so those entrances still fade,
+ * and the stagger's `transition-delay` is set by a more specific rule above.
+ */
+.card-hover.card-hover {
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    translate 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    scale 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-reveal-group].is-visible > *:nth-child(1) {
@@ -190,6 +240,33 @@ body {
 }
 [data-reveal-group].is-visible > *:nth-child(12) {
   transition-delay: calc(var(--reveal-delay, 0ms) + 11 * var(--reveal-step, 90ms));
+}
+
+/*
+ * A button's arrow slides forward on hover. Touch devices never fire hover,
+ * and pressing one only shows the slide while the finger is down — which for
+ * a link is the instant before the page navigates away. So on touch the arrow
+ * makes the same move on a slow loop instead: the affordance still reads,
+ * without an interaction that cannot happen.
+ *
+ * `translate` rather than `transform`, to match the `group-hover:translate-x-1`
+ * utility it stands in for. The reduced-motion block below drops it.
+ */
+@keyframes arrow-nudge {
+  0%,
+  55%,
+  100% {
+    translate: 0 0;
+  }
+  75% {
+    translate: 4px 0;
+  }
+}
+
+@media (hover: none) {
+  .btn-arrow {
+    animation: arrow-nudge 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
 }
 
 /* Hero copy lifts in once on first paint; delays are set per element. */

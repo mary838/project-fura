@@ -35,7 +35,7 @@ export function CompletedProjectsStrip({
         {properties.map((property) => (
           <article
             key={property.title}
-            className="group flex min-h-[640px] w-[384px] shrink-0 flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg"
+            className="group flex w-[384px] shrink-0 flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 card-hover hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-12px_rgba(9,12,20,0.28)] active:-translate-y-1.5 active:shadow-[0_18px_40px_-12px_rgba(9,12,20,0.28)] touch:shadow-[0_18px_40px_-12px_rgba(9,12,20,0.28)]"
           >
             <div className="relative h-[280px] w-full shrink-0 overflow-hidden rounded-xl">
               <Image
@@ -43,9 +43,9 @@ export function CompletedProjectsStrip({
                 alt={property.title}
                 fill
                 sizes="384px"
-                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-active:scale-105"
               />
-              <span className="absolute top-4 right-4 rounded-md border border-success-border bg-success-surface px-3 py-1.5 text-sm font-medium text-success">
+              <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
                 {property.status}
               </span>
             </div>
@@ -55,11 +55,12 @@ export function CompletedProjectsStrip({
                 {property.title}
               </h3>
               {/*
-                No clamp: with no lightbox behind the card, anything trimmed
-                here would be unreadable. The row stretches every card to the
-                tallest instead, so the longest write-up still fits.
+                Every card in the row is as tall as the longest write-up, so
+                the clamp is what keeps the short ones from trailing a block of
+                empty grey. Eight lines at 16px is the point where the spread
+                between the shortest and longest entry closes up.
               */}
-              <p className="w-full text-lg text-subtitle">
+              <p className="line-clamp-8 w-full text-base text-subtitle">
                 {property.description}
               </p>
             </div>

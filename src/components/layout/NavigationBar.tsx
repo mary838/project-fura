@@ -152,7 +152,7 @@ export function NavigationBar({
                       )
                     }
                     className={cn(
-                      "flex cursor-pointer items-center gap-1 text-sm whitespace-nowrap transition-opacity hover:opacity-70",
+                      "flex cursor-pointer items-center gap-1 text-sm whitespace-nowrap transition-opacity hover:opacity-70 active:opacity-70",
                       current ? LINK_STATE.current : LINK_STATE.resting,
                       alwaysSolid ? "" : "rounded-lg px-4 py-3",
                     )}
@@ -184,7 +184,7 @@ export function NavigationBar({
                                 aria-current={itemCurrent ? "page" : undefined}
                                 onClick={() => setOpenMenu(null)}
                                 className={cn(
-                                  "block text-sm whitespace-nowrap transition-opacity hover:opacity-70",
+                                  "block text-sm whitespace-nowrap transition-opacity hover:opacity-70 active:opacity-70",
                                   itemCurrent
                                     ? LINK_STATE.current
                                     : LINK_STATE.resting,
@@ -205,7 +205,7 @@ export function NavigationBar({
                     href={link.href ?? "/"}
                     aria-current={current ? "page" : undefined}
                     className={cn(
-                      "flex items-center gap-1 text-sm whitespace-nowrap transition-opacity hover:opacity-70",
+                      "flex items-center gap-1 text-sm whitespace-nowrap transition-opacity hover:opacity-70 active:opacity-70",
                       current ? LINK_STATE.current : LINK_STATE.resting,
                       alwaysSolid ? "" : "rounded-lg px-4 py-3",
                     )}
@@ -219,7 +219,7 @@ export function NavigationBar({
         </nav>
 
         <div className="hidden xl:block">
-          <Button href="/invest" size="sm">
+          <Button href="#contact-form" size="sm">
             Invest with us
           </Button>
         </div>
@@ -315,7 +315,7 @@ export function NavigationBar({
           })}
         </ul>
         <div className="px-4 pb-6">
-          <Button href="/invest" size="sm" className="w-full">
+          <Button href="#contact-form" size="sm" className="w-full">
             Invest with us
           </Button>
         </div>

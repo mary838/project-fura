@@ -25,8 +25,10 @@ type RevealGroupProps = {
  * `flex-1`, `col-span`, or `self-stretch`, which changes the layout — this
  * doesn't.
  *
- * The offset uses the `translate` property rather than `transform`, so the
- * cards' `hover:-translate-y-1` lift still composes instead of overriding it.
+ * The offset uses `transform` rather than the `translate` property, leaving
+ * `translate` free for the cards' own lift — Tailwind v4 raises them through
+ * `translate`, so sharing it would let the reveal's resting value cancel the
+ * hover outright.
  */
 export function RevealGroup({
   children,

@@ -51,8 +51,9 @@ export function WolloongabbaGallery({ images, alt }: WolloongabbaGalleryProps) {
             src={main}
             alt={alt}
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 670px, 206px"
+            quality={95}
             className="object-contain"
           />
         </button>
@@ -61,21 +62,21 @@ export function WolloongabbaGallery({ images, alt }: WolloongabbaGalleryProps) {
           onClick={() => setOpenIndex(1)}
           className="relative h-[135px] w-[206px] shrink-0 overflow-hidden rounded-2xl lg:hidden"
         >
-          <Image src={image2} alt="" fill sizes="206px" className="object-cover" />
+          <Image src={image2} alt="" fill sizes="206px" quality={95} className="object-cover" />
         </button>
         <button
           type="button"
           onClick={() => setOpenIndex(2)}
           className="relative h-[135px] w-[206px] shrink-0 overflow-hidden rounded-2xl lg:hidden"
         >
-          <Image src={image3} alt="" fill sizes="206px" className="object-cover" />
+          <Image src={image3} alt="" fill sizes="206px" quality={95} className="object-cover" />
         </button>
         <button
           type="button"
           onClick={() => setOpenIndex(3)}
           className="relative h-[135px] w-[206px] shrink-0 overflow-hidden rounded-2xl lg:hidden"
         >
-          <Image src={image4} alt="" fill sizes="206px" className="object-cover" />
+          <Image src={image4} alt="" fill sizes="206px" quality={95} className="object-cover" />
         </button>
 
         <div className="hidden lg:grid lg:h-full lg:flex-1 lg:grid-cols-2 lg:grid-rows-2 lg:gap-3">
@@ -84,21 +85,21 @@ export function WolloongabbaGallery({ images, alt }: WolloongabbaGalleryProps) {
             onClick={() => setOpenIndex(1)}
             className="relative hidden overflow-hidden rounded-lg border border-border-primary lg:block lg:h-full lg:w-full"
           >
-            <Image src={image2} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={image2} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(2)}
             className="relative hidden overflow-hidden rounded-lg border border-border-primary lg:block lg:h-full lg:w-full"
           >
-            <Image src={image3} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={image3} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(3)}
             className="relative col-span-2 hidden overflow-hidden rounded-lg lg:block lg:h-full lg:w-full"
           >
-            <Image src={image4} alt="" fill sizes="518px" className="object-cover" />
+            <Image src={image4} alt="" fill sizes="518px" quality={95} className="object-cover" />
           </button>
         </div>
       </div>
@@ -116,7 +117,7 @@ export function WolloongabbaGallery({ images, alt }: WolloongabbaGalleryProps) {
               type="button"
               onClick={() => setOpenIndex(null)}
               aria-label="Close"
-              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80"
+              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80 active:opacity-80"
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-6">
                 <path
@@ -138,6 +139,7 @@ export function WolloongabbaGallery({ images, alt }: WolloongabbaGalleryProps) {
               alt={alt}
               fill
               sizes="(min-width: 1024px) 1024px, 100vw"
+              quality={95}
               className="object-cover"
             />
           </div>

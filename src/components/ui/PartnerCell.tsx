@@ -12,7 +12,7 @@ export function PartnerCell({
   return (
     <div
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-2xl bg-surface-muted p-8 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg",
+        "flex shrink-0 items-center justify-center rounded-2xl bg-surface-muted p-8 card-hover hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg touch:shadow-lg",
         className,
       )}
     >

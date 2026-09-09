@@ -10,7 +10,7 @@ export function ConstructionProjectCard({
   description,
 }: ConstructionProject) {
   return (
-    <article className="flex w-full flex-col items-start gap-6 overflow-hidden rounded-2xl border border-border-secondary bg-surface">
+    <article className="group card-hover flex w-full flex-col items-start gap-6 overflow-hidden rounded-2xl border border-border-secondary bg-surface hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] active:-translate-y-1 active:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] touch:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]">
       <div className="relative aspect-[1705/923] w-full shrink-0 lg:aspect-[1200/420]">
         {/*
           The container's aspect ratio matches each photo's native crop

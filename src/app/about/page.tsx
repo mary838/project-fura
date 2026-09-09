@@ -24,7 +24,7 @@ export default function AboutPage() {
         subtitle="Integrated Prefabricated Building Solutions"
         tagline="From precision manufacturing to efficient construction."
         ctaLabel="Explore Our Capabilities"
-        ctaHref="/invest"
+        ctaHref="#contact-form"
         overlayImage="linear-gradient(257.6deg, rgba(255, 255, 255, 0.35) 22.702%, rgba(0, 0, 0, 0.35) 64.026%)"
         align="center"
       />

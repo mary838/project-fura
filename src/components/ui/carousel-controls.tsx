@@ -61,7 +61,7 @@ export function ArrowButton({
       onClick={onClick}
       aria-label={next ? "Next slide" : "Previous slide"}
       className={cn(
-        "press flex cursor-pointer items-center justify-center overflow-hidden rounded-full p-2 transition-[background-color,color,opacity,transform] duration-200 hover:opacity-80",
+        "press flex cursor-pointer items-center justify-center overflow-hidden rounded-full p-2 transition-[background-color,color,opacity,transform] duration-200 hover:opacity-80 active:opacity-80",
         active ? "bg-brand-primary text-white" : "bg-surface-muted text-[#D5D7DA]",
       )}
     >

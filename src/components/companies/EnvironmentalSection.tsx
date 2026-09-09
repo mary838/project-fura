@@ -18,9 +18,9 @@ export function EnvironmentalSection() {
           {SUSTAINABILITY_PILLARS.map((pillar) => (
             <article
               key={pillar.title}
-              className="group flex flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-6 transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg"
+              className="group flex flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-6 card-hover hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg touch:shadow-lg"
             >
-              <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-[#eaf0eb] transition-colors duration-200 ease-out group-hover:bg-brand-secondary">
+              <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-[#eaf0eb] transition-colors duration-200 ease-out group-hover:bg-brand-secondary group-active:bg-brand-secondary">
                 <Image
                   src={pillar.icon}
                   alt=""

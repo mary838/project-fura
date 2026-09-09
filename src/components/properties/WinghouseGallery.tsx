@@ -65,8 +65,9 @@ export function WinghouseGallery({
             src={main}
             alt={alt}
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 670px, 206px"
+            quality={95}
             className="object-cover"
           />
         </button>
@@ -77,7 +78,7 @@ export function WinghouseGallery({
             onClick={() => setOpenIndex(index + 1)}
             className="relative h-[135px] w-[206px] shrink-0 overflow-hidden rounded-2xl lg:hidden"
           >
-            <Image src={image} alt="" fill sizes="206px" className="object-cover" />
+            <Image src={image} alt="" fill sizes="206px" quality={95} className="object-cover" />
           </button>
         ))}
 
@@ -87,28 +88,28 @@ export function WinghouseGallery({
             onClick={() => setOpenIndex(1)}
             className="relative hidden overflow-hidden rounded-lg lg:block lg:h-full lg:w-full"
           >
-            <Image src={image2} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={image2} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(2)}
             className="relative hidden overflow-hidden rounded-lg border border-border-primary lg:block lg:h-full lg:w-full"
           >
-            <Image src={image3} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={image3} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(3)}
             className="relative hidden overflow-hidden rounded-lg border border-border-primary lg:block lg:h-full lg:w-full"
           >
-            <Image src={image4} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={image4} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(4)}
             className="relative hidden flex-col items-center justify-center gap-2.5 overflow-hidden rounded-lg p-3 lg:flex lg:h-full lg:w-full"
           >
-            <Image src={image5} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={image5} alt="" fill sizes="253px" quality={95} className="object-cover" />
             <span className="absolute inset-0 bg-black/40" />
             <span className="relative text-display-sm font-bold text-title-inverse">
               {moreCount}
@@ -133,7 +134,7 @@ export function WinghouseGallery({
               type="button"
               onClick={() => setOpenIndex(null)}
               aria-label="Close"
-              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80"
+              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80 active:opacity-80"
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-6">
                 <path
@@ -155,6 +156,7 @@ export function WinghouseGallery({
               alt={alt}
               fill
               sizes="(min-width: 1024px) 1024px, 100vw"
+              quality={95}
               className="object-cover"
             />
           </div>

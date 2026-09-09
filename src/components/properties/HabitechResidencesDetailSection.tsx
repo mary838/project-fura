@@ -89,7 +89,7 @@ export function HabitechResidencesDetailSection() {
 
         <button
           type="button"
-          className="order-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full border border-brand-primary bg-surface px-[18px] py-3 text-base font-semibold text-subtitle transition-colors hover:bg-surface-muted"
+          className="order-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full border border-brand-primary bg-surface px-[18px] py-3 text-base font-semibold text-subtitle transition-colors hover:bg-surface-muted active:bg-surface-muted"
         >
           <Image
             src="/fura/icons/download-cloud-02.svg"

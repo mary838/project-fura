@@ -19,8 +19,9 @@ export function NewsSection() {
         every breakpoint and the arrows page through it.
       */}
       <Carousel label="News and events">
+        {/* Keyed by image: two entries share a headline, the photos differ. */}
         {NEWS_ITEMS.map((item) => (
-          <NewsCard key={item.href} {...item} />
+          <NewsCard key={item.image} {...item} />
         ))}
       </Carousel>
     </Section>

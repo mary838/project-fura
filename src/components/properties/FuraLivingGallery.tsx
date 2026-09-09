@@ -51,8 +51,9 @@ export function FuraLivingGallery({ images, alt }: FuraLivingGalleryProps) {
             src={main}
             alt={alt}
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 670px, 206px"
+            quality={95}
             className="object-cover"
           />
         </button>
@@ -63,7 +64,7 @@ export function FuraLivingGallery({ images, alt }: FuraLivingGalleryProps) {
             onClick={() => setOpenIndex(index + 1)}
             className="relative h-[135px] w-[206px] shrink-0 overflow-hidden rounded-xl lg:hidden"
           >
-            <Image src={image} alt="" fill sizes="206px" className="object-cover" />
+            <Image src={image} alt="" fill sizes="206px" quality={95} className="object-cover" />
           </button>
         ))}
 
@@ -73,21 +74,21 @@ export function FuraLivingGallery({ images, alt }: FuraLivingGalleryProps) {
             onClick={() => setOpenIndex(1)}
             className="relative hidden overflow-hidden rounded-lg lg:block lg:h-full lg:w-full"
           >
-            <Image src={topLeft} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={topLeft} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(2)}
             className="relative hidden overflow-hidden rounded-lg lg:block lg:h-full lg:w-full"
           >
-            <Image src={topRight} alt="" fill sizes="253px" className="object-cover" />
+            <Image src={topRight} alt="" fill sizes="253px" quality={95} className="object-cover" />
           </button>
           <button
             type="button"
             onClick={() => setOpenIndex(3)}
             className="relative col-span-2 hidden overflow-hidden rounded-lg lg:block lg:h-full lg:w-full"
           >
-            <Image src={bottomWide} alt="" fill sizes="514px" className="object-cover" />
+            <Image src={bottomWide} alt="" fill sizes="514px" quality={95} className="object-cover" />
           </button>
         </div>
       </div>
@@ -105,7 +106,7 @@ export function FuraLivingGallery({ images, alt }: FuraLivingGalleryProps) {
               type="button"
               onClick={() => setOpenIndex(null)}
               aria-label="Close"
-              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80"
+              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80 active:opacity-80"
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-6">
                 <path
@@ -127,6 +128,7 @@ export function FuraLivingGallery({ images, alt }: FuraLivingGalleryProps) {
               alt={alt}
               fill
               sizes="(min-width: 1024px) 1024px, 100vw"
+              quality={95}
               className="object-cover"
             />
           </div>

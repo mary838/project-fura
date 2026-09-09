@@ -24,9 +24,9 @@ export function WhyPartnerSection() {
         {VALUE_CARDS.map((card) => (
           <article
             key={card.title}
-            className="group flex flex-col items-center gap-4 rounded-2xl border border-border-primary bg-surface p-[25px] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg lg:flex-1"
+            className="group flex flex-col items-center gap-4 rounded-2xl border border-border-primary bg-surface p-[25px] card-hover hover:-translate-y-1 hover:shadow-lg lg:flex-1 active:-translate-y-1 active:shadow-lg touch:shadow-lg"
           >
-            <div className="flex size-24 items-center justify-center rounded-full bg-surface-muted transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-brand-accent">
+            <div className="flex size-24 items-center justify-center rounded-full bg-surface-muted transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-brand-accent group-active:bg-brand-accent">
               <Image
                 src={card.icon}
                 alt=""

@@ -9,7 +9,18 @@ type MediaFrameProps = {
   className: string;
   /** Corner radius: 16px by default, 12px for the delivery tiles, 10px once. */
   radius?: "2xl" | "md" | "sm";
-  priority?: boolean;
+  /**
+   * Loads the image eagerly and preloads it from the document head. Only for
+   * frames that are already on screen at first paint — everything else keeps
+   * the default lazy loading. Replaces the `priority` prop, deprecated in
+   * Next 16.
+   */
+  preload?: boolean;
+  /**
+   * JPEG/WebP quality. Photographs in large frames keep 95 (allowlisted in
+   * `next.config.ts`); pass 75 for anything where the default is enough.
+   */
+  quality?: number;
   /** Scrim laid over the image, e.g. `"bg-black/10"`. */
   overlay?: string;
   imageClassName?: string;
@@ -28,7 +39,8 @@ export function MediaFrame({
   sizes,
   className,
   radius = "2xl",
-  priority = false,
+  preload = false,
+  quality = 95,
   overlay,
   imageClassName,
   mobileSrc,
@@ -48,7 +60,8 @@ export function MediaFrame({
           src={mobileSrc}
           alt={alt}
           fill
-          priority={priority}
+          preload={preload}
+          quality={quality}
           sizes={sizes}
           className={cn("object-cover lg:hidden", imageClassName)}
         />
@@ -57,7 +70,8 @@ export function MediaFrame({
         src={src}
         alt={alt}
         fill
-        priority={priority}
+        preload={preload}
+        quality={quality}
         sizes={sizes}
         className={cn(
           "object-cover",

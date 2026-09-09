@@ -52,7 +52,7 @@ export function CapitalFlowSection() {
             return (
               <div
                 key={item.num}
-                className="flex w-full flex-col gap-2 border-t border-border-secondary px-4 py-4 -mx-4 transition-colors duration-150 ease-out hover:bg-surface-muted lg:flex-row lg:items-center lg:gap-4 lg:py-6"
+                className="flex w-full flex-col gap-2 border-t border-border-secondary px-4 py-4 -mx-4 transition-colors duration-150 ease-out hover:bg-surface-muted lg:flex-row lg:items-center lg:gap-4 lg:py-6 active:bg-surface-muted"
               >
                 <SplitLines
                   as="div"
@@ -102,7 +102,7 @@ export function CapitalFlowSection() {
               alt=""
               width={24}
               height={24}
-              className="size-6 shrink-0 transition-transform duration-150 ease-out group-hover:translate-x-1"
+              className="size-6 shrink-0 transition-transform duration-150 ease-out group-hover:translate-x-1 group-active:translate-x-1"
             />
           </a>
         </div>

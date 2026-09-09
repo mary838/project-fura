@@ -27,7 +27,7 @@ export function TeamMemberCard({
   revealDelay = 0,
 }: TeamMemberCardProps) {
   return (
-    <article className="flex w-full max-w-[854px] flex-col gap-4 overflow-hidden rounded-2xl border border-border-secondary bg-surface transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:gap-0 sm:border-0 lg:h-[280px]">
+    <article className="flex w-full max-w-[854px] flex-col gap-4 overflow-hidden rounded-2xl border border-border-secondary bg-surface card-hover hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:gap-0 sm:border-0 lg:h-[280px] active:-translate-y-1 active:shadow-lg touch:shadow-lg">
       <div className="w-full shrink-0 sm:w-[308px] sm:p-4">
         <div className="relative h-[320px] w-full overflow-hidden bg-[#c4c4c4] sm:h-full sm:rounded-2xl">
           <Image

@@ -22,7 +22,7 @@ export default function HabitechPropertyPage() {
         subtitle="Integrated Construction Solutions"
         tagline="Crafting Excellence, Building Success"
         ctaLabel="Partner With Us"
-        ctaHref="/invest"
+        ctaHref="#contact-form"
       />
       <PropertyIntroSection />
       <PropertyManagementSection />

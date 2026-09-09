@@ -57,7 +57,7 @@ export function VisionSection() {
           </div>
 
           <Reveal delay={200}>
-            <Button href="/invest">Partner With Us</Button>
+            <Button href="#contact-form">Partner With Us</Button>
           </Reveal>
         </div>
 

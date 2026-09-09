@@ -11,14 +11,14 @@ export function ProjectCard({
   sizes = "(min-width: 1024px) 384px, 100vw",
 }: Project & { sizes?: string }) {
   return (
-    <article className="group flex flex-1 flex-col gap-4 overflow-hidden rounded-2xl border border-border-primary bg-surface transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group flex flex-1 flex-col gap-4 overflow-hidden rounded-2xl border border-border-primary bg-surface card-hover hover:-translate-y-1 hover:shadow-lg active:-translate-y-1 active:shadow-lg touch:shadow-lg">
       <div className="relative aspect-[628/353.25] w-full">
         <Image
           src={image}
           alt={title}
           fill
           sizes={sizes}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
         />
       </div>
 

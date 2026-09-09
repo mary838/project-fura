@@ -20,7 +20,7 @@ export default function FuraHabitechPage() {
         title="FURA Habitech Pty Ltd"
         subtitle="Global Real Asset Investment Platform – for Housing Solutions in Australia"
         ctaLabel="Partner With Us"
-        ctaHref="/invest"
+        ctaHref="#contact-form"
       />
       <FuraIntroSection />
       <StrategyComparisonSection />

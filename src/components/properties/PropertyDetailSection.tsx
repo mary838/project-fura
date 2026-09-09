@@ -16,7 +16,7 @@ export function PropertyDetailSection() {
     <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-24">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-6 lg:gap-16">
         <nav className="flex items-center gap-0.5 text-xl text-subtitle">
-          <Link href="/properties" className="hover:text-title">
+          <Link href="/properties" className="hover:text-title active:text-title">
             Real Estate Properties
           </Link>
           <Image
@@ -89,7 +89,7 @@ export function PropertyDetailSection() {
 
             <button
               type="button"
-              className="flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full border border-utility-gray-900 bg-surface px-[18px] py-3 text-base font-semibold text-subtitle transition-colors hover:bg-surface-muted"
+              className="flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full border border-utility-gray-900 bg-surface px-[18px] py-3 text-base font-semibold text-subtitle transition-colors hover:bg-surface-muted active:bg-surface-muted"
             >
               <Image
                 src="/fura/icons/download-cloud.svg"
@@ -108,7 +108,7 @@ export function PropertyDetailSection() {
                 src="/fura/properties/winghouse/main.png"
                 alt="Winghouse"
                 sizes="(min-width: 1024px) 716px, 100vw"
-                priority
+                preload
                 className="h-[420px]"
               />
 
@@ -132,7 +132,7 @@ export function PropertyDetailSection() {
               {WINGHOUSE_FEATURES.map((feature) => (
                 <div
                   key={feature.title}
-                  className="flex flex-col items-center gap-4 rounded-2xl border border-border-secondary p-4 lg:min-w-0 lg:flex-1 lg:self-stretch"
+                  className="card-hover flex flex-col items-center gap-4 rounded-2xl border border-border-secondary p-4 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] lg:min-w-0 lg:flex-1 lg:self-stretch active:-translate-y-1 active:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] touch:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]"
                 >
                   <Image
                     src={feature.icon}

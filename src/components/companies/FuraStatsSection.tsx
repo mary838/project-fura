@@ -14,7 +14,7 @@ export function FuraStatsSection() {
 
         <CheckList items={FURA_HABITECH_PHILOSOPHY} align="center" />
 
-        <Button href="/invest">Partner With Us</Button>
+        <Button href="#contact-form">Partner With Us</Button>
       </div>
     </section>
   );

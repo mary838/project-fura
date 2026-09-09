@@ -16,7 +16,7 @@ export function PropertySalesSection() {
           description="From project launch to final sale, we combine market knowledge, customer engagement, and strategic sales support to create a seamless property journey."
           descriptionSize="xl-flat"
         >
-          <Button href="/invest">Partner With Us</Button>
+          <Button href="#contact-form">Partner With Us</Button>
         </SectionHeading>
 
         <RevealGroup className="flex w-full max-w-[1200px] flex-col items-center gap-4 lg:flex-row">

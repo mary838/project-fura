@@ -9,12 +9,14 @@ import type { Strategy } from "@/lib/home-content";
  */
 export function StrategyCard({ badge, icon, title, description, driver }: Strategy) {
   return (
-    <article className="flex flex-1 flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 shadow-[0_-7px_0_0_#222325] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_-7px_0_0_#222325,0_12px_24px_-8px_rgba(9,12,20,0.25)]">
+    <article className="group flex flex-1 flex-col items-start gap-6 rounded-2xl border border-border-primary bg-surface p-8 shadow-[0_-7px_0_0_#222325] card-hover hover:-translate-y-1 hover:shadow-[0_-7px_0_0_var(--color-brand-accent),0_12px_24px_-8px_rgba(9,12,20,0.25)] active:-translate-y-1 active:shadow-[0_-7px_0_0_var(--color-brand-accent),0_12px_24px_-8px_rgba(9,12,20,0.25)] touch:shadow-[0_-7px_0_0_#222325,0_12px_24px_-8px_rgba(9,12,20,0.25)]">
       <div className="flex w-full items-start justify-between">
-        <div className="flex size-16 items-center justify-center rounded-full bg-surface-tile">
+        <div className="flex size-16 items-center justify-center rounded-full bg-surface-tile transition-colors duration-300 group-hover:bg-brand-secondary group-active:bg-brand-secondary">
           <Image src={icon} alt="" width={24} height={24} className="size-6" />
         </div>
-        <Badge>{badge}</Badge>
+        <Badge className="transition-colors duration-300 group-hover:bg-brand-accent group-active:bg-brand-accent">
+          {badge}
+        </Badge>
       </div>
 
       <div className="flex w-full flex-col gap-4">

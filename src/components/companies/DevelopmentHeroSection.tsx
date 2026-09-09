@@ -22,7 +22,7 @@ export function DevelopmentHeroSection() {
           </p>
         </div>
         <p className="text-xl text-subtitle">Crafting Excellence, Building Success</p>
-        <Button href="/invest">Partner With Us</Button>
+        <Button href="#contact-form">Partner With Us</Button>
       </div>
     </section>
   );

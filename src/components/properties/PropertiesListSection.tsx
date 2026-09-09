@@ -7,7 +7,6 @@ import { CompanyHero } from "@/components/companies/CompanyHero";
 import { CompletedProjectsStrip } from "@/components/properties/CompletedProjectsStrip";
 import { FilterPill } from "@/components/ui/FilterPill";
 import { RevealGroup } from "@/components/ui/RevealGroup";
-import { cn } from "@/lib/cn";
 import {
   FEATURED_PROPERTIES,
   PROPERTY_LISTINGS,
@@ -23,7 +22,7 @@ function ListingCard({
   index?: number;
 }) {
   const cardClass =
-    "group relative flex w-full flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 shadow-sm card-fade-in transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:z-10 hover:scale-[1.02] hover:shadow-lg";
+    "group relative flex w-full flex-col items-start gap-3 overflow-hidden rounded-2xl border border-border-primary bg-surface p-3 shadow-sm card-fade-in card-hover hover:z-10 hover:scale-[1.02] hover:shadow-lg active:scale-[1.02] active:shadow-lg touch:shadow-lg active:z-10";
   const cardStyle = { "--card-delay": `${(index % 6) * 80}ms` } as React.CSSProperties;
 
   const body = (
@@ -34,20 +33,12 @@ function ListingCard({
           alt={property.title}
           fill
           sizes="(min-width: 1024px) 384px, 100vw"
-          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-active:scale-105"
         />
-        {/* Delivered projects read as a success state; in-progress stays neutral. */}
-        <span
-          className={cn(
-            "absolute top-4 right-4 rounded-md px-3 py-1.5 text-sm font-medium",
-            property.status === "Completed"
-              ? "border border-success-border bg-success-surface text-success"
-              : "bg-surface text-title",
-          )}
-        >
+        <span className="absolute top-4 right-4 rounded-md bg-surface px-3 py-1.5 text-sm font-medium text-title">
           {property.status}
         </span>
-        <div className="pointer-events-none absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-active:bg-black/40" />
+        <div className="pointer-events-none absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-active:bg-black/40 group-active:opacity-100" />
       </div>
 
       {/*
@@ -57,8 +48,13 @@ function ListingCard({
       */}
       <div className="flex w-full flex-1 flex-col gap-4 rounded-xl bg-surface-muted p-4">
         <div className="flex w-full flex-col gap-2">
-          <div className="flex w-full items-start gap-2">
-            <h3 className="min-w-0 flex-1 truncate text-display-xs font-semibold text-title">
+          {/*
+            Titles wrap instead of truncating, and the row reserves both lines
+            either way, so a one-line name still lines its rule and specs up
+            with a two-line one across the row.
+          */}
+          <div className="flex min-h-16 w-full items-start gap-2">
+            <h3 className="min-w-0 flex-1 text-display-xs font-semibold text-title">
               {property.title}
             </h3>
             <Image
@@ -151,7 +147,7 @@ export function PropertiesListSection() {
         title="Habitech Real Estate Properties Pty Ltd"
         subtitle="Global Real Asset Investment Platform – for Housing Solutions in Australia"
         ctaLabel="Partner With Us"
-        ctaHref="/invest"
+        ctaHref="#contact-form"
       />
 
       <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-24">

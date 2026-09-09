@@ -50,8 +50,9 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
             src={main}
             alt={alt}
             fill
-            priority
+            preload
             sizes="(min-width: 1024px) 670px, 206px"
+            quality={95}
             className="object-cover"
           />
         </button>
@@ -66,6 +67,7 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
               alt=""
               fill
               sizes="(min-width: 1024px) 384px, 206px"
+              quality={95}
               className="object-cover"
             />
           </button>
@@ -79,6 +81,7 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
               alt=""
               fill
               sizes="(min-width: 1024px) 384px, 206px"
+              quality={95}
               className="object-cover"
             />
           </button>
@@ -98,7 +101,7 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
               type="button"
               onClick={() => setOpenIndex(null)}
               aria-label="Close"
-              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80"
+              className="press flex size-12 items-center justify-center rounded-full border border-brand-primary bg-[#222325] text-title-inverse transition-opacity duration-200 hover:opacity-80 active:opacity-80"
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-6">
                 <path
@@ -120,6 +123,7 @@ export function PropertyGallery({ images, alt }: PropertyGalleryProps) {
               alt={alt}
               fill
               sizes="(min-width: 1024px) 1024px, 100vw"
+              quality={95}
               className="object-cover"
             />
           </div>

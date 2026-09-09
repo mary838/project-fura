@@ -22,7 +22,7 @@ export default function HabitechManufacturingPage() {
         subtitle="Integrated Prefabricated Building Solutions"
         tagline="From precision manufacturing to efficient construction."
         ctaLabel="Explore Our Capabilities"
-        ctaHref="/invest"
+        ctaHref="#contact-form"
       />
       <CompanyIntroSection />
       <OneStopServiceSection />

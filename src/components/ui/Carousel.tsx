@@ -23,14 +23,10 @@ export function Carousel({ children, className, label }: CarouselProps) {
   return (
     <div className="flex w-full flex-col gap-6 lg:gap-8">
       {/*
-        The row runs to the right edge of the screen at every width while its
-        first card stays flush with the page gutter, so the next card always
-        peeks past the edge and the row reads as scrollable.
-
-        `50% + 50vw` is the container's left edge out to the viewport's right:
-        50% resolves against the container, 50vw against the screen. A viewport
-        unit ignores the scrollbar, so this can overshoot by a pixel or two —
-        `main` clips the overflow, so it never reaches the document.
+        Below `lg` the row runs out to the edge of the screen so the next card
+        peeks and reads as scrollable. From `lg` it is exactly the container:
+        three 384px cards and two 24px gaps fill 1200px, so a full set of three
+        is shown and the arrows page through one card at a time.
       */}
       <div
         ref={trackRef}
@@ -42,12 +38,11 @@ export function Carousel({ children, className, label }: CarouselProps) {
           "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           // The track takes focus for keyboard scrolling, so it needs a ring.
           "focus-visible:outline-offset-[-2px]",
-          // Trailing padding is the page gutter, so the last card lands back on
-          // the container's edge once the row is scrolled to the end. Vertical
-          // padding (cancelled by the matching negative margin, so it doesn't
-          // add layout height) gives a hovered card's lifted box-shadow room to
-          // render before `overflow-x-auto` — which clips both axes — cuts it off.
-          "lg:mx-0 lg:pl-0 lg:pr-[100px] lg:w-[calc(50%+50vw)]",
+          // Vertical padding (cancelled by the matching negative margin, so it
+          // doesn't add layout height) gives a hovered card's lifted box-shadow
+          // room to render before `overflow-x-auto` — which clips both axes —
+          // cuts it off.
+          "lg:mx-0 lg:w-full lg:px-0",
           className,
         )}
       >

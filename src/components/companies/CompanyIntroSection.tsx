@@ -12,7 +12,7 @@ export function CompanyIntroSection() {
         src: "/fura/companies/manufacturing/intro.png",
         alt: "Habitech modular home",
       }}
-      cta={{ label: "Partner With Us", href: "/invest" }}
+      cta={{ label: "Partner With Us", href: "#contact-form" }}
     />
   );
 }

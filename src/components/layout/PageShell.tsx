@@ -1,5 +1,6 @@
 import { Footer } from "@/components/layout/Footer";
 import { NavigationBar } from "@/components/layout/NavigationBar";
+import { TouchActiveSupport } from "@/components/layout/TouchActiveSupport";
 import { cn } from "@/lib/cn";
 
 type PageShellProps = {
@@ -21,6 +22,7 @@ export function PageShell({
 }: PageShellProps) {
   return (
     <>
+      <TouchActiveSupport />
       <NavigationBar variant={nav} />
       <main
         className={cn(

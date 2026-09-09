@@ -20,10 +20,17 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
+/*
+ * Each variant pairs its hover colour with the same colour on `:active`. Touch
+ * devices never fire `:hover`, so the press is the only moment a phone can
+ * show the shift — and a button, being natively clickable, gets `:active`
+ * everywhere, iOS included.
+ */
 const VARIANTS: Record<ButtonVariant, string> = {
-  solid: "bg-utility-gray-900 text-title-inverse hover:bg-utility-gray-800",
+  solid:
+    "bg-utility-gray-900 text-title-inverse hover:bg-utility-gray-800 active:bg-utility-gray-800",
   outline:
-    "border border-border-secondary text-title-inverse hover:bg-black/40",
+    "border border-border-secondary text-title-inverse hover:bg-black/40 active:bg-black/40",
   /*
    * `outline` is light-on-dark, for the buttons that sit over a hero photo.
    * This is the same shape on a light section — a separate variant rather than
@@ -31,7 +38,7 @@ const VARIANTS: Record<ButtonVariant, string> = {
    * would be settled by stylesheet order instead of by the caller.
    */
   "outline-light":
-    "border border-border-primary bg-surface text-title hover:bg-surface-muted",
+    "border border-border-primary bg-surface text-title hover:bg-surface-muted active:bg-surface-muted",
 };
 
 const SIZES: Record<ButtonSize, string> = {
@@ -56,7 +63,7 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const classes = cn(
-    "group press inline-flex shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-full text-base font-semibold transition-[background-color,border-color,color,transform] duration-200",
+    "group press relative inline-flex shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-full text-base font-semibold transition-[background-color,border-color,color,transform] duration-200",
     VARIANTS[variant],
     SIZES[size],
     disabled && "pointer-events-none opacity-60",
@@ -65,14 +72,23 @@ export function Button({
 
   const content = (
     <>
-      {children ? <span className="px-0.5">{children}</span> : null}
+      {/*
+        Quick black flash on press, the same feedback the portfolio cards give.
+        The label and icon are positioned so they paint over it — an absolute
+        layer would otherwise sit above static content whatever the order.
+      */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-black/25 opacity-0 transition-opacity duration-150 group-active:opacity-100"
+      />
+      {children ? <span className="relative px-0.5">{children}</span> : null}
       {icon ? (
         <Image
           src={icon.src}
           alt={icon.alt}
           width={20}
           height={20}
-          className="size-5 shrink-0 transition-transform duration-150 ease-out group-hover:translate-x-1"
+          className="btn-arrow relative size-5 shrink-0 transition-transform duration-150 ease-out group-hover:translate-x-1 group-active:translate-x-1"
         />
       ) : null}
     </>

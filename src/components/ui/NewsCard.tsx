@@ -1,17 +1,16 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { NewsItem } from "@/lib/about-content";
 
 /**
- * Article card in the News & Events carousel. The card height is fixed so the
- * row stays even however long a headline runs; the overflow is clipped, as in
- * the design.
+ * Article card in the News & Events carousel. Read-only: there is no article
+ * page behind these, so the card states the announcement in full rather than
+ * linking away. The card height is fixed so the row stays even however long a
+ * headline runs; the overflow is clipped, as in the design.
  */
-export function NewsCard({ image, titleLead, title, date, href }: NewsItem) {
+export function NewsCard({ image, titleLead, title, date }: NewsItem) {
   return (
-    <Link
-      href={href}
-      className="group flex h-[470px] w-[320px] shrink-0 snap-start flex-col items-start overflow-hidden rounded-2xl border border-border-primary bg-surface transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg lg:w-[384px]"
+    <article
+      className="group flex h-[470px] w-[320px] shrink-0 snap-start flex-col items-start overflow-hidden rounded-2xl border border-border-primary bg-surface card-hover hover:-translate-y-1 hover:shadow-lg lg:w-[384px] active:-translate-y-1 active:shadow-lg touch:shadow-lg"
     >
       <div className="relative aspect-[384/256] w-full shrink-0">
         <Image
@@ -19,7 +18,7 @@ export function NewsCard({ image, titleLead, title, date, href }: NewsItem) {
           alt=""
           fill
           sizes="(min-width: 1024px) 384px, 320px"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
         />
       </div>
 
@@ -28,8 +27,17 @@ export function NewsCard({ image, titleLead, title, date, href }: NewsItem) {
           {titleLead ? <strong className="font-bold">{titleLead}</strong> : null}
           {title}
         </h3>
-        <p className="text-sm whitespace-nowrap text-subtitle">{date}</p>
+        <p className="flex items-center gap-2 text-sm whitespace-nowrap text-subtitle">
+          <Image
+            src="/fura/icons/calendar-dots.svg"
+            alt=""
+            width={16}
+            height={16}
+            className="size-4 shrink-0"
+          />
+          {date}
+        </p>
       </div>
-    </Link>
+    </article>
   );
 }

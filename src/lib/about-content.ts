@@ -97,7 +97,6 @@ export type NewsItem = {
   titleLead?: string;
   title: string;
   date: string;
-  href: string;
 };
 
 export const NEWS_ITEMS: NewsItem[] = [
@@ -106,20 +105,17 @@ export const NEWS_ITEMS: NewsItem[] = [
     title:
       "Agreement signing between Fura and PPAP authority for the Development of a Green Special Economic Zone",
     date: "May 2, 2026",
-    href: "/news/ppap-green-special-economic-zone",
   },
   {
     image: "/fura/images/news-mice-tour.png",
     title: "2026 Hospitality fund & MICE tour by FURA and HMD Asia",
     date: "May 2, 2026",
-    href: "/news/2026-hospitality-fund-mice-tour",
   },
   {
     image: "/fura/images/news-business-forum.png",
     title:
       "FURA group as Golden Sponsort of the Cambodia-Singapore Business Forum held by Cambodia Chamber of Commerce (CCC), the Singapore Chamber of Commerce (SCC), and the Singapore Business Federation (SBF).",
     date: "May 2, 2026",
-    href: "/news/cambodia-singapore-business-forum",
   },
   {
     image: "/fura/images/news-investor-event.png",
@@ -127,13 +123,11 @@ export const NEWS_ITEMS: NewsItem[] = [
     title:
       "Showcasing sustainable and affordable housing opportunities in Australia",
     date: "May 2, 2026",
-    href: "/news/habitech-housing-investor-event",
   },
   {
     image: "/fura/images/news-sponsorship.png",
     title:
       "FURA group as Golden Sponsort of the Cambodia-Singapore Business Forum held by Cambodia Chamber of Commerce (CCC), the Singapore Chamber of Commerce (SCC), and the Singapore Business Federation (SBF).",
     date: "May 2, 2026",
-    href: "/news/cambodia-singapore-business-forum-2",
   },
 ];

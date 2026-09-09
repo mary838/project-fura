@@ -20,7 +20,7 @@ export function ConstructionIntroSection() {
         mobileSrc: "/fura/companies/construction/intro-mobile.jpg",
         alt: "Habitech Construction project",
       }}
-      cta={{ label: "Partner With Us", href: "/invest" }}
+      cta={{ label: "Partner With Us", href: "#contact-form" }}
     />
   );
 }

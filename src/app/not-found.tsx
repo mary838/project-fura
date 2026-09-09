@@ -92,9 +92,9 @@ export default function NotFound() {
               <Link
                 key={destination.href}
                 href={destination.href}
-                className="group flex flex-col items-start gap-5 rounded-xl border border-border-primary bg-surface p-6 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]"
+                className="group card-hover flex flex-col items-start gap-5 rounded-xl border border-border-primary bg-surface p-6 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] active:-translate-y-1 active:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] touch:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-[20px] bg-surface-muted transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-brand-secondary">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-[20px] bg-surface-muted transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-brand-secondary group-active:bg-brand-secondary">
                   <Image
                     src={destination.icon}
                     alt=""
@@ -114,7 +114,7 @@ export default function NotFound() {
                       alt=""
                       width={20}
                       height={20}
-                      className="mt-0.5 size-5 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      className="mt-0.5 size-5 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-active:translate-x-0.5 group-active:-translate-y-0.5"
                     />
                   </span>
                   <span className="text-sm text-subtitle">

@@ -105,13 +105,13 @@ export function Footer({ contact = true }: { contact?: boolean }) {
               {/* `tap-pad` grows the hit area without affecting the flow. */}
               <a
                 href="tel:+61730000000"
-                className="tap-pad w-fit transition-opacity hover:opacity-70"
+                className="tap-pad w-fit transition-opacity hover:opacity-70 active:opacity-70"
               >
                 +61 7 3000 0000
               </a>
               <a
                 href="mailto:enquiries@furahabitech.com.au"
-                className="tap-pad w-fit transition-opacity hover:opacity-70"
+                className="tap-pad w-fit transition-opacity hover:opacity-70 active:opacity-70"
               >
                 enquiries@furahabitech.com.au
               </a>
@@ -124,7 +124,7 @@ export function Footer({ contact = true }: { contact?: boolean }) {
                   aria-label={social.label}
                   target="_blank"
                   rel="noreferrer"
-                  className="press flex size-9 items-center justify-center rounded-md bg-white/30 p-1.5 opacity-80 transition-[opacity,transform] duration-200 hover:opacity-100"
+                  className="press flex size-9 items-center justify-center rounded-md bg-white/30 p-1.5 opacity-80 transition-[opacity,transform] duration-200 hover:opacity-100 active:opacity-100"
                 >
                   <Image
                     src={social.icon}
@@ -148,7 +148,7 @@ export function Footer({ contact = true }: { contact?: boolean }) {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="tap-pad text-sm text-subtitle-inverse transition-opacity hover:opacity-70"
+                      className="tap-pad text-sm text-subtitle-inverse transition-opacity hover:opacity-70 active:opacity-70"
                     >
                       {link.label}
                     </Link>
@@ -189,7 +189,7 @@ export function Footer({ contact = true }: { contact?: boolean }) {
               <Link
                 key={link.label}
                 href={link.href}
-                className="tap-pad text-xs opacity-70 transition-opacity hover:opacity-100"
+                className="tap-pad text-xs opacity-70 transition-opacity hover:opacity-100 active:opacity-100"
               >
                 {link.label}
               </Link>

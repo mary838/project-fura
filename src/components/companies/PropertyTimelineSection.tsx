@@ -13,10 +13,10 @@ export function PropertyTimelineSection() {
             return (
               <div
                 key={step.number}
-                className="flex w-full flex-row items-start gap-4 lg:flex-1 lg:flex-col lg:items-stretch lg:gap-4"
+                className="group flex w-full flex-row items-start gap-4 lg:flex-1 lg:flex-col lg:items-stretch lg:gap-4"
               >
                 <div className="flex shrink-0 flex-col items-center self-stretch lg:w-full lg:flex-row lg:self-auto">
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-3xl border-4 border-[#222325] bg-[#222325]">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-3xl border-4 border-[#222325] bg-[#222325] transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-brand-accent group-hover:bg-brand-accent group-active:border-brand-accent group-active:bg-brand-accent">
                     <span className="text-sm font-bold text-title-inverse">
                       {step.number}
                     </span>

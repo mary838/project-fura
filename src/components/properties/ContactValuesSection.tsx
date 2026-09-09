@@ -6,7 +6,7 @@ import { CONTACT_VALUES } from "@/lib/properties-content";
 
 export function ContactValuesSection({
   ctaLabel = "Invest with us",
-  ctaHref = "/invest",
+  ctaHref = "#contact-form",
 }: {
   ctaLabel?: string;
   ctaHref?: string;
@@ -29,14 +29,14 @@ export function ContactValuesSection({
           {CONTACT_VALUES.map((value) => (
             <div
               key={value.title}
-              className="group flex flex-col items-center gap-3 rounded-2xl border border-surface-muted bg-surface-muted p-6 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]"
+              className="group card-hover flex flex-col items-center gap-3 rounded-2xl border border-surface-muted bg-surface-muted p-6 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] active:-translate-y-1 active:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] touch:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]"
             >
               <Image
                 src={value.icon}
                 alt=""
                 width={42}
                 height={42}
-                className="size-[42px] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                className="size-[42px] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-active:scale-110"
               />
               <div className="flex w-full flex-col gap-4 text-center">
                 <p className="text-display-sm font-medium text-title">
