@@ -37,12 +37,6 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   },
 ];
 
-const SOCIAL_LINKS = [
-  { icon: "/fura/icons/linkedin.svg", label: "LinkedIn", href: "https://www.linkedin.com" },
-  { icon: "/fura/icons/instagram.svg", label: "Instagram", href: "https://www.instagram.com" },
-  { icon: "/fura/icons/x.svg", label: "X", href: "https://x.com" },
-];
-
 const LEGAL_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Use", href: "/terms" },
@@ -115,26 +109,6 @@ export function Footer({ contact = true }: { contact?: boolean }) {
               >
                 enquiries@furahabitech.com.au
               </a>
-            </div>
-            <div className="flex items-start gap-3">
-              {SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="press flex size-9 items-center justify-center rounded-md bg-white/30 p-1.5 opacity-80 transition-[opacity,transform] duration-200 hover:opacity-100 active:opacity-100"
-                >
-                  <Image
-                    src={social.icon}
-                    alt=""
-                    width={24}
-                    height={24}
-                    className="size-6"
-                  />
-                </a>
-              ))}
             </div>
           </div>
 

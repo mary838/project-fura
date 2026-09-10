@@ -90,8 +90,8 @@ export function WolloongabbaCollectiveDetailSection() {
           ))}
         </div>
 
-        <button
-          type="button"
+        <a
+          href="#contact-form"
           className="order-4 flex w-full items-center justify-center gap-1.5 overflow-hidden rounded-full border border-utility-gray-900 bg-surface px-[18px] py-3 text-base font-semibold text-subtitle transition-colors hover:bg-surface-muted active:bg-surface-muted"
         >
           <Image
@@ -102,7 +102,7 @@ export function WolloongabbaCollectiveDetailSection() {
             className="size-5"
           />
           Download Project Brochure
-        </button>
+        </a>
       </div>
     </section>
   );

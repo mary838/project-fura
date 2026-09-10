@@ -6,7 +6,16 @@ import type { StatTile as StatTileData } from "@/lib/companies-content";
 // `flex-1` is lg-only: in the mobile column layout the main axis is vertical,
 // so a flex-basis there would override the card's fixed 112px height.
 const HOVER =
-  "card-hover hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] active:-translate-y-1 active:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] touch:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]";
+  "card-hover group hover:-translate-y-1 hover:border-brand-accent hover:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] active:-translate-y-1 active:border-brand-accent active:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)] touch:shadow-[0_12px_24px_-8px_rgba(9,12,20,0.15)]";
+
+// The tile tints on hover: the icon disc warms to the brand secondary and the
+// figure picks up the accent. Driven off the card's `group` so the whole tile
+// responds to a pointer anywhere on it, not just over the text.
+const DISC_TINT =
+  "transition-colors duration-200 group-hover:bg-brand-secondary group-active:bg-brand-secondary";
+
+const VALUE_TINT =
+  "transition-colors duration-200 group-hover:text-brand-accent group-active:text-brand-accent";
 
 const CARD =
   `flex h-28 w-full min-w-0 items-center gap-4 rounded-xl border border-[#f3f4f6] bg-surface p-[25px] drop-shadow-[0px_1px_1px_rgba(0,0,0,0.05)] lg:flex-1 ${HOVER}`;
@@ -30,7 +39,12 @@ export function StatTile({
   if (variant === "stacked") {
     return (
       <div className={cn(STACKED_CARD, className)}>
-        <div className="flex size-24 shrink-0 items-center justify-center rounded-full bg-surface-muted">
+        <div
+          className={cn(
+            "flex size-24 shrink-0 items-center justify-center rounded-full bg-surface-muted",
+            DISC_TINT,
+          )}
+        >
           <Image
             src={icon}
             alt=""
@@ -43,7 +57,10 @@ export function StatTile({
           <p className="w-full text-lg text-[#4b5563]">{label}</p>
           <AnimatedStatValue
             value={value}
-            className="w-full text-display-xs font-bold text-title"
+            className={cn(
+              "w-full text-display-xs font-bold text-title",
+              VALUE_TINT,
+            )}
           />
         </div>
       </div>
@@ -61,7 +78,12 @@ export function StatTile({
           className="size-16 shrink-0"
         />
       ) : (
-        <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-surface-muted">
+        <div
+          className={cn(
+            "flex size-16 shrink-0 items-center justify-center rounded-full bg-surface-muted",
+            DISC_TINT,
+          )}
+        >
           <Image src={icon} alt="" width={32} height={32} className="size-8" />
         </div>
       )}
@@ -70,7 +92,7 @@ export function StatTile({
         <p className="text-lg text-[#4b5563]">{label}</p>
         <AnimatedStatValue
           value={value}
-          className="text-display-xs font-bold text-title"
+          className={cn("text-display-xs font-bold text-title", VALUE_TINT)}
         />
       </div>
     </div>
