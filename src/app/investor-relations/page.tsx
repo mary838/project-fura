@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/layout/PageShell";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { CompanyHero } from "@/components/companies/CompanyHero";
 import { ContactValuesSection } from "@/components/properties/ContactValuesSection";
 import { Section } from "@/components/ui/Section";
@@ -20,15 +22,22 @@ const RESOURCES = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "Investor Relations — Fura Habitech",
+export const metadata: Metadata = pageMetadata({
+  title: "Investor Relations",
   description:
     "Reports, offer documents, and a dedicated point of contact for Fura Habitech's investment partners.",
-};
+  path: "/investor-relations",
+});
 
 export default function InvestorRelationsPage() {
   return (
     <PageShell>
+      <PageSchema
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Investor Relations", path: "/investor-relations" },
+        ]}
+      />
       <CompanyHero
         image="/fura/images/about-hero.png"
         title="Investor Relations"

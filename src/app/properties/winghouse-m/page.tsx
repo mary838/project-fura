@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/layout/PageShell";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { WinghouseDetailSection } from "@/components/properties/WinghouseDetailSection";
 import {
   WINGHOUSE_M_DESCRIPTION,
@@ -8,15 +10,24 @@ import {
   WINGHOUSE_M_PRICE,
 } from "@/lib/properties-content";
 
-export const metadata: Metadata = {
-  title: "Winghouse M — Fura Habitech",
+export const metadata: Metadata = pageMetadata({
+  title: "Winghouse M",
   description:
     "Spacious, contemporary and thoughtfully designed, the 63 sqm secondary dwelling delivers comfortable living for small families or downsizers.",
-};
+  path: "/properties/winghouse-m",
+});
 
 export default function WinghouseMPage() {
   return (
     <PageShell>
+      <PageSchema
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Real Estate Properties", path: "/properties" },
+          { name: "Winghouse M", path: "/properties/winghouse-m" },
+        ]}
+        propertyPath="/properties/winghouse-m"
+      />
       <WinghouseDetailSection
         title="Winghouse M"
         description={WINGHOUSE_M_DESCRIPTION}

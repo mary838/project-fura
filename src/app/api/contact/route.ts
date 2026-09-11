@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import nodemailer from "nodemailer";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { SITE_HOST } from "@/lib/site";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
@@ -130,8 +131,8 @@ export async function POST(request: NextRequest) {
       replyTo: email,
       // Explicit domain so Nodemailer doesn't fall back to this machine's
       // hostname (e.g. "localhost") when generating the Message-ID header.
-      messageId: `<${Date.now()}.${Math.random().toString(36).slice(2)}@furahabitech.com.au>`,
-      subject: "New contact request from furahabitech.com.au",
+      messageId: `<${Date.now()}.${Math.random().toString(36).slice(2)}@${SITE_HOST}>`,
+      subject: `New contact request from ${SITE_HOST}`,
       html: `<p>A visitor asked to be contacted at: <strong>${escapeHtml(email)}</strong></p>`,
     });
   } catch (error) {

@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/layout/PageShell";
+import { PageSchema } from "@/components/seo/PageSchema";
 
-export const metadata: Metadata = {
-  title: "Terms of Use — Fura Habitech",
-  description: "The terms governing your use of the Fura Habitech website.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Use",
+  description:
+    "The terms governing your use of the Fura Habitech website.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
     <PageShell>
+      <PageSchema
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Terms of Use", path: "/terms" },
+        ]}
+      />
       <section className="w-full bg-surface px-4 py-8 lg:px-[100px] lg:py-24">
         <div className="mx-auto flex w-full max-w-[800px] flex-col items-start gap-6 py-8 lg:py-16">
           <p className="text-base font-medium text-brand-primary">Legal</p>
@@ -82,10 +92,10 @@ export default function TermsPage() {
               <p>
                 Questions about these terms can be sent to{" "}
                 <a
-                  href="mailto:enquiries@furahabitech.com.au"
+                  href="mailto:info@furahabitech.com"
                   className="font-medium text-title underline"
                 >
-                  enquiries@furahabitech.com.au
+                  info@furahabitech.com
                 </a>
                 .
               </p>

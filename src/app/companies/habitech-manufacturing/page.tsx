@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/layout/PageShell";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { CompanyHero } from "@/components/companies/CompanyHero";
 import { CompanyIntroSection } from "@/components/companies/CompanyIntroSection";
 import { DeliveryEfficiencySection } from "@/components/companies/DeliveryEfficiencySection";
@@ -7,15 +9,22 @@ import { ManufacturingSitesSection } from "@/components/companies/ManufacturingS
 import { ManufacturingStatsSection } from "@/components/companies/ManufacturingStatsSection";
 import { OneStopServiceSection } from "@/components/companies/OneStopServiceSection";
 
-export const metadata: Metadata = {
-  title: "Habitech Manufacturing — Fura Habitech",
+export const metadata: Metadata = pageMetadata({
+  title: "Habitech Manufacturing",
   description:
     "Integrated prefabricated building solutions. From precision manufacturing to efficient construction.",
-};
+  path: "/companies/habitech-manufacturing",
+});
 
 export default function HabitechManufacturingPage() {
   return (
     <PageShell>
+      <PageSchema
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Habitech Manufacturing", path: "/companies/habitech-manufacturing" },
+        ]}
+      />
       <CompanyHero
         image="/fura/companies/manufacturing/hero.png"
         title="Habitech Manufacturing Pty Ltd"
